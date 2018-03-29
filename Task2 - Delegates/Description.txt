@@ -1,4 +1,4 @@
-—оздать приложение которое рисует в консоли:
+123—оздать приложение которое рисует в консоли:
 
 1. ƒоску произвольных размеров базиру€сь на примере
 https://msdn.microsoft.com/ru-ru/library/system.console.setcursorposition(v=vs.110).aspx
