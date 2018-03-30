@@ -1,0 +1,14 @@
+Срок: до 04 апреля включительно
+
+1. Есть текстовая строка "simple text". Реализовать extensions функции, которые можно использовать следующим образом:
+var a = "simple text";
+
+var result = a
+	.SetFirstLetterToUpperCase()
+	.ApplyBraces()
+	.ApplySpaces()
+	.AppendNumbers()
+	.IncludeCurrentYear()
+	.AppendSmile();
+
+Вывести результат в консоль. Результат должен быть примерно таким: ":){ simple text } - 12345: 2018".
