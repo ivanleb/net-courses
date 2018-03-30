@@ -1,0 +1,15 @@
+1. Создать экземпляры классов Artist, Book. В приложении T4ExampleConsoleApp с помощью partial дополнить классы полями:
+- класс Artist:
+Comments(string),
+Age(int),
+BirthdayDate(DateTime).
+
+- класс Book:
+Format(string),
+Author(string),
+PagesAmount(int).
+
+Следует обязательно учесть, что файл CodeGenerationTemplate.cs является автогенерируемым. По этому мы не можем его менять напрямую.
+
+2. Создать несколько экземпляров классов Artist, Book, Songs и собрать их в Catalog. 
+Вывести в консоль свойства каждого из объектов.
