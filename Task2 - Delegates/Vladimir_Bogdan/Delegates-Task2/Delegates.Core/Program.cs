@@ -33,7 +33,7 @@ namespace Delegates.Core
     public delegate void Draw(Board board);
     public interface IActionManager
     {
-        void AffectBoard(int Action);
+        void Affect(int Action);
         bool isExit(int Action);
         bool isValid(int Action);
     }
@@ -65,7 +65,7 @@ namespace Delegates.Core
                     notifier.ShowCustomMessageToUser("The entered action is not valid. Try again.");
                     continue;
                 }
-                actionManager.AffectBoard((int)currentAction);
+                actionManager.Affect(currentAction);
             }
             notifier.SayGoodbyeToUser();
         }

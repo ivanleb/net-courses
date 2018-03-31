@@ -7,23 +7,6 @@ namespace Delegates.App.Implementations
 {
     public static class StringExtention
     {
-        public static void WriteUnderBoard(this string s, Board Board)
-        {
-            s.WriteAboutBoard(Board, 0, 1);
-        }
-        public static void WriteAboutBoard(this string s, Board Board, int x, int y)
-        {
-            try
-            {
-                Console.SetCursorPosition(Console.CursorLeft+x, Board.boardSizeY+Console.CursorTop + y);
-                Console.Write(s);
-            }
-            catch (ArgumentOutOfRangeException e)
-            {
-                Console.Clear();
-                Console.WriteLine(e.Message);
-            }
-        }
         public static void WriteAt(this string s, int x, int y)
         {
             try
@@ -38,6 +21,7 @@ namespace Delegates.App.Implementations
             }
         }
     }
+
     class BoardNotifier : INotifier
     {
         private Board board;
@@ -52,11 +36,15 @@ namespace Delegates.App.Implementations
 
         public void ShowCustomMessageToUser(string message)
         {
-            message.WriteUnderBoard(board);
+            if (Console.CursorTop<=board.boardSizeY)
+            {
+                Console.SetCursorPosition(0, board.boardSizeY + 1);
+            }
+            Console.WriteLine(message);
         }
         public void WelcomeUser()
         {
-            Console.WriteLine("Hello! Let's paint!");
+            MessageBox.Show("Hello! Let's paint!");
         }
     }
 
@@ -64,6 +52,7 @@ namespace Delegates.App.Implementations
     {
         public CustomBoard(int width, int height) : base(width, height) { }
     }
+
     class NotifyingInput : IUserInput
     {
         private INotifier notifier;
@@ -77,6 +66,7 @@ namespace Delegates.App.Implementations
         }
         public int GetAction()
         {
+            notifier?.ShowCustomMessageToUser("Enter the action to affect the board.");
             string input = Console.ReadLine();
             int action;
             if (Int32.TryParse(input, out action))
@@ -85,39 +75,72 @@ namespace Delegates.App.Implementations
             return -1;
         }
     }
+
     class BoardInitializer : IInitializer
     {
         public void DrawInitBoard(Board board)
         {
-            for (int j=0; j<board.boardSizeY; j++)
+            Console.Clear();
+            for (int i=2; i<board.boardSizeX;i++)
             {
-                string side = "|";
-                string middle = " ";
-                if (j*(j-board.boardSizeY+1)==0) { side = "+"; middle = "-"; }
-                side.WriteAt(0, j);
-                side.WriteAt(board.boardSizeX-1, j);
-                for(int i=1; i<board.boardSizeX-1;i++)
-                {
-                    middle.WriteAt(i, j);
-                }
+                "-".WriteAt(i, 1);
+                "-".WriteAt(i, board.boardSizeY);
             }
+            for (int j = 2; j < board.boardSizeY; j++)
+            {
+                "|".WriteAt(1, j);
+                "|".WriteAt(board.boardSizeX, j);
+            }
+            "+".WriteAt(1, 1);
+            "+".WriteAt(1, board.boardSizeY);
+            "+".WriteAt(board.boardSizeX, 1);
+            "+".WriteAt(board.boardSizeX, board.boardSizeY);
+            Console.WriteLine();
         }
     }
-    public class BoardActionManager : IActionManager
+
+    class BoardActionManager : IActionManager
     {
-        private const int ExitAction = 0;
+        public const int ExitAction = 0;
         private Board board;
         private int[] allowedActions;
-        Draw[] drawActionDelegates;
-        public BoardActionManager(Board Board)
+        private Draw drawDelegate;
+        private Draw[] ActionDelegates;
+        private void DrawPoint(Board board)
+        {
+
+            "*".WriteAt((((board.boardSizeX+1) / 2)+1)/2, ((board.boardSizeY+1)/2+1) / 2);
+        }
+        private void DrawHorizontalLine(Board board)
+        {
+            for (int i = 2; i <= board.boardSizeX - 1; i++)
+            {
+                "-".WriteAt(i, (board.boardSizeY+1) / 2);
+            }
+        }
+        private void DrawVerticalLine(Board board)
+        {
+            for (int i = 2; i <= board.boardSizeY - 1; i++)
+            {
+                "|".WriteAt((board.boardSizeX + 1) / 2, i);
+            }
+        }
+        public BoardActionManager(Board Board, BoardInitializer BoardInitializer)
         {
             allowedActions = new int[] { 1, 2, 3 };
-            drawActionDelegates = new Draw[allowedActions.Length];
+            drawDelegate = null;
             board = Board;
+            ActionDelegates = new Draw[] { DrawPoint, DrawHorizontalLine, DrawVerticalLine };
+            drawDelegate = BoardInitializer.DrawInitBoard;
         }
-        public void AffectBoard(int Action)
+        public void Affect(int Action)
         {
-            drawActionDelegates[Array.IndexOf(allowedActions, Action)]?.Invoke(board);
+            int i = Array.IndexOf(allowedActions, Action);
+            if (!drawDelegate.GetInvocationList().Contains(ActionDelegates[i]))
+            {
+                drawDelegate += ActionDelegates[i];
+            }
+            drawDelegate.Invoke(board);
         }
         public bool isExit(int Action)
         {
@@ -129,6 +152,7 @@ namespace Delegates.App.Implementations
             return allowedActions.Contains(Action);
         }
     }
+
     public class CustomRegistry : IRegistry
     {
         public IActionManager ActionManager { get; set; }
@@ -143,9 +167,9 @@ namespace Delegates.App.Implementations
 
         public CustomRegistry()
         {
-            Board = new CustomBoard(20, 10);
-            ActionManager = new BoardActionManager(Board);
+            Board = new CustomBoard(10, 10);
             Initializer = new BoardInitializer();
+            ActionManager = new BoardActionManager(Board, (BoardInitializer) Initializer);
             Notifier = new BoardNotifier(Board);
             ProccessUserInput = new NotifyingInput(Notifier);
         }
