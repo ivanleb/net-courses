@@ -1,0 +1,41 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using BoardDrawing.Core.Abstractions;
+
+namespace BoardDrawing.Core
+{
+    public class ProgramLogic
+    {
+        public void Run(IRegistry registry)
+        {
+            var board = registry.Board;
+            var showMessageToUser = registry.ShowMessageToUser;
+            var proccesUserChoice = registry.ProccesUserChoice;
+            char[] menuItems = proccesUserChoice.GetMenuItems();
+
+            while (true)
+            {
+                board.DrawBoard();
+                showMessageToUser.ShowMessage("\nEach number represents a single operation.\nInput a numbers together without any symbols between and press enter to start drawing. \nTo exit type 'exit'");
+                showMessageToUser.ShowMenuItems(menuItems);
+                string userChoice = proccesUserChoice.SelectFromMenu();
+                if (userChoice == "exit")
+                {
+                    showMessageToUser.ShowMessage("\nFinishing");
+                    break;
+                }
+                if (!board.Draw(userChoice, menuItems))
+                {
+                    showMessageToUser.ShowMessage("\nInvalid input, press enter to continue");
+                    Console.ReadLine();
+                    Console.Clear();
+                    continue;
+                }
+                Console.Clear();                
+            }
+        }
+    }
+}
