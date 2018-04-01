@@ -10,25 +10,10 @@ namespace BoardDrawing.ConsoleApp.Implementations
     {
         public List<Point> pList;
 
-        public HorizontalLine()
-        {
-
-        }
-
         public HorizontalLine(int startX, int endX, int y, char symbol)
         {
             pList = new List<Point>();
             for(int x = startX; x <= endX; x++)
-            {
-                Point p = new Point(x, y, symbol);
-                pList.Add(p);
-            }
-        }
-
-        public void AppendHorizontalLine(int startX, int endX, int y, char symbol)
-        {
-            pList = new List<Point>();
-            for (int x = startX; x <= endX; x++)
             {
                 Point p = new Point(x, y, symbol);
                 pList.Add(p);
