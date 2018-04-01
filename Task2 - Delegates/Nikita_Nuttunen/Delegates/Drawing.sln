@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27428.2015
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Drawing.Core", "Drawing.Core\Drawing.Core.csproj", "{0E09514F-A423-4F7E-A454-B1EC18E6385E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Drawing.ConsoleApp", "Drawing.ConsoleApp\Drawing.ConsoleApp.csproj", "{7E739D99-4B92-4BAB-9061-57F6FDDD723E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{0E09514F-A423-4F7E-A454-B1EC18E6385E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0E09514F-A423-4F7E-A454-B1EC18E6385E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0E09514F-A423-4F7E-A454-B1EC18E6385E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0E09514F-A423-4F7E-A454-B1EC18E6385E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7E739D99-4B92-4BAB-9061-57F6FDDD723E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7E739D99-4B92-4BAB-9061-57F6FDDD723E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7E739D99-4B92-4BAB-9061-57F6FDDD723E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7E739D99-4B92-4BAB-9061-57F6FDDD723E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {6194C17C-7F2F-43A1-9E6B-9B2D925365AC}
+	EndGlobalSection
+EndGlobal
