@@ -48,9 +48,7 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Partials\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\T4ExampleCore\T4ExampleCore.csproj">
       <Project>{73e838c4-5d44-4986-b4f9-1efb748510b7}</Project>
