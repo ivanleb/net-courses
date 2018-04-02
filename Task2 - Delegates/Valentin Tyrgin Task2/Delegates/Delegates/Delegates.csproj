@@ -43,15 +43,19 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DrawObjects\Board.cs" />
-    <Compile Include="DrawObjects\HorizontalLine.cs" />
-    <Compile Include="IBoard.cs" />
-    <Compile Include="Utils.cs" />
-    <Compile Include="DrawObjects\Point.cs" />
-    <Compile Include="Program.cs" />
+    <Compile Include="Core\AppLogic.cs" />
+    <Compile Include="App\Implementations\Board.cs" />
+    <Compile Include="App\Implementations\HorizontalLine.cs" />
+    <Compile Include="Core\Abstractions\IBoard.cs" />
+    <Compile Include="App\Implementations\Utils.cs" />
+    <Compile Include="App\Implementations\Point.cs" />
+    <Compile Include="Core\Abstractions\IRegistry.cs" />
+    <Compile Include="App\Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="UserIntaraction.cs" />
-    <Compile Include="DrawObjects\VerticalLine.cs" />
+    <Compile Include="App\Implementations\UserIntaraction.cs" />
+    <Compile Include="App\Implementations\VerticalLine.cs" />
+    <Compile Include="App\Implementations\Registry.cs" />
+    <Compile Include="App\Implementations\Text.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

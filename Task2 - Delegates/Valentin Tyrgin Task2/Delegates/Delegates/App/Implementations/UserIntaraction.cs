@@ -1,17 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
+using Delegates.Core.Abstractions;
 
-namespace Delegates
+namespace Delegates.App.Implementations
 {
     internal class UserIntaraction : IUserAction
     {
-        public int GetInt(string description, int min = int.MinValue, int max = int.MaxValue)
+        public int GetInt(string description,int min = int.MinValue, int max = int.MaxValue)
         {
             var result = 0;
             var flag = true;
             while (flag || result < min || result > max)
             {
-                Console.WriteLine(description);
+                Console.Write(description+": ");
                 flag = !int.TryParse(Console.ReadLine(), out result);
             }
             return result;
@@ -26,6 +27,7 @@ namespace Delegates
                 menu += i + " - " + x.GetName() + "\n";
                 i++;
             }
+            menu += "0 - Выход\n";
             //menu = dictionary.Aggregate(menu, (current, x) => current + i + "-" + x.GetName() + "\n");
             Console.Write(menu);
         }
