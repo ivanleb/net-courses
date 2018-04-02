@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27004.2008
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EPAM_homework_delegates", "EPAM_homework_delegates.csproj", "{4E3189DB-8FA5-41EA-B81A-66DEEDAA6894}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Board", "ConsoleBoard\Board.csproj", "{0710E4B3-AF1B-47E8-8BA3-AD196A157D50}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{4E3189DB-8FA5-41EA-B81A-66DEEDAA6894}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4E3189DB-8FA5-41EA-B81A-66DEEDAA6894}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4E3189DB-8FA5-41EA-B81A-66DEEDAA6894}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4E3189DB-8FA5-41EA-B81A-66DEEDAA6894}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0710E4B3-AF1B-47E8-8BA3-AD196A157D50}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0710E4B3-AF1B-47E8-8BA3-AD196A157D50}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0710E4B3-AF1B-47E8-8BA3-AD196A157D50}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0710E4B3-AF1B-47E8-8BA3-AD196A157D50}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {3186926D-E103-427C-8656-DC09EBA97E28}
+	EndGlobalSection
+EndGlobal
