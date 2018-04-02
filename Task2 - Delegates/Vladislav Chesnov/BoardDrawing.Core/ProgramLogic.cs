@@ -15,12 +15,11 @@ namespace BoardDrawing.Core
             var showMessageToUser = registry.ShowMessageToUser;
             var proccesUserChoice = registry.ProccesUserChoice;
             char[] menuItems = proccesUserChoice.GetMenuItems();
-            string infoMessage = showMessageToUser.GetInfoForUser();
 
             while (true)
             {
                 board.DrawBoard();
-                showMessageToUser.ShowMessage(infoMessage);
+                showMessageToUser.ShowMessage("\nEach number represents a single operation.\nInput a numbers together without any symbols between and press enter to start drawing. \nTo exit type 'exit'");
                 showMessageToUser.ShowMenuItems(menuItems);
                 string userChoice = proccesUserChoice.SelectFromMenu();
                 if (userChoice == "exit")
@@ -31,11 +30,11 @@ namespace BoardDrawing.Core
                 if (!board.Draw(userChoice, menuItems))
                 {
                     showMessageToUser.ShowMessage("\nInvalid input, press enter to continue");
-                    showMessageToUser.Pause();
-                    board.ClearScreen();
+                    Console.ReadLine();
+                    Console.Clear();
                     continue;
                 }
-                board.ClearScreen();             
+                Console.Clear();                
             }
         }
     }
