@@ -22,5 +22,10 @@ namespace BoardDrawing.ConsoleApp.Implementations
         {
             Console.WriteLine(message);
         }
+
+        public void Pause()
+        {
+            Console.ReadLine();
+        }
     }
 }

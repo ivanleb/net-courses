@@ -105,6 +105,11 @@ namespace BoardDrawing.ConsoleApp.Implementations
             foreach (Point p in board) p.Draw();
             foreach (Point p in boardContent) p.Draw();
             Console.SetCursorPosition(0, BoardSizeY + 2);
-        }        
+        }
+
+        public void BoardClear()
+        {
+            Console.Clear();
+        }
     }
 }

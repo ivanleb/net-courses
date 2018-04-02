@@ -9,6 +9,7 @@ namespace BoardDrawing.Core.Abstractions
     public interface IProccesUserChoice
     {
         char[] GetMenuItems();
-        string SelectFromMenu();        
+        string SelectFromMenu();
+        string GetInfoForUser();
     }
 }

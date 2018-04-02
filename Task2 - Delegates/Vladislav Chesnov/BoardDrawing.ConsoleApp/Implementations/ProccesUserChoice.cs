@@ -19,5 +19,10 @@ namespace BoardDrawing.ConsoleApp.Implementations
         {
             return Console.ReadLine();
         }
+
+        public string GetInfoForUser()
+        {
+            return "\nEach number represents a single operation.\nInput a numbers together without any symbols between (1 for operation 1, 123 for operations 1 then 2 then 3) and press enter to start drawing. \nTo exit type 'exit'";
+        }
     }
 }

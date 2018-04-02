@@ -10,11 +10,6 @@ namespace BoardDrawing.ConsoleApp.Implementations
     {
         public List<Point> pList;
 
-        public VerticalLine()
-        {
-
-        }
-
         public VerticalLine(int startY, int endY, int x, char symbol)
         {
             pList = new List<Point>();

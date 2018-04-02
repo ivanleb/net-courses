@@ -12,5 +12,6 @@ namespace BoardDrawing.Core.Abstractions
         int BoardSizeY { get; set; }
         void DrawBoard();
         bool Draw(string userChoice, char[] menuItems);
+        void BoardClear();        
     }
 }
