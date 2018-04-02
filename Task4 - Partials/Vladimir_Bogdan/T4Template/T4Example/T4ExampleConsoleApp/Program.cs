@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using DataFile;
+using T4ExampleConsoleApp.Implementations;
 
 namespace T4ExampleConsoleApp
 {
@@ -11,16 +11,14 @@ namespace T4ExampleConsoleApp
     {
         static void Main(string[] args)
         {
-            Catalog myCatalog = new Catalog();
-            List<Artist> Artists = new List<Artist>(2);
-            Artists[0] = new Artist()
-            {
-                Name = "Armin van Buuren",
-                Id = "0",
-                Comments = "",
-                BirthdayDate = new DateTime(year: 1976, month: 12, day: 25),
-                Songs = new List<Song>(2) { new Song() { }, new Song() { } }
-            };
+            var registry = new MyRegistry();
+            var catalog = registry.catalogManager.CreateNewCatalog();
+            registry.catalogManager.FillLiteratureContent(catalog);
+            registry.catalogPrinter.PrintLiteratureContent(catalog);
+            registry.catalogPrinter.PrintMusicContent(catalog);
+            registry.catalogManager.FillMusicContent(catalog);
+            registry.catalogPrinter.PrintMusicContent(catalog);
+            Console.ReadKey();
         }
     }
 }
