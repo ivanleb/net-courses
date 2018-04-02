@@ -1,6 +1,6 @@
 Срок: до 04 апреля включительно
 
-1. Создать экземпляры классов Artist, Book. В приложении T4ExampleConsoleApp с помощью partial дополнить классы полями:
+1. Создать экземпляры классов Artist, Book. В приложении T4ExampleCore с помощью partial дополнить классы полями:
 - класс Artist:
 Comments(string),
 Age(int),
