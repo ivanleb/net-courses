@@ -56,12 +56,5 @@ namespace Delegates.App.Implementations
             vLine.Draw(firstCorner[1]+1, secondCorner[1], firstCorner[0]);
             vLine.Draw(firstCorner[1]+1, secondCorner[1], secondCorner[0]);
         }
-
-        
-        public void CleanOutsideBoard(IBoard board)
-        {
-
-            Draw(board);
-        }
     }
 }

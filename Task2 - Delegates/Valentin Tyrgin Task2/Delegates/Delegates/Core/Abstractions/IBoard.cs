@@ -9,7 +9,6 @@ namespace Delegates.Core.Abstractions
         int Height { get; set; }
         int Width { get; set; }
         void Draw(IBoard board);
-        void CleanOutsideBoard(IBoard board);
     }
 
     public interface IUserAction
