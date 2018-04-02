@@ -10,5 +10,7 @@ namespace BoardDrawing.Core.Abstractions
     {
         void ShowMessage(string message);
         void ShowMenuItems(char[] menuItems);
+        void Pause();
+        string GetInfoForUser();
     }
 }

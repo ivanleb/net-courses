@@ -22,5 +22,15 @@ namespace BoardDrawing.ConsoleApp.Implementations
         {
             Console.WriteLine(message);
         }
+
+        public void Pause()
+        {
+            Console.ReadLine();
+        }
+
+        public string GetInfoForUser()
+        {
+            return "\nEach number represents a single operation.\nInput a numbers together without any symbols between (1 or 2 or 12 or 231) and press enter to start drawing. \nTo exit type 'exit'";
+        }
     }
 }
