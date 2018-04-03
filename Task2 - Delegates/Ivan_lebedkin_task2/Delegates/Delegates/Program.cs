@@ -13,7 +13,7 @@ namespace Delegates
     {
         static void Main(string[] args)
         {
-            new DrawLogic().Run(new Registry());
+            new DrawLogic().Run(new ConsoleAppRegistry());
         }
     }
 }

@@ -7,10 +7,7 @@ using Delegates.Core.Abstractions;
 
 namespace Delegates.Implementations
 {
-    class HorizontalLine : IDrawingObject
+    class HorizontalLine : DrawingObject, IDrawingObject
     {
-        public int PositionX { get; set; }
-        public int PositionY { get; set; }
-        public int Length { get; set; }
     }
 }

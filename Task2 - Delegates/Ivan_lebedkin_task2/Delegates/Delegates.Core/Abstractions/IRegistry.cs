@@ -12,5 +12,6 @@ namespace Delegates.Core.Abstractions
         IShowDrawingToUser ShowDrawingToUser { get; set; }
         IProcessUserInput ProcessUserInput { get; set; }
         //ILevelWatcher LevelWatcher { get; set; }
+        IBoard GetEmptyBoard { get; }
     }
 }

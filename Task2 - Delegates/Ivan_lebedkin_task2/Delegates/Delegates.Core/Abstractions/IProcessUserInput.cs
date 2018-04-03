@@ -9,5 +9,6 @@ namespace Delegates.Core.Abstractions
     public interface IProcessUserInput
     {
         IDrawingObject InputObject();
+        void DeleteObjectFromBoard(IBoard board);
     }
 }

@@ -7,10 +7,7 @@ using Delegates.Core.Abstractions;
 
 namespace Delegates.Implementations
 {
-    class Point : IDrawingObject
+    class Point : DrawingObject, IDrawingObject
     {
-        public int PositionX { get; set; }
-        public int PositionY { get; set; }
-        public int Length { get => 0; set => value = 0; }
     }
 }

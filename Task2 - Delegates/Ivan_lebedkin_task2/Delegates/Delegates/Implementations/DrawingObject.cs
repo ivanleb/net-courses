@@ -9,8 +9,15 @@ namespace Delegates.Implementations
 {
     class DrawingObject : IDrawingObject
     {
-        public int PositionX { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-        public int PositionY { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-        public int Length { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        public string Name { get; set; }
+        public override bool Equals(object obj)
+        {
+            if (obj == null || GetType() != obj.GetType())
+            {
+                return false;
+            }           
+            
+            return this.GetType() == obj.GetType();
+        }
     }
 }

@@ -7,9 +7,17 @@ using Delegates.Core.Abstractions;
 
 namespace Delegates.Implementations
 {
-    class Registry : IRegistry
+    class ConsoleAppRegistry : IRegistry
     {
-        public IShowDrawingToUser ShowDrawingToUser { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-        public IProcessUserInput ProcessUserInput { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        public IShowDrawingToUser ShowDrawingToUser { get; set; }
+        public IProcessUserInput ProcessUserInput { get; set; }
+        public IBoard GetEmptyBoard { get; }
+
+        public ConsoleAppRegistry()
+        {
+            ShowDrawingToUser = new Drawing();
+            ProcessUserInput = new ConsoleProcessUserInput();
+            GetEmptyBoard = new Board();
+        }
     }
 }

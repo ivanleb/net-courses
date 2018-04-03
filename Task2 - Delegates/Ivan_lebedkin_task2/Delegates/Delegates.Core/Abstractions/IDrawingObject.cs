@@ -8,8 +8,6 @@ namespace Delegates.Core.Abstractions
 {
     public interface IDrawingObject
     {
-        Int32 PositionX { get; set; }
-        Int32 PositionY { get; set; }
-        Int32 Length { get; set; }
+        String Name { get; set; }
     }
 }

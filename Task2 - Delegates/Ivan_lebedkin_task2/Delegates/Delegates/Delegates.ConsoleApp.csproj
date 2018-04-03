@@ -41,7 +41,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Implementations\Board.cs" />
     <Compile Include="Implementations\ConsoleProcessUserInput.cs" />
+    <Compile Include="Implementations\Drawing.cs" />
     <Compile Include="Implementations\DrawingObject.cs" />
     <Compile Include="Implementations\HorizontalLine.cs" />
     <Compile Include="Implementations\Point.cs" />

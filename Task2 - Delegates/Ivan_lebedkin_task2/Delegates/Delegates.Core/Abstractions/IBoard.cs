@@ -10,5 +10,9 @@ namespace Delegates.Core.Abstractions
     {
         Int32 boardSizeX { get; set; }
         Int32 boardSizeY { get; set; }
+
+        void AddObject(IDrawingObject obj);
+        void DeleteObject(IDrawingObject obj);
+        IEnumerable<IDrawingObject> GetObjects();
     }
 }
