@@ -19,7 +19,6 @@ namespace Delegates.Core
             userActions.SetBoardSize(board);
             drawing.Reset(board);
             stringOutput.ShowMenu();
-            drawing.SetInputLine();
 
             int selection;
             do
@@ -48,6 +47,13 @@ namespace Delegates.Core
                             draw += drawing.DrawHorizontalLine;
                             break;
                         }
+                    case 5:
+                        {
+                            drawing.Reset(board);
+                            stringOutput.ShowMenu();
+                            draw = null;
+                            break;
+                        }
                     default:
                         {
                             draw = null;
@@ -56,7 +62,6 @@ namespace Delegates.Core
                 }
 
                 draw?.Invoke(board);
-                drawing.ReturnCursor();
 
             } while (selection != 0);
         }

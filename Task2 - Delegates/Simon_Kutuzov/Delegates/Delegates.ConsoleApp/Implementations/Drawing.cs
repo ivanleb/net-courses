@@ -5,10 +5,9 @@ namespace Delegates.ConsoleApp.Implementations
 {
     public class Drawing : IDrawing
     {
-        int inputLineNumber;
+        int menuSize = 7;
 
-        public void SetInputLine() { inputLineNumber = Console.CursorTop; }
-        public void ReturnCursor() { Console.SetCursorPosition(0, inputLineNumber); }
+        void ReturnCursor(IBoard board) { Console.SetCursorPosition(0, board.Height + menuSize); }
 
         void WriteAt(char s, int x, int y)
         {
@@ -28,21 +27,26 @@ namespace Delegates.ConsoleApp.Implementations
         {
             for (int y = 1; y < board.Height; y++)
             {
-                WriteAt(board.VerticalLineChar, board.Width / 2, y);
+                WriteAt('|', board.Width / 2, y);
             }
+
+            ReturnCursor(board);
         }
 
         public void DrawHorizontalLine(IBoard board)
         {
             for (int x = 1; x < board.Width; x++)
             {
-                WriteAt(board.HorizontalLineChar, x, board.Height / 2);
+                WriteAt('-', x, board.Height / 2);
             }
+
+            ReturnCursor(board);
         }
 
         public void DrawDot(IBoard board)
         {
             WriteAt('*', board.Width / 4, board.Height / 4);
+            ReturnCursor(board);
         }
 
         public void Reset(IBoard board)
@@ -56,14 +60,14 @@ namespace Delegates.ConsoleApp.Implementations
 
             for (int x = 1; x < board.Width; x++)
             {
-                WriteAt(board.HorizontalLineChar, x, 0);
-                WriteAt(board.HorizontalLineChar, x, board.Height);
+                WriteAt('-', x, 0);
+                WriteAt('-', x, board.Height);
             }
 
             for (int y = 1; y < board.Height; y++)
             {
-                WriteAt(board.VerticalLineChar, 0, y);
-                WriteAt(board.VerticalLineChar, board.Width, y);
+                WriteAt('|', 0, y);
+                WriteAt('|', board.Width, y);
             }
 
             Console.Write("\n\n");

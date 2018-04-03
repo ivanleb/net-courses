@@ -6,7 +6,5 @@
         void DrawHorizontalLine(IBoard board);
         void DrawDot(IBoard board);
         void Reset(IBoard board);
-        void SetInputLine();
-        void ReturnCursor();
     }
 }
