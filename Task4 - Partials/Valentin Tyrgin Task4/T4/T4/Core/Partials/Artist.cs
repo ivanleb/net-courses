@@ -10,7 +10,7 @@ namespace T4
 
         public void Show()
         {
-            Console.WriteLine($"Id: {Id}\tName: {Name}\tAge: {Age}\tBirthDay{BirthdayDate}\tComments: {Comments}");
+            Console.WriteLine($"Id: {Id}\tName: {Name}\tAge: {Age}\tBirthDay: {BirthdayDate.ToShortDateString()}\tComments: {Comments}");
             foreach (var song in Songs)
             {
                 Console.WriteLine($"SongId: {song.Id}");
