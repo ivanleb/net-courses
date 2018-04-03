@@ -11,7 +11,7 @@ namespace T4.App
         {
             var artists = new List<Artist>();
             var books = new List<Book>();
-            var count = random.Next(2, 4);
+            var count = random.Next(2, 6);
             for (var i = 1; i <= count; i++)
             {
                 var artist = new Artist
@@ -49,6 +49,14 @@ namespace T4.App
                 Artists = artists,
                 Books = books
             };
+            foreach (var artist in catalog.Artists)
+            {
+                artist.Show();
+            }
+            foreach (var book in catalog.Books)
+            {
+                book.Show();
+            }
         }
     }
 }
