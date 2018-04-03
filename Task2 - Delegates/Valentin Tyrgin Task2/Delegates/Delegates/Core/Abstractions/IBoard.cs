@@ -1,26 +1,32 @@
 ﻿using System.Collections.Generic;
 
-namespace Delegates
+namespace Delegates.Core.Abstractions
 {
-    internal delegate void Draw(IBoard board);
-
-    internal interface IBoard
+    public interface IBoard
     {
         string GetName();
         void SetSize();
-        int GetHeight();
-        int GetWidth();
+        int Height { get; set; }
+        int Width { get; set; }
         void Draw(IBoard board);
     }
 
-    internal interface IUserAction
+    public interface IUserAction
     {
         int GetInt(string description, int min = int.MinValue, int max = int.MaxValue); //запрос числа из диапазона
         void ShowTypes(List<IBoard> iBoardList); //вывод доступных для построения типов
     }
 
-    internal interface IUtils
+    public interface IUtils
     {
         void WriteAt(string s, int x, int y);
+        void WriteOutsideBoard(IBoard board, string s);
+        void Clean();
+    }
+
+    public interface ITextQuery
+    {
+        string IntQuery { get; set; }
+        string SelectionQuery { get; set; }
     }
 }
