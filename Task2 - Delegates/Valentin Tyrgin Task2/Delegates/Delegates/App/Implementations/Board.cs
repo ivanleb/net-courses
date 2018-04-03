@@ -7,7 +7,7 @@ namespace Delegates.App.Implementations
     {
         private int height;
         private int width;
-        public string Name { get; protected set; } = "Доска";
+        public string Name { get; set; } = "Доска";
 
         public int Height
         {
@@ -21,10 +21,10 @@ namespace Delegates.App.Implementations
             set { width = value > 0 ? value : -value; }
         }
 
-        public virtual string GetName()
-        {
-            return Name;
-        }
+        //public virtual string GetName()
+        //{
+        //    return Name;
+        //}
 
         public void SetSize()
         {

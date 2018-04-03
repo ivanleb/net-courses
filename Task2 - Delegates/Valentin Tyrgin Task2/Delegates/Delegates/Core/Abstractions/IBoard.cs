@@ -4,7 +4,7 @@ namespace Delegates.Core.Abstractions
 {
     public interface IBoard
     {
-        string GetName();
+        string Name { get; set; }
         void SetSize();
         int Height { get; set; }
         int Width { get; set; }

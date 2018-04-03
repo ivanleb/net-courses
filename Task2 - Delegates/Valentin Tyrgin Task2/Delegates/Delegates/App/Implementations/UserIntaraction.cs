@@ -24,7 +24,7 @@ namespace Delegates.App.Implementations
             var i = 1;
             foreach (var x in dictionary)
             {
-                menu += i + " - " + x.GetName() + "\n";
+                menu += i + " - " + x.Name + "\n";
                 i++;
             }
             menu += "0 - Выход\n";

@@ -24,9 +24,9 @@ namespace Delegates.App.Implementations
             utils.WriteAt(symbol, x, y);
         }
 
-        public override string GetName()
-        {
-            return Name;
-        }
+        //public override string GetName()
+        //{
+        //    return Name;
+        //}
     }
 }

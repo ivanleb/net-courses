@@ -30,9 +30,9 @@ namespace Delegates.App.Implementations
             }
         }
 
-        public override string GetName()
-        {
-            return Name;
-        }
+        //public override string GetName()
+        //{
+        //    return Name;
+        //}
     }
 }
