@@ -20,6 +20,7 @@ namespace FiguresOnTheBoard.Core
             board.SetBoardSize(40, 20);
             drawing.DrawBoard(board);
             showMessageToUser.ShowHelloToUser();
+            showMessageToUser.ShowInstructionForUser("Enter the action to affect the board:");
 
             while (true)
             {

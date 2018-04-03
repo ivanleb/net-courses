@@ -19,7 +19,7 @@ namespace FiguresOnTheBoard.ConsoleApp.Implementations
                 "1 - draw a point\n" +
                 "2 - draw a vertical line\n" +
                 "3 - draw a horizontal line\n" +
-                "0 - quit the game\n";
+                "0 - quit the game";
 
             Console.WriteLine(message);
         }
