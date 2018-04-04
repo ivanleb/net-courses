@@ -25,3 +25,5 @@ numberGenerator.Subscribe((x)=>
 2. Создаеть аналог метода Subscribe при условии что useFilter это IEnumerable<Func<int, bool>>.
 
 Числа в onNumberReceived должны поступать при условии что все из IEnumerable<Func<int, bool>> равны true.
+
+Срок до 11 апреля.
