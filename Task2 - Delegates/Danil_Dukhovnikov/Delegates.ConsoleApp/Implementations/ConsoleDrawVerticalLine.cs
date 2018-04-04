@@ -3,9 +3,9 @@ using Task2_Delegates_ConsoleApplication.Implementations;
 
 namespace Delegates.ConsoleApp.Implementations
 {
-    public class ConsoleDrawVerticalLine : IDraw
+    public class ConsoleDrawVerticalLine
     {
-        void IDraw.Draw(IBoard board)
+        void Draw(IBoard board)
         {
             for (var i = 1; i < board.BoardSizeY; i++)
             {

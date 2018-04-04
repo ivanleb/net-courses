@@ -2,7 +2,7 @@
 
 namespace Delegates.Core.Abstractions
 {
-    public interface IBoard : IDraw
+    public interface IBoard
     {
         int StartX { get; }
         int StartY { get; }
@@ -10,6 +10,6 @@ namespace Delegates.Core.Abstractions
         int BoardSizeY { get; }
         IList<IPoint> BoardPoints { get; }
         
-        void AddOnBoard(DrawType drawType);
+        void DrawBoard(DrawType drawType);
     }
 }

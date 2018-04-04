@@ -27,8 +27,8 @@ namespace Delegates.Core
                     continue;
                 }
                 
-                board.AddOnBoard(userChoice);
-                board.Draw(board);
+                board.DrawBoard(userChoice);
+                //board.Draw(board);
             }            
         }
     }
