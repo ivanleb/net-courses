@@ -1,0 +1,27 @@
+1. Есть генератор чисел:
+class NumberGenerator
+{
+    ....
+}
+
+а) Создать метод для генератора Subscribe(Action<int> onNumberReceived, Func<int, bool> useFilter);
+б) Создать 2-3 клиента для которых справедливо следующее поведение:
+с помощью Subscribe получали бы необходимые числа в onNumberReceived, которые удовлетворяют условию в useFilter.
+
+Пример:
+Подписываемся с помощью делегатов на все четные числа:
+var numberGenerator = new NumberGenerator();
+
+numberGenerator.Subscribe((x)=>
+{
+    // should be even only
+    client.HandleOutput(x);
+    
+}, (x)=>
+{
+    return x % 2 == 0 // declare rule for even.
+});
+
+2. Создаеть аналог метода Subscribe при условии что useFilter это IEnumerable<Func<int, bool>>.
+
+Числа в onNumberReceived должны поступать при условии что все из IEnumerable<Func<int, bool>> равны true.
