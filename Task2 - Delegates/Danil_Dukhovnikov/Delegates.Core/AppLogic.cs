@@ -28,7 +28,6 @@ namespace Delegates.Core
                 }
                 
                 board.DrawBoard(userChoice);
-                //board.Draw(board);
             }            
         }
     }

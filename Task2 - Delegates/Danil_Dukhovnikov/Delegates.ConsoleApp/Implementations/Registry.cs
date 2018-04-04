@@ -1,5 +1,4 @@
 ﻿using Delegates.Core.Abstractions;
-using Task2_Delegates_ConsoleApplication.Implementations;
 
 namespace Delegates.ConsoleApp.Implementations
 {
