@@ -45,6 +45,8 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>CodeGenerationTemplate.tt</DependentUpon>
     </Compile>
+    <Compile Include="Partials\Artist.cs" />
+    <Compile Include="Partials\Book.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

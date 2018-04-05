@@ -6,7 +6,7 @@
 <#@ import namespace="System.Collections.Generic" #>  
 using System.Collections.Generic;
 
-namespace T4Example{  
+namespace DataFile{  
 
 <#  
 
