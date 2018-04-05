@@ -32,9 +32,7 @@ namespace RuslanKudaybergenovTask6
         }
         public bool Filter3(int x)
         {
-            if(x%2!=0&&x%3!=0&&x%5!=0)
-                return true;
-            return false;
+            return x % 2 != 0 && x % 3 != 0 && x % 5 != 0;
         }
         public void GetNumber( int i)
         {
