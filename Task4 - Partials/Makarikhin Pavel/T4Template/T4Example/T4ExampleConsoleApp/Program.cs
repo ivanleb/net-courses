@@ -75,9 +75,9 @@ namespace T4ExampleConsoleApp
             songs2.Add(new Song() { Id = "Top top" });
             songs2.Add(new Song() { Id = "QWERTY" });
 
-            artists.Add(new Artist() { age = 20, birthDate = new DateTime(1890, 7, 25), comments = "Bestseller", Id = rand.Next().ToString(), Name = "Alex K", Songs = songs });
-            artists.Add(new Artist() { age = 17, birthDate = new DateTime(1678, 2, 1), comments = "Sale 50%", Id = rand.Next().ToString(), Name = "Nikolay G", Songs = songs1 });
-            artists.Add(new Artist() { age = 18, birthDate = new DateTime(1759, 4, 18), comments = "Rare", Id = rand.Next().ToString(), Name = "Boris F", Songs = songs2 });
+            artists.Add(new Artist() { age = 20, birthDate = new DateTime(1890, 7, 25, 12, 30, 0, 456), comments = "Bestseller", Id = rand.Next().ToString(), Name = "Alex K", Songs = songs });
+            artists.Add(new Artist() { age = 17, birthDate = new DateTime(1678, 2, 1, 8, 43, 35, 76), comments = "Sale 50%", Id = rand.Next().ToString(), Name = "Nikolay G", Songs = songs1 });
+            artists.Add(new Artist() { age = 18, birthDate = new DateTime(1759, 4, 18, 19, 1, 12, 927), comments = "Rare", Id = rand.Next().ToString(), Name = "Boris F", Songs = songs2 });
 
             List<Book> books = new List<Book>();
 
