@@ -74,16 +74,34 @@ namespace RuslanKudaybergenovTask6
 
             ng.Subscribe(ng.GetNumber, client1FuncList);
             #endregion
-            Console.WriteLine("Lambdas:");
-            #region with lambdas
+            Console.WriteLine("Lambdas1:");
+            #region with lambdas1
             List<Func<int, bool>> clientFuncListLambdas = new List<Func<int, bool>>()
             {
                 (x)=>{return x%3==0; },
                 (x)=>{return x % 10 == 0;}
             };
-            ng.Subscribe((x) => { Console.WriteLine("Filtered number: "+x); },
-                clientFuncListLambdas );
-#endregion
+            ng.Subscribe
+                ((x) =>
+                {
+                    Console.WriteLine("Filtered number: " + x);
+                },
+                clientFuncListLambdas
+                );
+            #endregion
+            Console.WriteLine("Lambdas2:");
+            #region withLambdas2
+            ng.Subscribe(
+                (x) =>
+                {
+                    Console.WriteLine("Filtered number: " + x);
+                },
+                new List<Func<int, bool>>()
+                {
+                    (x)=>{return x % 3==0; },
+                    (x)=>{return x % 10 == 0; }
+                });
+            #endregion
             Console.ReadKey();
         }
     }
