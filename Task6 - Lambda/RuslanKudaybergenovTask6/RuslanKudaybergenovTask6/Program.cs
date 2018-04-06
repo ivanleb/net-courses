@@ -59,18 +59,31 @@ namespace RuslanKudaybergenovTask6
 
     class Program
     {
-        
+
         static void Main(string[] args)
         {
             NumberGenerator ng = new NumberGenerator();
-            
+            Console.WriteLine("Methods:");
+            #region with methods
             List<Func<int, bool>> client1FuncList = new List<Func<int, bool>>()
             {
                 ng.Filter1,
                 ng.Fileter2,
                 //ng.Filter3
             };
+
             ng.Subscribe(ng.GetNumber, client1FuncList);
+            #endregion
+            Console.WriteLine("Lambdas:");
+            #region with lambdas
+            List<Func<int, bool>> clientFuncListLambdas = new List<Func<int, bool>>()
+            {
+                (x)=>{return x%3==0; },
+                (x)=>{return x % 10 == 0;}
+            };
+            ng.Subscribe((x) => { Console.WriteLine("Filtered number: "+x); },
+                clientFuncListLambdas );
+#endregion
             Console.ReadKey();
         }
     }
