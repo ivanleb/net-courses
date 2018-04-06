@@ -9,29 +9,30 @@ namespace RuslanKudaybergenovTask6
 {
     class NumberGenerator
     {
-        bool IsUseFilter(Action<int> onNumberRecieved, IEnumerable<Func<int, bool>> useFilter)
+        bool IsUseFilter(int x,IEnumerable<Func<int, bool>> useFilter)
         {
-            foreach(var filter in useFilter)
+            foreach (var filter in useFilter)
             {
-                for (int i = 0; i < 101; i++)
-                    if (!filter(i))
+                    if (!filter(x))
                         return false;
             }
             return true;
         }
+
         public void Subscribe(Action<int> onNumberReceived, IEnumerable<Func<int, bool>> useFilter)
         {
 
-            if (IsUseFilter(onNumberReceived, useFilter))
-                foreach (var filter in useFilter)
+            //if (IsUseFilter(onNumberReceived, useFilter))
+
+            //Console.WriteLine(filter.Method.Name);
+            for (int i = 0; i < 101; i++)
+            {
+                //Console.WriteLine(filter.Method.Name);
+                if (IsUseFilter(i,useFilter))
                 {
-                    Console.WriteLine(filter.Method.Name);
-                    for (int i = 0; i < 101; i++)
-                        if (filter(i))
-                        {
-                            onNumberReceived(i);
-                        }
+                    onNumberReceived(i);
                 }
+            }
         }
 
         public bool Filter1(int x)
@@ -67,15 +68,9 @@ namespace RuslanKudaybergenovTask6
             {
                 ng.Filter1,
                 ng.Fileter2,
-                ng.Filter3
+                //ng.Filter3
             };
-            List<Func<int, bool>> client2FuncList = new List<Func<int, bool>>()
-            {
-                ng.Filter4
-            };
-
             ng.Subscribe(ng.GetNumber, client1FuncList);
-            ng.Subscribe(ng.GetNumber, client2FuncList);
             Console.ReadKey();
         }
     }
