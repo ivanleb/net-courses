@@ -56,7 +56,7 @@ namespace RuslanKudaybergenovTask6
             Console.WriteLine("Filtered number: "+i);
         }
     }
-
+    
     class Program
     {
 
@@ -84,7 +84,7 @@ namespace RuslanKudaybergenovTask6
             ng.Subscribe
                 ((x) =>
                 {
-                    Console.WriteLine("Filtered number: " + x);
+                    ng.GetNumber(x);//Console.WriteLine("Filtered number: " + x);
                 },
                 clientFuncListLambdas
                 );
@@ -94,7 +94,7 @@ namespace RuslanKudaybergenovTask6
             ng.Subscribe(
                 (x) =>
                 {
-                    Console.WriteLine("Filtered number: " + x);
+                    ng.GetNumber(x);//Console.WriteLine("Filtered number: " + x);
                 },
                 new List<Func<int, bool>>()
                 {
