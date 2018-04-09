@@ -33,3 +33,5 @@ https://msdn.microsoft.com/en-us/library/bb394939.aspx
  в) Вывести результать в консоль. 
 
  Пример задания 4 смотрите в папке LinqExamples. 
+
+ Срок до 16 апреля
