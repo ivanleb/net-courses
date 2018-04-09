@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27428.2027
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lambdas", "Lambdas\Lambdas.csproj", "{0E435CCB-C73E-422B-9528-79057EA2024B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{0E435CCB-C73E-422B-9528-79057EA2024B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0E435CCB-C73E-422B-9528-79057EA2024B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0E435CCB-C73E-422B-9528-79057EA2024B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0E435CCB-C73E-422B-9528-79057EA2024B}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {53E6F570-0DA3-4957-86A6-C050895F645B}
+	EndGlobalSection
+EndGlobal
