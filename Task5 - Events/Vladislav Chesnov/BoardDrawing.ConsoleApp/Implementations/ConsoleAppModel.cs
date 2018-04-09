@@ -7,11 +7,11 @@ using BoardDrawing.Core.Abstractions;
 
 namespace BoardDrawing.ConsoleApp.Implementations
 {
-    class Model : IModel
+    class ConsoleAppModel : IModel
     {
         public IEnumerable<IHero> Heroes { get; set; }
 
-        public Model(params IHero[] heroes)
+        public ConsoleAppModel(params IHero[] heroes)
         {
             Heroes = heroes;
         }

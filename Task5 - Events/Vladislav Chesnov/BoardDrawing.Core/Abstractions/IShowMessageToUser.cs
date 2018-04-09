@@ -9,7 +9,6 @@ namespace BoardDrawing.Core.Abstractions
     public interface IShowMessageToUser
     {
         void ShowMessage(string message);
-        void ShowMenuItems(char[] menuItems);
         void Pause();
     }
 }

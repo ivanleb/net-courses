@@ -8,7 +8,7 @@ using BoardDrawing.Core.Abstractions;
 
 namespace BoardDrawing.ConsoleApp.Implementations
 {
-    class UserInteraction : IUserInteraction
+    class ConsoleAppUserInteraction : IUserInteraction
     {
         public event GameEventHandler InputRecieved;
 

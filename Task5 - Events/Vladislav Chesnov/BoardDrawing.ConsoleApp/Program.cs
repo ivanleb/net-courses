@@ -12,7 +12,7 @@ namespace BoardDrawing.ConsoleApp
     {
         static void Main(string[] args)
         {
-            new ProgramLogic().Run(new Registry());
+            new ProgramLogic().Run(new ConsoleAppRegistry());
         }
     }
 }

@@ -7,9 +7,9 @@ using BoardDrawing.Core.Abstractions;
 
 namespace BoardDrawing.ConsoleApp.Implementations
 {
-    class Hero : Point, IHero
+    class ConsoleAppHero : Point, IHero
     {
-        public Hero(int x, int y, char c):base(x,y,c)
+        public ConsoleAppHero(int x, int y, char c):base(x,y,c)
         {
             PosX = x;
             PosY = y;

@@ -70,7 +70,7 @@ namespace BoardDrawing.ConsoleApp.Implementations
 
         public void DrawHero(IModel model)
         {
-            foreach(Hero hero in model.Heroes)
+            foreach(ConsoleAppHero hero in model.Heroes)
             {
                 hero.DrawPoint();
             }
@@ -83,7 +83,7 @@ namespace BoardDrawing.ConsoleApp.Implementations
 
         public void CheckIfHitWithWalls(IModel model)
         {
-            foreach(Hero hero in model.Heroes)
+            foreach(ConsoleAppHero hero in model.Heroes)
             {
                 if (hero.PosX > BoardSizeX)
                 {

@@ -43,14 +43,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Implementations\BoardWithListOfPoints.cs" />
-    <Compile Include="Implementations\Hero.cs" />
+    <Compile Include="Implementations\ConsoleHero.cs" />
     <Compile Include="Implementations\HorizontalLine.cs" />
-    <Compile Include="Implementations\Model.cs" />
+    <Compile Include="Implementations\ConsoleAppModel.cs" />
     <Compile Include="Implementations\Point.cs" />
-    <Compile Include="Implementations\Registry.cs" />
+    <Compile Include="Implementations\ConsoleAppRegistry.cs" />
     <Compile Include="Implementations\Shape.cs" />
-    <Compile Include="Implementations\ShowMessageToUser.cs" />
-    <Compile Include="Implementations\UserInteraction.cs" />
+    <Compile Include="Implementations\ConsoleAppShowMessageToUser.cs" />
+    <Compile Include="Implementations\ConsoleAppUserInteraction.cs" />
     <Compile Include="Implementations\VerticalLine.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
