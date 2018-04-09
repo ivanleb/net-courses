@@ -14,4 +14,9 @@ namespace BoardDrawing.Core.Abstractions
     {
         public ConsoleKeyInfo PressedKey { get; set; }
     }
+
+    public class MineArgs : GameEventArgs
+    {
+        public int WhereToWrite { get; set; }
+    }
 }

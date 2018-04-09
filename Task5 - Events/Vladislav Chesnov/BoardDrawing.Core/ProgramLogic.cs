@@ -7,7 +7,7 @@ using BoardDrawing.Core.Abstractions;
 
 namespace BoardDrawing.Core
 {
-    public delegate void GameEventHandler(object sender, GameEventArgs eventArgs);
+
 
     public class ProgramLogic
     {
@@ -19,9 +19,17 @@ namespace BoardDrawing.Core
             var input = registry.UserInteraction;
             showMessageToUser.ShowMessage("To start a game press any key");
             board.PrepareBoard(20,20);
-            foreach (var hero in model.Heroes) hero.StartListen(input);
+            foreach (var hero in model.Heroes)
+            {
+                hero.StartListenInput(input);
+                foreach(var mine in model.Mines)
+                {
+                    mine.StartListenHero(input);
+                }
+            }              
             board.StartListenInput(input);
-            input.StartListening();
+
+            input.StartListening(model, board);
         }
     }
 }

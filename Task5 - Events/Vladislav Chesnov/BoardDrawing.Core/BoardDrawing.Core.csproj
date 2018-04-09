@@ -48,6 +48,7 @@
     <Compile Include="Abstractions\Arguments.cs" />
     <Compile Include="Abstractions\IBoard.cs" />
     <Compile Include="Abstractions\IHero.cs" />
+    <Compile Include="Abstractions\IMines.cs" />
     <Compile Include="Abstractions\IModel.cs" />
     <Compile Include="Abstractions\IUserInteraction.cs" />
     <Compile Include="Abstractions\IRegistry.cs" />

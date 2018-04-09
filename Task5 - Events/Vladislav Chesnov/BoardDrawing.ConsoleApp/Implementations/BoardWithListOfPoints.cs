@@ -52,6 +52,7 @@ namespace BoardDrawing.ConsoleApp.Implementations
             drawAll += DrawBoard;
             drawAll += CheckIfHitWithWalls;
             drawAll += DrawHero;
+            drawAll += DrawMines;
         }
 
         public void Draw(IModel model)
@@ -73,6 +74,14 @@ namespace BoardDrawing.ConsoleApp.Implementations
             foreach(ConsoleAppHero hero in model.Heroes)
             {
                 hero.DrawPoint();
+            }
+        }
+
+        public void DrawMines(IModel model)
+        {
+            foreach(ConsoleMine mine in model.Mines)
+            {
+                mine.DrawPoint();
             }
         }
 
@@ -115,30 +124,14 @@ namespace BoardDrawing.ConsoleApp.Implementations
             Console.Clear();
         }
 
-        public void StartListenInput(IUserInteraction input)
-        {
-            input.InputRecieved += OnInputRecieved;
-        }
-
         public void OnInputRecieved(object sender, GameEventArgs eventArgs)
         {
             Draw(model);
         }
 
-        //public bool IsHit(Point p)
-        //{
-        //    foreach(Point point in board)
-        //    {
-        //        if (p.IsHit(point))
-        //        {
-        //            return true;
-        //        }
-        //    }
-        //    return false;
-        //}
-
-
-
-
+        public void StartListenInput(IUserInteraction userInteraction)
+        {
+            userInteraction.InputRecieved += OnInputRecieved;
+        }
     }
 }

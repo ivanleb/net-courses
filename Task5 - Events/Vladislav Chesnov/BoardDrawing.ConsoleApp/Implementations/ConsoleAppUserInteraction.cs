@@ -8,11 +8,12 @@ using BoardDrawing.Core.Abstractions;
 
 namespace BoardDrawing.ConsoleApp.Implementations
 {
-    class ConsoleAppUserInteraction : IUserInteraction
+    public class ConsoleAppUserInteraction : IUserInteraction
     {
-        public event GameEventHandler InputRecieved;
+        public event HeroMovesHandler InputRecieved;
+        public event ExplosionHandler HeroStepsOnMine;
 
-        public void StartListening()
+        public void StartListening(IModel model, IBoard board)
         {
             while (true)
             {
@@ -23,6 +24,18 @@ namespace BoardDrawing.ConsoleApp.Implementations
                     {
                         PressedKey = key
                     });
+                }
+                if (HeroStepsOnMine != null)
+                {
+                    int height = board.BoardSizeY;
+                    foreach (IHero hero in model.Heroes)
+                    {
+                        HeroStepsOnMine(hero, new MineArgs()
+                        {
+                            WhereToWrite = height
+                        });
+                    }
+
                 }
             }
         }

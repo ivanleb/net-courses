@@ -13,6 +13,6 @@ namespace BoardDrawing.Core.Abstractions
         void Draw(IModel model);
         void PrepareBoard(int sizeX, int sizeY);
         void BoardClear();
-        void StartListenInput(IUserInteraction input);
+        void StartListenInput(IUserInteraction userInteraction);
     }
 }

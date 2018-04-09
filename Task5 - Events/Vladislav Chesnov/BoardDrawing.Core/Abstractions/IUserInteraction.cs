@@ -8,8 +8,10 @@ namespace BoardDrawing.Core.Abstractions
 {
     public interface IUserInteraction
     {
-        void StartListening();
-        event GameEventHandler InputRecieved;
+        void StartListening(IModel model, IBoard board);
+        //void StartListeningMine();
+        event HeroMovesHandler InputRecieved;
+        event ExplosionHandler HeroStepsOnMine;
     }
 
 }

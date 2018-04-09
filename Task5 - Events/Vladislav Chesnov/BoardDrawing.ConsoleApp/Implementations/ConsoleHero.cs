@@ -38,7 +38,7 @@ namespace BoardDrawing.ConsoleApp.Implementations
             }
         }
 
-        public void StartListen(IUserInteraction input)
+        public void StartListenInput(IUserInteraction input)
         {
             input.InputRecieved += OnInputRecieved;
         }

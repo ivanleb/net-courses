@@ -6,13 +6,13 @@ using System.Threading.Tasks;
 
 namespace BoardDrawing.Core.Abstractions
 {
-    public delegate void HeroMovesHandler(object sender, GameEventArgs eventArgs);
+    public delegate void ExplosionHandler(IHero hero, MineArgs args);
 
-    public interface IHero
+    public interface IMine
     {
         int PosX { get; set; }
         int PosY { get; set; }
         char Sym { get; set; }
-        void StartListenInput(IUserInteraction input);
+        void StartListenHero(IUserInteraction userInteraction);
     }
 }

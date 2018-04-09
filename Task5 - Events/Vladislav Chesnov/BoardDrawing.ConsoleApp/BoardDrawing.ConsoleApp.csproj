@@ -44,6 +44,7 @@
   <ItemGroup>
     <Compile Include="Implementations\BoardWithListOfPoints.cs" />
     <Compile Include="Implementations\ConsoleHero.cs" />
+    <Compile Include="Implementations\ConsoleMine.cs" />
     <Compile Include="Implementations\HorizontalLine.cs" />
     <Compile Include="Implementations\ConsoleAppModel.cs" />
     <Compile Include="Implementations\Point.cs" />
