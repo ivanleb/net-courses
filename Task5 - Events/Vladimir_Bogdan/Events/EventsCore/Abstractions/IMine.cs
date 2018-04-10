@@ -6,7 +6,10 @@ using System.Threading.Tasks;
 
 namespace EventsCore.Abstractions
 {
-    public class ExplosionEventArgs : GameEventArgs { }
+    public class ExplosionEventArgs : GameEventArgs
+    {
+        public IHero corpse;
+    }
     public delegate void ExplosionHandler(IMine sender, ExplosionEventArgs args);
     public interface IMine
     {

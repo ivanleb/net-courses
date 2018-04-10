@@ -14,7 +14,7 @@ namespace EventsCore
     {
         public void Start(IModel model, IBoard board, IUserInput input)
         {
-            board.Initialize();
+            board.Initialize(model);
             board.Draw(model);
             foreach (var hero in model.Heroes)
             {
@@ -26,6 +26,7 @@ namespace EventsCore
                 mine.ListenToTheHeroes(model.Heroes);
             }
             board.ListenToTheInput(input);
+            input.ListenToUser();
         }
     }
 }

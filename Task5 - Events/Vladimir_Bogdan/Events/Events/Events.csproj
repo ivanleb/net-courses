@@ -44,7 +44,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Implementations\ColoredConsoleHero.cs" />
     <Compile Include="Implementations\ConsoleBoard.cs" />
+    <Compile Include="Implementations\ConsoleMine.cs" />
+    <Compile Include="Implementations\ConsoleUserInput.cs" />
+    <Compile Include="Implementations\Model.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

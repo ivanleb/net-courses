@@ -10,7 +10,7 @@ namespace EventsCore.Abstractions
     {
         int Width { get; set; }
         int Height { get; set; }
-        void Initialize();
+        void Initialize(IModel model);
         void Draw(IModel model);
         void ListenToTheInput(IUserInput input);
     }
