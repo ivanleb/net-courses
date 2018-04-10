@@ -14,7 +14,7 @@ namespace RuslanTask5
                 Hero = new Hero() { PositionX = 5, PositionY = 5, Marker = '+' },
                 Board = new Board() { SizeX = 20, SizeY = 20 },
                 CursorVisible = false,
-                BombsCount = 15,
+                BombsCount = 100,
                 Bomb = new Bomb('X')
             }).Run(new HeroMovement(),new InputProcess());
         }

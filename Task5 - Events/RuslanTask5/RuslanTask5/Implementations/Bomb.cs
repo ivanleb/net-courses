@@ -28,7 +28,6 @@ namespace RuslanTask5.Implementations
                 new DrawAllComponents().Draw('x', args.hero.PositionX, args.hero.PositionY);
                 MessageBox.Show("Game Over!!!");
                 Environment.Exit(0);
-
             }
         }
 

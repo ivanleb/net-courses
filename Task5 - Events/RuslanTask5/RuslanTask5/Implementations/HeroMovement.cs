@@ -95,7 +95,7 @@ namespace RuslanTask5.Implementations
                         }
                         return true;
                     }
-                default: return true;
+                default: return false;
             }
         }
 
