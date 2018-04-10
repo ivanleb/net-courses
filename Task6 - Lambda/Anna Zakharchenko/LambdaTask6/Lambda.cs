@@ -15,13 +15,17 @@ namespace LambdaTask6
             Client client2 = new Client("Client Disappointed");
             Client client3 = new Client("Client Spitz");
 
-            List<Func<int,bool>> func1 = new List<Func<int, bool>>() { (x) => { return x % 5 == 0; }, (x) => { return x != 20; } };
+            List<Func<int,bool>> func1 = new List<Func<int, bool>>() { (x) => { return x % 5 == 0; },
+                                                                        (x) => { return x != 20; } };
             numberGenerator.Subscribe((x) => { client1.HandleOutput(x); }, func1);
 
-            List<Func<int, bool>> func2 = new List<Func<int, bool>>() { (x) => { return x % 10 == 1; }, (x) => { return x < 30; } };
+            List<Func<int, bool>> func2 = new List<Func<int, bool>>() { (x) => { return x % 10 == 1; },
+                                                                        (x) => { return x < 30; } };
             numberGenerator.Subscribe((x) => { client2.HandleOutput(x); }, func2);
 
-            List<Func<int, bool>> func3 = new List<Func<int, bool>>() { (x) => { return x != 20; }, (x) => { return x < 33; }, (x) => { return x % 2 == 0; } };
+            List<Func<int, bool>> func3 = new List<Func<int, bool>>() { (x) => { return x != 20; },
+                                                                        (x) => { return x < 33; },
+                                                                        (x) => { return x % 2 == 0; } };
             numberGenerator.Subscribe((x) => { client3.HandleOutput(x); }, func3);
 
             Console.ReadKey();
