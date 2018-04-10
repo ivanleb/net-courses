@@ -24,6 +24,8 @@ namespace RuslanTask5.Implementations
             var args = (HeroMovementArgs)eventArgs;
             if (args.hero.PositionX == PositionX && args.hero.PositionY == PositionY)
             {
+                Console.ForegroundColor = ConsoleColor.Red;
+                new DrawAllComponents().Draw('x', args.hero.PositionX, args.hero.PositionY);
                 MessageBox.Show("Game Over!!!");
                 Environment.Exit(0);
 
