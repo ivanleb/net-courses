@@ -1,11 +1,13 @@
 ﻿using System;
-using System.Collections.Generic;
+using System.Windows.Forms;
 using RuslanTask5.Abstractions;
 
 namespace RuslanTask5.Implementations
 {
+
     class Bomb : IBomb
     {
+        
         public int PositionX { get; set; }
         public int PositionY { get; set; }
         public char Marker { get; set; }
@@ -20,11 +22,11 @@ namespace RuslanTask5.Implementations
         private void OnInputReceived(object sender, EventArgs eventArgs)
         {
             var args = (HeroMovementArgs)eventArgs;
-            
             if (args.hero.PositionX == PositionX && args.hero.PositionY == PositionY)
             {
-                Console.Clear();
-                Console.WriteLine("U DIED!");
+                MessageBox.Show("Game Over!!!");
+                Environment.Exit(0);
+
             }
         }
 

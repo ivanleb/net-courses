@@ -35,7 +35,7 @@ namespace RuslanTask5.Implementations
             }
             foreach(var bomb in bombs)
                 bomb.StartListening(input);
-
+            
             input.Start(startParameters.Hero, startParameters.Board);
             
 
