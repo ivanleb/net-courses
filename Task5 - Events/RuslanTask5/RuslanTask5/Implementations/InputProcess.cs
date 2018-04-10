@@ -11,7 +11,7 @@ namespace RuslanTask5.Implementations
             while (true)
             {
                 var key = Console.ReadKey(true).Key;
-                InputReceived?.Invoke(key, new HeroMovementArgs(hero, board, 5));
+                InputReceived?.Invoke(key, new HeroMovementArgs(hero, board));
             }
         }
     }

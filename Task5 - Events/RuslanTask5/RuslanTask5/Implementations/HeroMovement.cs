@@ -8,7 +8,7 @@ namespace RuslanTask5.Implementations
     class HeroMovementArgs : EventArgs
     {
         public ConsoleKey key;
-        public HeroMovementArgs(IHero hero, IBoard board, int bombs)
+        public HeroMovementArgs(IHero hero, IBoard board)
         {
             this.hero = hero;
             this.board = board;
