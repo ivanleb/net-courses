@@ -18,30 +18,22 @@ namespace RuslanTask5.Implementations
                 Console.Clear();
                 Console.WriteLine(e.Message);
             }
-            
+
             Console.WriteLine("\n\n");
         }
 
-        public  void DrawBoard(IBoard board)
+        public void DrawBoard(IBoard board)
         {
-            try
-            {
-                for (int line = board.StartBoardPositionX; line <= board.SizeX; line++)
-                    for (int topBottomLine = board.StartBoardPositionY; topBottomLine <= board.SizeY; topBottomLine += board.SizeY)
-                        Draw('*', line, topBottomLine);
+            for (int line = board.StartBoardPositionX; line <= board.SizeX; line++)
+                for (int topBottomLine = board.StartBoardPositionY; topBottomLine <= board.SizeY; topBottomLine += board.SizeY)
+                    Draw('*', line, topBottomLine);
 
-                for (int line = board.StartBoardPositionY + 1; line < board.SizeY; line++)
-                    for (int leftRightLine = board.StartBoardPositionX; leftRightLine <= board.SizeX; leftRightLine += board.SizeX)
-                        Draw('*', leftRightLine, line);
-            }
-            catch (ArgumentOutOfRangeException e)
-            {
-                Console.Clear();
-                Console.WriteLine(e.Message);
-            }
+            for (int line = board.StartBoardPositionY + 1; line < board.SizeY; line++)
+                for (int leftRightLine = board.StartBoardPositionX; leftRightLine <= board.SizeX; leftRightLine += board.SizeX)
+                    Draw('*', leftRightLine, line);
         }
 
-        public  void DrawHero(IHero hero)
+        public void DrawHero(IHero hero)
         {
             Draw(hero.Marker, hero.PositionX, hero.PositionY);
         }
