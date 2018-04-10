@@ -8,7 +8,7 @@ namespace BoardDrawing.Core.Abstractions
 {
     public interface IModel
     {
-        IEnumerable<IHero> Heroes { get; set; }
+        IHero Hero { get; set; }
         IEnumerable<IMine> Mines { get; set; }
     }
 }

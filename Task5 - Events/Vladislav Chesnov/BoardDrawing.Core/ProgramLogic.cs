@@ -17,16 +17,14 @@ namespace BoardDrawing.Core
             var model = registry.Model;
             var showMessageToUser = registry.ShowMessageToUser;
             var input = registry.UserInteraction;
-            showMessageToUser.ShowMessage("To start a game press any key");
+            var greetings = showMessageToUser.Greetings;
+            showMessageToUser.ShowMessage(greetings);
             board.PrepareBoard(20,20);
-            foreach (var hero in model.Heroes)
+            model.Hero.StartListenInput(input);
+            foreach(var mine in model.Mines)
             {
-                hero.StartListenInput(input);
-                foreach(var mine in model.Mines)
-                {
-                    mine.StartListenHero(input);
-                }
-            }              
+                mine.StartListenHero(input);
+            }
             board.StartListenInput(input);
 
             input.StartListening(model, board);

@@ -30,6 +30,7 @@ namespace BoardDrawing.ConsoleApp.Implementations
 
         public void PrepareBoard(int boardSizeX, int boardSizeY)
         {
+            Console.CursorVisible = false;
             BoardSizeX = boardSizeX;
             BoardSizeY = boardSizeY;
             Point upperLeftCorner = new Point(0, 0, '+');
@@ -48,7 +49,7 @@ namespace BoardDrawing.ConsoleApp.Implementations
             borders.Add(left);
             right = new VerticalLine(1, boardSizeY, boardSizeX + 1, '|');
             borders.Add(right);
-                        
+
             drawAll += DrawBoard;
             drawAll += CheckIfHitWithWalls;
             drawAll += DrawHero;
@@ -71,10 +72,7 @@ namespace BoardDrawing.ConsoleApp.Implementations
 
         public void DrawHero(IModel model)
         {
-            foreach(ConsoleAppHero hero in model.Heroes)
-            {
-                hero.DrawPoint();
-            }
+            (model.Hero as ConsoleAppHero).DrawPoint();
         }
 
         public void DrawMines(IModel model)
@@ -85,37 +83,29 @@ namespace BoardDrawing.ConsoleApp.Implementations
             }
         }
 
-        public void CheckIfHit(IModel model)
-        {
-
-        }
-
         public void CheckIfHitWithWalls(IModel model)
-        {
-            foreach(ConsoleAppHero hero in model.Heroes)
+        {            
+            if (model.Hero.PosX > BoardSizeX)
             {
-                if (hero.PosX > BoardSizeX)
-                {
-                    hero.PosX = BoardSizeX;
-                    right.DrawShapeRed();
-                }
-                if (hero.PosX < 1)
-                {
-                    hero.PosX = 1;
-                    left.DrawShapeRed();
-                }
+                model.Hero.PosX = BoardSizeX;
+                right.DrawShapeRed();
+            }
+            if (model.Hero.PosX < 1)
+            {
+                model.Hero.PosX = 1;
+                left.DrawShapeRed();
+            }
 
-                if (hero.PosY > BoardSizeY)
-                {
-                    hero.PosY = BoardSizeY;
-                    lower.DrawShapeRed();
-                }
+            if (model.Hero.PosY > BoardSizeY)
+            {
+                model.Hero.PosY = BoardSizeY;
+                lower.DrawShapeRed();
+            }
 
-                if (hero.PosY < 1)
-                {
-                    hero.PosY = 1;
-                    upper.DrawShapeRed();
-                }
+            if (model.Hero.PosY < 1)
+            {
+                model.Hero.PosY = 1;
+                upper.DrawShapeRed();
             }
         }
 

@@ -15,13 +15,11 @@ namespace BoardDrawing.ConsoleApp.Implementations
         public IModel Model { get; set; }
 
         public ConsoleAppRegistry()
-        {
+        {            
             Random rnd = new Random();
-            Model = new ConsoleAppModel(new IHero[]
-            {
-                new ConsoleAppHero(10,10,'+')
-            }
-            , new IMine[] 
+            Model = new ConsoleAppModel(
+              new ConsoleAppHero(10, 10, '+'),
+              new IMine[] 
             {
                 new ConsoleMine(rnd.Next(1,20), rnd.Next(1,20), 'X'),
                 new ConsoleMine(rnd.Next(1,20), rnd.Next(1,20), 'X'),
@@ -32,7 +30,10 @@ namespace BoardDrawing.ConsoleApp.Implementations
             });
             Board = new BoardWithListOfPoints(Model);
             UserInteraction = new ConsoleAppUserInteraction();
-            ShowMessageToUser = new ConsoleAppShowMessageToUser();
+            ShowMessageToUser = new ConsoleAppShowMessageToUser
+            {
+                Greetings = "Press any key to start"
+            };
         }
     }
 }

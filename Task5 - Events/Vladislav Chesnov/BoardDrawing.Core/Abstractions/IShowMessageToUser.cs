@@ -8,6 +8,7 @@ namespace BoardDrawing.Core.Abstractions
 {
     public interface IShowMessageToUser
     {
+        string Greetings { get; set; }
         void ShowMessage(string message);
         void Pause();
     }

@@ -9,12 +9,13 @@ namespace BoardDrawing.ConsoleApp.Implementations
 {
     class ConsoleAppModel : IModel
     {
-        public IEnumerable<IHero> Heroes { get; set; }
-        public IEnumerable<IMine> Mines { get; set; }
 
-        public ConsoleAppModel(IHero[] heroes, IMine[] mines)
+        public IEnumerable<IMine> Mines { get; set; }
+        public IHero Hero { get; set; }
+
+        public ConsoleAppModel(IHero hero, IMine[] mines)
         {
-            Heroes = heroes;
+            Hero = hero;
             Mines = mines;
         }
     }

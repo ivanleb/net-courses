@@ -9,6 +9,8 @@ namespace BoardDrawing.ConsoleApp.Implementations
 {
     class ConsoleAppShowMessageToUser : IShowMessageToUser
     {
+        public string Greetings { get; set; }
+
         public void ShowMessage(string message)
         {
             Console.WriteLine(message);

@@ -28,14 +28,10 @@ namespace BoardDrawing.ConsoleApp.Implementations
                 if (HeroStepsOnMine != null)
                 {
                     int height = board.BoardSizeY;
-                    foreach (IHero hero in model.Heroes)
+                    HeroStepsOnMine(model.Hero, new MineArgs()
                     {
-                        HeroStepsOnMine(hero, new MineArgs()
-                        {
-                            WhereToWrite = height
-                        });
-                    }
-
+                        WhereToWrite = height
+                    });
                 }
             }
         }
