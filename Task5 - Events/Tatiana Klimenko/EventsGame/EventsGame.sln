@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27428.2015
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EventsGame.Core", "EventsGame.Core\EventsGame.Core.csproj", "{CBADD7FA-1DF0-4C8B-B100-51007A1F5BF4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EventsGame.ConsoleApp", "EventsGame.ConsoleApp\EventsGame.ConsoleApp.csproj", "{2058AE3F-E9FF-4F64-A407-4A48C3859851}"
+	ProjectSection(ProjectDependencies) = postProject
+		{CBADD7FA-1DF0-4C8B-B100-51007A1F5BF4} = {CBADD7FA-1DF0-4C8B-B100-51007A1F5BF4}
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{CBADD7FA-1DF0-4C8B-B100-51007A1F5BF4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CBADD7FA-1DF0-4C8B-B100-51007A1F5BF4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CBADD7FA-1DF0-4C8B-B100-51007A1F5BF4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CBADD7FA-1DF0-4C8B-B100-51007A1F5BF4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2058AE3F-E9FF-4F64-A407-4A48C3859851}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2058AE3F-E9FF-4F64-A407-4A48C3859851}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2058AE3F-E9FF-4F64-A407-4A48C3859851}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2058AE3F-E9FF-4F64-A407-4A48C3859851}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {C0A363DB-0074-4FBE-B0F7-B40AE73FB2DF}
+	EndGlobalSection
+EndGlobal
