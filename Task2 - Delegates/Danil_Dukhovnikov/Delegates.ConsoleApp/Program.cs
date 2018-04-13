@@ -7,7 +7,7 @@ namespace Delegates.ConsoleApp
     {
         public static void Main(string[] args)
         {
-            new AppLogic().Run(new ConsoleAppRegistry());
+            AppLogic.Run(new ConsoleAppRegistry());
         }
     }
 }
