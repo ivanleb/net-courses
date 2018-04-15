@@ -4,46 +4,116 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace LinqCore.DataModel
+namespace LinqCore
 {
-    public class TaskModel
+    public enum Side { unknown, right, left }
+    public static class SideExtentions
     {
-        public int Id;
-        public string Author;
-        public string Name;
-        public string Content;
-        public bool IsCanceled;
-        public TaskModel CanceledBy;
-        public IQueryable<LetterModel> Letters;
-        public IQueryable<Device> Devices;
+        public static Side CastToSide(this string s)
+        {
+            switch (s.ToLower())
+            {
+                case "left":
+                    return Side.left;
+                case "right":
+                    return Side.right;
+                default:
+                    return Side.unknown;
+            }
+        }
+        public static string ToString(this Side side)
+        {
+            switch (side)
+            {
+                case Side.left:
+                    return "left";
+                case Side.right:
+                    return "right";
+                default:
+                    return "unknown";
+            }
+        }
+
     }
-    public class LetterModel
+    public class Player
     {
         public int Id;
-        public DateTime Date;
         public string Name;
-        public TaskModel Task;
-        public bool IsReport;
-        public IQueryable<FileModel> Files;
+        public DateTime BirthdayDate;
+        public int Age { get { return DateTime.Now.Date.Year - this.BirthdayDate.Year - 1 + (DateTime.Now.DayOfYear >= this.BirthdayDate.DayOfYear ? 1 : 0); } }
+        public Side StrongestHand;
+        public string Citizenship;
+        public decimal Salary;
     }
-    public class FileModel
+    public class Team
     {
         public int Id;
+        public DateTime FoundationDate;
         public string Name;
-        public string Extention;
-        public LetterModel Letter;
+        public string HeadCoach;
+        public string Country;
     }
-    public class Device
+    public class Stadium
     {
         public int Id;
         public string Name;
-        public IQueryable<TaskModel> Tasks;
+        public int Capacity;
+        public string City;
     }
     public interface IDataModel
     {
-        IQueryable<TaskModel> Tasks { get; }
-        IQueryable<LetterModel> Letters { get; }
-        IQueryable<FileModel> Files { get; }
-        IQueryable<Device> Devices { get; }
+        IQueryable<Player> Players { get; }
+        IQueryable<Team> Teams { get; }
+        IQueryable<Stadium> Stadiums { get; }
+    }
+    public static class DataRetriever
+    {
+        private static void printPlayerInfo(IQueryable<Player> players)
+        {
+            foreach (var player in players)
+            {
+                Console.WriteLine($"{player.Id}: {player.Name} | {player.StrongestHand.ToString()} | {player.Citizenship} | {player.Salary} | {player.BirthdayDate.ToShortDateString()} | {player.Age}");
+            }
+        }
+
+        private static void printTeamInfo(IQueryable<Team> teams)
+        {
+            foreach (var team in teams)
+            {
+                Console.WriteLine($"{team.Id}: {team.Name} | {team.HeadCoach} | {team.Country} | {team.FoundationDate.Year}");
+            }
+        }
+
+        private static void printStadiumInfo(IQueryable<Stadium> stadiums)
+        {
+            foreach (var stadium in stadiums)
+            {
+                Console.WriteLine($"{stadium.Id}: {stadium.Name} | {stadium.City} | {stadium.Capacity}");
+            }
+        }
+
+        public static void ShowOutput(this IDataModel dataModel)
+        {
+            var allPlayers = dataModel.Players;
+            Console.WriteLine(string.Format("All registered players:"));
+            printPlayerInfo(allPlayers);
+            Console.WriteLine("------------------------------------");
+            var avarageSalaries = dataModel.Players.GroupBy(p=>p.Citizenship).Select(g=>new { Salary = g.Average(p => p.Salary), Country = g.Key });
+            foreach (var salary in avarageSalaries)
+            {
+                Console.WriteLine(string.Format("Avarage salary of the players from {0} is {1}", salary.Country, salary.Salary));
+            }
+            Console.WriteLine("------------------------------------");
+            Console.WriteLine("All teams in the order of the foundation date:");
+            var teamsOrderedByCountries = dataModel.Teams.OrderBy(t=>t.FoundationDate);
+            printTeamInfo(teamsOrderedByCountries);
+            Console.WriteLine("------------------------------------");
+            Console.WriteLine("The bigest stadiums in the city:");
+            var theBigestStadiumInTheCity = dataModel.Stadiums.GroupBy(s => s.City).Select(g => g.First(s => s.Capacity == g.Max(st => st.Capacity)));//new { City = g.Key, MaxCapacity = g.Max(s => s.Capacity), Name = g.First(s => s.Capacity == g.Max(st => st.Capacity)).Name });
+            printStadiumInfo(theBigestStadiumInTheCity);
+            Console.WriteLine("------------------------------------");
+            Console.ReadLine();
+
+        }
     }
 }

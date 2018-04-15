@@ -1,9 +1,15 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.25420.1
+# Visual Studio 15
+VisualStudioVersion = 15.0.27428.2027
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LinqCore", "LinqCore\LinqCore.csproj", "{6D514983-EF28-4082-B414-0B3A20F26F4D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LinqToXMLProvider", "LinqToXMLProvider\LinqToXMLProvider.csproj", "{46C90CC3-222B-4FA4-9C0E-AEE40E09C11F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LinqToJsonProvider", "LinqToJsonProvider\LinqToJsonProvider.csproj", "{55C09F15-4C94-4531-BF1F-2F832D263379}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LinqViaEf", "LinqViaEf\LinqViaEf.csproj", "{824270AF-8E61-49B8-991D-F083731DFC16}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,8 +21,23 @@ Global
 		{6D514983-EF28-4082-B414-0B3A20F26F4D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6D514983-EF28-4082-B414-0B3A20F26F4D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6D514983-EF28-4082-B414-0B3A20F26F4D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{46C90CC3-222B-4FA4-9C0E-AEE40E09C11F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{46C90CC3-222B-4FA4-9C0E-AEE40E09C11F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{46C90CC3-222B-4FA4-9C0E-AEE40E09C11F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{46C90CC3-222B-4FA4-9C0E-AEE40E09C11F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{55C09F15-4C94-4531-BF1F-2F832D263379}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{55C09F15-4C94-4531-BF1F-2F832D263379}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{55C09F15-4C94-4531-BF1F-2F832D263379}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{55C09F15-4C94-4531-BF1F-2F832D263379}.Release|Any CPU.Build.0 = Release|Any CPU
+		{824270AF-8E61-49B8-991D-F083731DFC16}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{824270AF-8E61-49B8-991D-F083731DFC16}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{824270AF-8E61-49B8-991D-F083731DFC16}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{824270AF-8E61-49B8-991D-F083731DFC16}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {418F1896-46CE-45FB-9EDE-BA0F379FF589}
 	EndGlobalSection
 EndGlobal

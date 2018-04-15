@@ -1,0 +1,113 @@
+﻿<?xml version="1.0" encoding="utf-8" ?> 
+<root>
+   <Players>
+      <element>
+         <Id>1</Id>
+         <Name>Sidney Crosby</Name>
+         <Citizenship>Canada</Citizenship>
+         <Salary>7000000</Salary>
+         <BirthdayDate>7.12.1987</BirthdayDate>
+         <Shoots>left</Shoots>
+      </element>
+   <element>
+         <Id>2</Id>
+         <Name>Henrik Sedin</Name>
+         <Citizenship>Sweden</Citizenship>
+         <Salary>4000000</Salary>
+         <BirthdayDate>26.09.1980</BirthdayDate>
+         <Shoots>left</Shoots>
+      </element>
+   <element>
+         <Id>3</Id>
+         <Name>Evgeny Kuznetsov</Name>
+         <Citizenship>Russia</Citizenship>
+         <Salary>6200000</Salary>
+         <BirthdayDate>19.05.1992</BirthdayDate>
+         <Shoots>left</Shoots>
+      </element>
+<element>
+         <Id>4</Id>
+         <Name>Mikael Granlund</Name>
+         <Citizenship>Finland</Citizenship>
+         <Salary>4000000</Salary>
+         <BirthdayDate>26.2.1992</BirthdayDate>
+         <Shoots></Shoots>
+      </element>
+<element>
+         <Id>5</Id>
+         <Name>Alex Ovechkin</Name>
+         <Citizenship>Russia</Citizenship>
+         <Salary>9000000</Salary>
+         <BirthdayDate>17.09.1985</BirthdayDate>
+         <Shoots>Right</Shoots>
+      </element>
+   </Players>
+  <Teams>
+    <element>
+      <Id>1</Id>
+      <WasFoundedIn>4.12.1909</WasFoundedIn>
+      <Name>Montreal Canadiens</Name>
+      <HeadCoach>Claude Julien</HeadCoach>
+      <Country>Canada</Country>
+    </element>
+    <element>
+      <Id>3</Id>
+      <WasFoundedIn>4.12.1947</WasFoundedIn>
+      <Name>Traktor</Name>
+      <HeadCoach>Anvar Gatiyatullin</HeadCoach>
+      <Country>Russia</Country>
+    </element>
+    <element>
+      <Id>2</Id>
+      <WasFoundedIn>4.12.1926</WasFoundedIn>
+      <Name>Detroit Red Wings</Name>
+      <HeadCoach>Jeff Blashill</HeadCoach>
+      <Country>USA</Country>
+    </element>
+    <element>
+      <Id>4</Id>
+      <WasFoundedIn>4.12.1967</WasFoundedIn>
+      <Name>Pittsburgh Penguins</Name>
+      <HeadCoach>Mike Sullivan</HeadCoach>
+      <Country>USA</Country>
+    </element>
+  </Teams>
+  <Stadiums>
+    <element>
+      <Id>1</Id>
+      <Name>Arena Traktor</Name>
+      <Capacity>7500</Capacity>
+      <City>Chelyabinsk</City>
+    </element>
+    <element>
+      <Id>2</Id>
+      <Name>Ericsson Globe</Name>
+      <Capacity>13850</Capacity>
+      <City>Stockholm</City>
+    </element>
+    <element>
+      <Id>3</Id>
+      <Name>Little Caesars Arena</Name>
+      <Capacity>19515</Capacity>
+      <City>Detroit</City>
+    </element>
+    <element>
+      <Id>4</Id>
+      <Name>Hartwall Arena</Name>
+      <Capacity>13506</Capacity>
+      <City>Helsinki</City>
+    </element>
+    <element>
+      <Id>5</Id>
+      <Name>United Center</Name>
+      <Capacity>19717</Capacity>
+      <City>Chicago</City>
+    </element>
+    <element>
+      <Id>6</Id>
+      <Name>Unost'</Name>
+      <Capacity>1500</Capacity>
+      <City>Chelyabinsk</City>
+    </element>
+  </Stadiums>
+</root>
