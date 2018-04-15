@@ -53,11 +53,7 @@ namespace LinqViaEf
     {
         static void Main(string[] args)
         {
-            using (var dbContext = new DbEfDataContext(@"Data Source=.\SQLEXPRESS;
-                          AttachDbFilename=.\\data.mdf;
-                          Integrated Security=True;
-                          Connect Timeout=30;
-                          User Instance=True"))
+            using (var dbContext = new DbEfDataContext(@"data source=localhost;initial catalog=persondb;integrated security=True;"))
             {
                 dbContext.ShowOutput();
             }
