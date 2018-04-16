@@ -25,14 +25,14 @@ namespace LinqViaEf
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Player>().ToTable("dbo.Players");
-            modelBuilder.Entity<Player>().HasKey(w => w.Id);
+            modelBuilder.Entity<Player>().ToTable("Players");
+            modelBuilder.Entity<Player>().HasKey<int>(t => t.Id);
             modelBuilder.Entity<Player>().Property(w => w.Name).HasColumnName("Name");
             modelBuilder.Entity<Player>().Property(w => w.Salary).HasColumnName("Salary");
-            modelBuilder.Entity<Player>().Property(w => w.StrongestHand).HasColumnName("Shoots");
+            modelBuilder.Entity<Player>().Property<Side>(w => w.StrongestHand).HasColumnName("Shoots");
             modelBuilder.Entity<Player>().Property(w => w.BirthdayDate).HasColumnName("Birthday");
             modelBuilder.Entity<Player>().Property(w => w.Citizenship).HasColumnName("Citizenship");
-            modelBuilder.Entity<Player>().Property(w => w.Age);
+            //modelBuilder.Entity<Player>().Property(w => w.Age);
 
             modelBuilder.Entity<Team>().ToTable("Teams");
             modelBuilder.Entity<Team>().HasKey(w => w.Id);

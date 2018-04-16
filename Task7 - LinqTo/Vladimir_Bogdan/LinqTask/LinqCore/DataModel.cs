@@ -37,28 +37,28 @@ namespace LinqCore
     }
     public class Player
     {
-        public int Id;
-        public string Name;
-        public DateTime BirthdayDate;
+        public int Id { get; set; }
+        public string Name { get; set; }
+        public DateTime BirthdayDate { get; set; }
         public int Age { get { return DateTime.Now.Date.Year - this.BirthdayDate.Year - 1 + (DateTime.Now.DayOfYear >= this.BirthdayDate.DayOfYear ? 1 : 0); } }
-        public Side StrongestHand;
-        public string Citizenship;
-        public decimal Salary;
+        public Side StrongestHand { get; set; }
+        public string Citizenship { get; set; }
+        public decimal Salary { get; set; }
     }
     public class Team
     {
-        public int Id;
-        public DateTime FoundationDate;
-        public string Name;
-        public string HeadCoach;
-        public string Country;
+        public int Id { get; set; }
+        public DateTime FoundationDate { get; set; }
+        public string Name { get; set; }
+        public string HeadCoach { get; set; }
+        public string Country { get; set; }
     }
     public class Stadium
     {
-        public int Id;
-        public string Name;
-        public int Capacity;
-        public string City;
+        public int Id { get; set; }
+        public string Name { get; set; }
+        public int Capacity { get; set; }
+        public string City { get; set; }
     }
     public interface IDataModel
     {
@@ -109,7 +109,7 @@ namespace LinqCore
             printTeamInfo(teamsOrderedByCountries);
             Console.WriteLine("------------------------------------");
             Console.WriteLine("The bigest stadiums in the city:");
-            var theBigestStadiumInTheCity = dataModel.Stadiums.GroupBy(s => s.City).Select(g => g.First(s => s.Capacity == g.Max(st => st.Capacity)));//new { City = g.Key, MaxCapacity = g.Max(s => s.Capacity), Name = g.First(s => s.Capacity == g.Max(st => st.Capacity)).Name });
+            var theBigestStadiumInTheCity = dataModel.Stadiums.GroupBy(s => s.City).Select(g => g.FirstOrDefault(s => s.Capacity == g.Max(st => st.Capacity)));//new { City = g.Key, MaxCapacity = g.Max(s => s.Capacity), Name = g.First(s => s.Capacity == g.Max(st => st.Capacity)).Name });
             printStadiumInfo(theBigestStadiumInTheCity);
             Console.WriteLine("------------------------------------");
             Console.ReadLine();
