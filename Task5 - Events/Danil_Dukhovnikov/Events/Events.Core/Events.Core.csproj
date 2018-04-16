@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{CFD61C40-031E-4CFB-ADFE-18CC3ED484F2}</ProjectGuid>
-    <OutputType>Exe</OutputType>
+    <ProjectGuid>{6CD434A3-C3CC-43EA-B2B5-C0C47DE0F379}</ProjectGuid>
+    <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Delegates.ConsoleApp</RootNamespace>
-    <AssemblyName>Delegates.ConsoleApp</AssemblyName>
+    <RootNamespace>Events.Core</RootNamespace>
+    <AssemblyName>Events.Core</AssemblyName>
     <TargetFrameworkVersion>v4.7</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -38,19 +38,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Implementations\ConsoleBoard.cs" />
-    <Compile Include="Implementations\ConsoleDrawing.cs" />
-    <Compile Include="Implementations\ConsoleProcessUserChoice.cs" />
-    <Compile Include="Implementations\ConsoleShowMessageToUser.cs" />
-    <Compile Include="Implementations\Registry.cs" />
-    <Compile Include="Program.cs" />
+    <Compile Include="Abstractions\IBoard.cs" />
+    <Compile Include="Abstractions\IDrawing.cs" />
+    <Compile Include="Abstractions\IHero.cs" />
+    <Compile Include="Abstractions\IMine.cs" />
+    <Compile Include="Abstractions\IModel.cs" />
+    <Compile Include="Abstractions\IUserInteraction.cs" />
+    <Compile Include="Abstractions\StaticRegistry.cs" />
+    <Compile Include="AppLogic.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Delegates.Core\Delegates.Core.csproj">
-      <Project>{3f2649ec-fa16-4b8b-9e97-258cab2ddb93}</Project>
-      <Name>Delegates.Core</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
