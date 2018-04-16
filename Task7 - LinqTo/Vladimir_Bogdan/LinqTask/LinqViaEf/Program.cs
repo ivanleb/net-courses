@@ -25,7 +25,7 @@ namespace LinqViaEf
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Player>().ToTable("Players");
+            modelBuilder.Entity<Player>().ToTable("dbo.Players");
             modelBuilder.Entity<Player>().HasKey(w => w.Id);
             modelBuilder.Entity<Player>().Property(w => w.Name).HasColumnName("Name");
             modelBuilder.Entity<Player>().Property(w => w.Salary).HasColumnName("Salary");
@@ -53,7 +53,7 @@ namespace LinqViaEf
     {
         static void Main(string[] args)
         {
-            using (var dbContext = new DbEfDataContext("Server=localhost,1433;Initial Catalog=data;Persist Security Info=False;Integrated Security=True;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;"))
+            using (var dbContext = new DbEfDataContext("LocalhostConnection"))
             {
                 dbContext.ShowOutput();
             }
