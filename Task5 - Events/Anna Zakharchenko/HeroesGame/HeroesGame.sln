@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27428.2015
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HeroesGame", "HeroesGame\HeroesGame.csproj", "{65A74133-52A7-409F-B76C-0A040D52FE49}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HeroesCore", "HeroesCore\HeroesCore.csproj", "{C9BD6A72-C333-435E-933D-FB942CBC5ABE}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{65A74133-52A7-409F-B76C-0A040D52FE49}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{65A74133-52A7-409F-B76C-0A040D52FE49}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{65A74133-52A7-409F-B76C-0A040D52FE49}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{65A74133-52A7-409F-B76C-0A040D52FE49}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C9BD6A72-C333-435E-933D-FB942CBC5ABE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C9BD6A72-C333-435E-933D-FB942CBC5ABE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C9BD6A72-C333-435E-933D-FB942CBC5ABE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C9BD6A72-C333-435E-933D-FB942CBC5ABE}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {BC780D30-7B4C-4A20-AFDC-8F79C61F56F8}
+	EndGlobalSection
+EndGlobal
