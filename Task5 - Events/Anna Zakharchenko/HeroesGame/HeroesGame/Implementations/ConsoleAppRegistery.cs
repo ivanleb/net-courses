@@ -10,9 +10,11 @@ namespace HeroesGame.Implementations
         public IBoard Board { get; set; }
         public IModel Model { get; set; }
         public IUserIteraction UserIteraction { get; set; }
+        public IHero Heroes { get; set; }
 
         public ConsoleAppRegistery()
         {
+
             Model = new GameModel(               
                 new StarHero() { PosX = 5, PosY = 10 },
                 mines: new IHero[]

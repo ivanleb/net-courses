@@ -13,15 +13,20 @@ namespace HeroesCore
         {
             IBoard board = registery.Board;
             IModel model = registery.Model;
-            IUserIteraction input = registery.UserIteraction;
+            IUserIteraction input = registery.UserIteraction;        
 
             board.SetUpBoard(30, 15);
             board.Draw(model);
 
             model.Hero.StartListenInput(input);
+
+            foreach(var mine in model.Mines)
+            {
+                mine.StartListenInput(input);
+            }
          
             board.StartListenInput(input);
-            input.StartListening();
+            input.StartListening(model, board);
         }
     }
 }

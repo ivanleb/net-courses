@@ -6,21 +6,22 @@ namespace HeroesGame.Implementations
     public class CommandEventArgs : GameEventArgs
     {
         public ConsoleKeyInfo ReceivedCommand { get; set; }
-        public IModel WithMinModel { get; set; }
     }
     class ConsoleUserIteraction : IUserIteraction
     {
         public event GameEventHandler InputReceived;
+        public event MineEventHandler HeroTripMine;
 
-        public void StartListening()
+        public void StartListening(IModel model, IBoard board)
         {
             while (true) 
             {
                 ConsoleKeyInfo keyInfo = Console.ReadKey();
-                if (InputReceived != null)
-                {
-                    InputReceived(this, new CommandEventArgs() { ReceivedCommand = keyInfo });        
-                }
+                InputReceived?.Invoke(this, new CommandEventArgs()
+                                            {
+                                            ReceivedCommand = keyInfo
+                                            });
+                HeroTripMine?.Invoke(model.Hero, new GameEventArgs());
 
             }
         }            

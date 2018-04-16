@@ -12,20 +12,19 @@ namespace HeroesGame.Implementations
 
         public void StartListenInput(IUserIteraction input)
         {
-            input.InputReceived += OnHeroTripMine; 
+            input.HeroTripMine += OnHeroTripMine; 
         }
 
-        private void OnHeroTripMine(object semder, GameEventArgs eventArgs)
+        private void OnHeroTripMine(IHero mine, GameEventArgs eventArgs)
         {
-            CommandEventArgs args = (CommandEventArgs)eventArgs;
-            HeroToucheMine(args.WithMinModel);  
+            HeroToucheMine(mine);  
         }
 
-        public void HeroToucheMine(IModel model)
+        public void HeroToucheMine(IHero mine)
         {
-            if (model.Hero.PosX == this.PosX && model.Hero.PosY == this.PosY)
+            if (mine.PosX == this.PosX && mine.PosY == this.PosY)
             {
-                Console.SetCursorPosition(model.Hero.PosX, model.Hero.PosY);
+                Console.SetCursorPosition(mine.PosX, mine.PosY);
                 Console.WriteLine("Hit!");
             }
         }
