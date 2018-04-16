@@ -1,0 +1,217 @@
+﻿{
+  "Products": [
+    {
+      "Id": 1,
+      "Name": "AK-74",
+      "UnitPrice": 3000,
+      "Category": "Rifles",
+      "UnitsInStock": 15
+    },
+    {
+      "Id": 2,
+      "Name": "M16",
+      "UnitPrice": 3155,
+      "Category": "Rifles",
+      "UnitsInStock": 12
+    },
+    {
+      "Id": 3,
+      "Name": "Glock 17",
+      "UnitPrice": 1500,
+      "Category": "Pistols",
+      "UnitsInStock": 0
+    },
+    {
+      "Id": 4,
+      "Name": "UMP",
+      "UnitPrice": 2600,
+      "Category": "Machine pistols",
+      "UnitsInStock": 17
+    },
+    {
+      "Id": 5,
+      "Name": "Topol-M",
+      "UnitPrice": 20000000,
+      "Category": "IBM",
+      "UnitsInStock": 0
+    },
+    {
+      "Id": 6,
+      "Name": "C-400",
+      "UnitPrice": 14000000,
+      "Category": "Air defense",
+      "UnitsInStock": 3
+    },
+    {
+      "Id": 7,
+      "Name": "Beretta",
+      "UnitPrice": 1200,
+      "Category": "Pistols",
+      "UnitsInStock": 7
+    },
+    {
+      "Id": 8,
+      "Name": "Butterfly knife",
+      "UnitPrice": 600,
+      "Category": "Knives",
+      "UnitsInStock": 0
+    }
+  ],
+  "Customers": [
+    {
+      "Id": 1,
+      "Name": "Jonni",
+      "Address": "Grow st. 15 apt 3.",
+      "City": "Los-Santos",
+      "Region": "sef",
+      "Country": "USA",
+      "Orders": [
+        1,
+        2,
+        9,
+        10
+      ]
+    },
+    {
+      "Id": 2,
+      "Name": "Tonni",
+      "Address": "River st. 99 apt 123.",
+      "City": "Los-Angeles",
+      "Region": "seg",
+      "Country": "USA",
+      "Orders": [
+        7,
+        8
+      ]
+    },
+    {
+      "Id": 3,
+      "Name": "Ivan",
+      "Address": "Krotovaya st. 86 apt 23.",
+      "City": "Groznii",
+      "Region": "seg",
+      "Country": "Russia",
+      "Orders": [
+        3,
+        4
+      ]
+    },
+    {
+      "Id": 4,
+      "Name": "Boris",
+      "Address": "Mirnaya st. 63 apt 54.",
+      "City": "Moskva",
+      "Region": "eshse",
+      "Country": "Russia",
+      "Orders": [
+        5
+      ]
+    },
+    {
+      "Id": 5,
+      "Name": "Salam",
+      "Address": "Halev st. 6 apt 346.",
+      "City": "Kiev",
+      "Region": "ehseh",
+      "Country": "Ukraine",
+      "Orders": [
+        6
+      ]
+    },
+    {
+      "Id": 6,
+      "Name": "Popolam",
+      "Address": "Kronch st. 124 apt 34.",
+      "City": "Seul",
+      "Region": "ehse",
+      "Country": "Korea",
+      "Orders": [
+      
+      ]
+    },
+    {
+      "Id": 7,
+      "Name": "Qui Chou",
+      "Address": "Utka st. 145 apt 346.",
+      "City": "Hong-Kong",
+      "Region": "",
+      "Country": "China",
+      "Orders": [
+        
+      ]
+    },
+    {
+      "Id": 8,
+      "Name": "Alexo",
+      "Address": "Murcelago st. 15 apt 124.",
+      "City": "Milan",
+      "Region": "",
+      "Country": "Italy",
+      "Orders": [
+        
+      ]
+    }
+  ],
+  "Orders": [
+    {
+      "OrderId": 1,
+      "CustomerId": 1,
+      "OrderDate": "2012-03-19T07:22Z",
+      "Total": 1200.00
+    },
+    {
+      "OrderId": 2,
+      "CustomerId": 1,
+      "OrderDate": "2017-01-19T07:22Z",
+      "Total": 8700.00
+    },
+    {
+      "OrderId": 3,
+      "CustomerId": 3,
+      "OrderDate": "2016-04-19T07:22Z",
+      "Total": 2100000.00
+    },
+    {
+      "OrderId": 4,
+      "CustomerId": 3,
+      "OrderDate": "2018-01-19T07:22Z",
+      "Total": 6700000.00
+    },
+    {
+      "OrderId": 5,
+      "CustomerId": 4,
+      "OrderDate": "2014-07-19T07:22Z",
+      "Total": 67000.00
+    },
+    {
+      "OrderId": 6,
+      "CustomerId": 5,
+      "OrderDate": "2015-06-19T07:22Z",
+      "Total": 670.00
+    },
+    {
+      "OrderId": 7,
+      "CustomerId": 2,
+      "OrderDate": "2015-06-19T07:22Z",
+      "Total": 6000.00
+    },
+    {
+      "OrderId": 8,
+      "CustomerId": 2,
+      "OrderDate": "2011-05-19T07:22Z",
+      "Total": 4600.00
+    },
+    {
+      "OrderId": 9,
+      "CustomerId": 1,
+      "OrderDate": "2016-08-19T07:22Z",
+      "Total": 10000.00
+    },
+    {
+      "OrderId": 10,
+      "CustomerId": 1,
+      "OrderDate": "2012-03-19T07:22Z",
+      "Total": 5600.00
+    }
+  ]
+}

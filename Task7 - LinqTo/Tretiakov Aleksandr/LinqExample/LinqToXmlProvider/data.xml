@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<root>
+   <Books>
+      <element>
+         <Id>1</Id>
+         <Genre>Art</Genre>
+         <IsForSale>true</IsForSale>
+         <IsValuable>true</IsValuable>
+         <Name>One</Name>
+         <Price>12</Price>
+      </element>
+      <element>
+         <Id>1</Id>
+         <Genre>Science</Genre>
+         <IsForSale>true</IsForSale>
+         <IsValuable>true</IsValuable>
+         <Name>Two</Name>
+         <Price>123</Price>
+      </element>
+      <element>
+         <Id>1</Id>
+         <Genre>Fantasy</Genre>
+         <IsForSale>false</IsForSale>
+         <IsValuable>false</IsValuable>
+         <Name>Three</Name>
+         <Price>1234</Price>
+      </element>
+      <element>
+         <Id>1</Id>
+         <Genre>Novel</Genre>
+         <IsForSale>true</IsForSale>
+         <IsValuable>false</IsValuable>
+         <Name>Four</Name>
+         <Price>12345</Price>
+      </element>
+   </Books>
+</root>
