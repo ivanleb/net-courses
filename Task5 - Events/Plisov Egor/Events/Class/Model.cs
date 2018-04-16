@@ -16,8 +16,8 @@ namespace Events
             this.Mover = new Mover { Xpos = 10, Ypos = 10 };
 
             var rand = new Random();
-            this.problem = this.problem = new List<IProblem>(3);
-            for (int i = 0; i < 3; i++)
+            this.problem = this.problem = new List<IProblem>(10);
+            for (int i = 0; i < 10; i++)
             {
                 this.problem.Add(
                     new Problem
