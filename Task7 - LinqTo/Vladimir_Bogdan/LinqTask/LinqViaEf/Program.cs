@@ -53,7 +53,7 @@ namespace LinqViaEf
     {
         static void Main(string[] args)
         {
-            using (var dbContext = new DbEfDataContext(@"data source=localhost;initial catalog=persondb;integrated security=True;"))
+            using (var dbContext = new DbEfDataContext("Server=localhost,1433;Initial Catalog=data;Persist Security Info=False;Integrated Security=True;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;"))
             {
                 dbContext.ShowOutput();
             }
