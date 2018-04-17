@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<root>
+  <Locations>
+    <Location>
+      <ID>1</ID>
+      <Country>Russia</Country>
+      <City>St.Petersburg</City>
+    </Location>
+    <Location>
+      <ID>2</ID>
+      <Country>Russia</Country>
+      <City>Moscow</City>
+    </Location>
+    <Location>
+      <ID>3</ID>
+      <Country>Russia</Country>
+      <City>Tomsk</City>
+    </Location>
+  </Locations>
+</root>
