@@ -1,0 +1,200 @@
+﻿{
+  "Institutes": [
+    {
+      "Id": 1,
+      "Name": "Institute of Computer Science and Technology"
+    },
+    {
+      "Id": 2,
+      "Name": "Institute of Physics, Nanotechnology and Telecommunications"
+    }
+  ],
+
+  "Departments": [
+    {
+      "Id": 1,
+      "Name": "Computer Hardware and Software Systems",
+      "BachelorProgram": true,
+      "MasterProgram": true,
+      "PhDProgram": true,
+      "InstituteId": 1
+    },
+    {
+      "Id": 2,
+      "Name": "Measurement and Information Technologies",
+      "BachelorProgram": true,
+      "MasterProgram": true,
+      "PhDProgram": false,
+      "InstituteId": 1
+    },
+    {
+      "Id": 3,
+      "Name": "Computer Intellegent Techologies",
+      "BachelorProgram": false,
+      "MasterProgram": true,
+      "PhDProgram": true,
+      "InstituteId": 1
+    },
+    {
+      "Id": 4,
+      "Name": "Biophysics",
+      "BachelorProgram": false,
+      "MasterProgram": true,
+      "PhDProgram": true,
+      "InstituteId": 2
+    },
+    {
+      "Id": 5,
+      "Name": "Plasma Physics",
+      "BachelorProgram": false,
+      "MasterProgram": true,
+      "PhDProgram": true,
+      "InstituteId": 2
+    },
+    {
+      "Id": 6,
+      "Name": "Theoretical Physics",
+      "BachelorProgram": true,
+      "MasterProgram": true,
+      "PhDProgram": true,
+      "InstituteId": 2
+    },
+    {
+      "Id": 7,
+      "Name": "Space Research",
+      "BachelorProgram": false,
+      "MasterProgram": false,
+      "PhDProgram": true,
+      "InstituteId": 2
+    }
+  ],
+
+  "Students": [
+    {
+      "ID": 1,
+      "FirstName": "Polina",
+      "LastName": "Ilina",
+      "Age": 21,
+      "Program": "Bachelor",
+      "YearOfStudy": 4,
+      "DepartmentId": 1
+    },
+    {
+      "ID": 2,
+      "FirstName": "Ivan",
+      "LastName": "Gorohov",
+      "Age": 18,
+      "Program": "Bachelor",
+      "YearOfStudy": 1,
+      "DepartmentId": 6
+    },
+    {
+      "ID": 3,
+      "FirstName": "Fedor",
+      "LastName": "Kotov",
+      "Age": 23,
+      "Program": "PhD",
+      "YearOfStudy": 1,
+      "DepartmentId": 7
+    },
+    {
+      "ID": 4,
+      "FirstName": "Igor",
+      "LastName": "Petuhov",
+      "Age": 21,
+      "Program": "Bachelor",
+      "YearOfStudy": 4,
+      "DepartmentId": 1
+    },
+    {
+      "ID": 5,
+      "FirstName": "Artem",
+      "LastName": "Ivanov",
+      "Age": 20,
+      "Program": "Bachelor",
+      "YearOfStudy": 3,
+      "DepartmentId": 6
+    },
+    {
+      "ID": 6,
+      "FirstName": "Alexander",
+      "LastName": "Sokolov",
+      "Age": 22,
+      "Program": "Master",
+      "YearOfStudy": 1,
+      "DepartmentId": 2
+    },
+    {
+      "ID": 7,
+      "FirstName": "Maria",
+      "LastName": "Potemkina",
+      "Age": 19,
+      "Program": "Bachelor",
+      "YearOfStudy": 1,
+      "DepartmentId": 2
+    },
+    {
+      "ID": 8,
+      "FirstName": "Petr",
+      "LastName": "Petrov",
+      "Age": 27,
+      "Program": "PhD",
+      "YearOfStudy": 3,
+      "DepartmentId": 3
+    },
+    {
+      "ID": 9,
+      "FirstName": "Kirill",
+      "LastName": "Morozov",
+      "Age": 23,
+      "Program": "Master",
+      "YearOfStudy": 2,
+      "DepartmentId": 3
+    },
+    {
+      "ID": 10,
+      "FirstName": "Gleb",
+      "LastName": "Saveliev",
+      "Age": 21,
+      "Program": "Master",
+      "YearOfStudy": 1,
+      "DepartmentId": 4
+    },
+    {
+      "ID": 11,
+      "FirstName": "Agata",
+      "LastName": "Sever",
+      "Age": 27,
+      "Program": "PhD",
+      "YearOfStudy": 3,
+      "DepartmentId": 4
+    },
+    {
+      "ID": 12,
+      "FirstName": "Nikita",
+      "LastName": "Popov",
+      "Age": 23,
+      "Program": "Master",
+      "YearOfStudy": 2,
+      "DepartmentId": 5
+    },
+    {
+      "ID": 13,
+      "FirstName": "Vsevolod",
+      "LastName": "Kolesnikov",
+      "Age": 25,
+      "Program": "PhD",
+      "YearOfStudy": 2,
+      "DepartmentId": 5
+    },
+    {
+      "ID": 14,
+      "FirstName": "Alice",
+      "LastName": "Kingsley",
+      "Age": 22,
+      "Program": "Master",
+      "YearOfStudy": 1,
+      "DepartmentId": 6
+    }
+  ]
+}
