@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("LinqToJsonProvider")]
+[assembly: AssemblyTitle("LinqToJsonProvIder")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("LinqToJsonProvider")]
+[assembly: AssemblyProduct("LinqToJsonProvIder")]
 [assembly: AssemblyCopyright("Copyright ©  2018")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -19,7 +19,7 @@ using System.Runtime.InteropServices;
 // COM, set the ComVisible attribute to true on that type.
 [assembly: ComVisible(false)]
 
-// The following GUID is for the ID of the typelib if this project is exposed to COM
+// The following GUId is for the Id of the typelib if this project is exposed to COM
 [assembly: Guid("1cf761f3-eb66-4fef-b30e-ecd025ca0a29")]
 
 // Version information for an assembly consists of the following four values:

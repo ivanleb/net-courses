@@ -1,3 +1,115 @@
 ﻿{
-
+  "Hotels": [
+    {
+      "Id": 1,
+      "Name": "Krone",
+      "YearBuilt": 1991,
+      "NumderRooms": 50,
+      "IsAdultOnly": true
+    },
+    {
+      "Id": 2,
+      "Name": "Geranious",
+      "YearBuilt": 2010,
+      "NumderRooms": 420,
+      "IsAdultOnly": false
+    },
+    {
+      "Id": 3,
+      "Name": "Surfing Corolieco",
+      "YearBuilt": 2000,
+      "NumderRooms": 120,
+      "IsAdultOnly": false
+    },
+    {
+      "Id": 4,
+      "Name": "Lido Hotel",
+      "YearBuilt": 1994,
+      "NumderRooms": 70,
+      "IsAdultOnly": false
+    },
+    {
+      "Id": 5,
+      "Name": "Nice Centr",
+      "YearBuilt": 1986,
+      "NumderRooms": 20,
+      "IsAdultOnly": true
+    }
+  ],
+  "Restaurants": [
+    {
+      "Id": 1,
+      "Name": "La Chaletta",
+      "Type": "A la carte",
+      "Kitchen": "Italy",
+      "CapacityVisitors": 45,
+      "AverageBill": 1500.65
+    },
+    {
+      "Id": 2,
+      "Name": "Jolly Woo",
+      "Type": "Street food",
+      "Kitchen": "Asian",
+      "CapacityVisitors": 23,
+      "AverageBill": 800.7
+    },
+    {
+      "Id": 3,
+      "Name": "Sabay",
+      "Type": "Fast food",
+      "Kitchen": "Asian",
+      "CapacityVisitors": 37,
+      "AverageBill": 456.4
+    },
+    {
+      "Id": 4,
+      "Name": "Pitas",
+      "Type": "Street food",
+      "Kitchen": "Arabian",
+      "CapacityVisitors": 56,
+      "AverageBill": 256.4
+    }
+  ],
+  "Shops": [
+    {
+      "Id": 1,
+      "Name": "Nataly",
+      "Street": "London",
+      "Brand": "Dior",
+      "SquareInMetrs": 142,
+      "DailyProceeds": 12425.42
+    },
+    {
+      "Id": 2,
+      "Name": "Gallery",
+      "Street": "Ligovsky",
+      "Brand": "H&M",
+      "SquareInMetrs": 188,
+      "DailyProceeds": 155.4759
+    },
+    {
+      "Id": 3,
+      "Name": "Big Shop",
+      "Street": "Batero",
+      "Brand": "Provance Cosmetic",
+      "SquareInMetrs": 72,
+      "DailyProceeds": 225.36
+    },
+    {
+      "Id": 4,
+      "Name": "Nonsense",
+      "Street": "Several",
+      "Brand": "ErichKrause",
+      "SquareInMetrs": 240,
+      "DailyProceeds": 5245.522
+    },
+    {
+      "Id": 5,
+      "Name": "Calm",
+      "Street": "Closet",
+      "Brand": "Romanson",
+      "SquareInMetrs": 36,
+      "DailyProceeds": 84525.1
+    }
+  ]
 }
