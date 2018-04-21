@@ -13,12 +13,12 @@ namespace LinqCore
             public string Brand { get; set; }
             public int SquareInMetrs { get; set; }
             public double DailyProceeds { get; set; }
-            public int ID { get; set; }
+            public int Id { get; set; }
         }
 
         public class Restaurant
         {
-            public int ID { get; set; }
+            public int Id { get; set; }
             public string Name { get; set; }
             public string Style { get; set; }
             public string Kitchen { get; set; }
@@ -29,7 +29,7 @@ namespace LinqCore
 
         public class Hotel
         {
-            public int ID { get; set; }
+            public int Id { get; set; }
             public string Name { get; set; }
             public int YearBuilt { get; set; }
             public int NumberRooms { get; set; }
@@ -90,9 +90,9 @@ namespace LinqCore
             return shops.OrderBy(s => s.SquareInMetrs);
         }
 
-        public static IQueryable<IGrouping<string, int>> GetRestrauntIdsByKitchen(this IQueryable<Restaurant> restaurants)
+        public static IQueryable<IGrouping<string, Restaurant>> GetRestrauntIdsByKitchen(this IQueryable<Restaurant> restaurants)
         {
-            return restaurants.GroupBy(o => o.Kitchen, o => o.ID);
+            return restaurants.GroupBy(o => o.Kitchen, o => o);
         }
 
         public static IQueryable<string> GetStylesRestaurantsWithoutDuplicate(this IQueryable<Restaurant> restaurants)
@@ -154,42 +154,42 @@ namespace LinqCore
             return hotels.SingleOrDefault(h => h.NumberRooms == numberRooms);
         }
 
-        public static Restaurant GetElementAtIndex(IQueryable<Restaurant> restaurants, int index)
+        public static Restaurant GetElementAtIndex(this IQueryable<Restaurant> restaurants, int index)
         {
             return restaurants.ElementAt(index);
         }
 
-        public static Shop GetShopAtIndex(IQueryable<Shop> shops, int index)
+        public static Shop GetShopAtIndex(this IQueryable<Shop> shops, int index)
         {
             return shops.ElementAtOrDefault(index);
         }
 
-        public static bool HasSequenceAnyElements(IQueryable<Hotel> hotels)
+        public static bool HasSequenceAnyElements(this IQueryable<Hotel> hotels)
         {
             return hotels.Any();
         }
 
-        public static bool IsRoomyRestaurants(IQueryable<Restaurant> restaurants, int capacityVisitors)
+        public static bool IsRoomyRestaurants(this IQueryable<Restaurant> restaurants, int capacityVisitors)
         {
             return restaurants.All(r => r.CapacityVisitors > capacityVisitors);
         }
         
-        public static bool HasSequenceStreet(IQueryable<Shop> shops, string street)
+        public static bool HasSequenceStreet(this IQueryable<Shop> shops, string street)
         {
             return shops.Select(s=>s.Street).Contains(street);
         }
 
-        public static int GetSumShopsSquareInMetrs(IQueryable<Shop> shops)
+        public static int GetSumShopsSquareInMetrs(this IQueryable<Shop> shops)
         {
             return shops.Select(s => s.SquareInMetrs).Sum();
         }
 
-        public static int GetYougestHotel(IQueryable<Hotel> hotels)
+        public static int GetYougestHotel(this IQueryable<Hotel> hotels)
         {
             return hotels.Select(h => h.YearBuilt).Min();
         }
 
-        public static double GetAverageDailyProceeds(IQueryable<Shop> shops)
+        public static double GetAverageDailyProceeds(this IQueryable<Shop> shops)
         {
             return shops.Select(s => s.DailyProceeds).Average();
         }
@@ -197,101 +197,134 @@ namespace LinqCore
         public static void ShowOutput(this IDataModel dataModel)
         {
             var adultHotels = dataModel.Hotels.GetHotelsForAdult().ToArray();
-            foreach(var hotel in adultHotels)
+            Console.ForegroundColor = ConsoleColor.Cyan;
+            Console.WriteLine("Hotels for adult: ");
+            Console.ForegroundColor = ConsoleColor.White;
+            foreach (var hotel in adultHotels)
             {
-                Console.WriteLine($"Hotels for adult: {hotel.Name}\t{hotel.NumberRooms}\t" +
+                Console.WriteLine($"{hotel.Name}\t{hotel.NumberRooms}\t" +
                     $"{hotel.YearBuilt}\t{hotel.IsAdultOnle}");
             }
 
             var allBrans = dataModel.Shops.GetAllBrands().ToArray();
-            Console.WriteLine("All brans: ");
+            Console.ForegroundColor = ConsoleColor.Cyan;
+            Console.Write("All brans: ");
+            Console.ForegroundColor = ConsoleColor.White;
             foreach (var brand in allBrans)
             {
-                Console.Write(brand + ", ");
+                Console.Write(brand + "\t");
             }
+            Console.WriteLine();
 
             var oneBigName = dataModel.Restaurants.JoinNames().ToArray();
-            Console.WriteLine("All names in one line: ");
-            foreach(var ch in oneBigName)
+            Console.ForegroundColor = ConsoleColor.Cyan;
+            Console.Write("All names in one line: ");
+            Console.ForegroundColor = ConsoleColor.White;
+            foreach (var ch in oneBigName)
             {
                 Console.Write(ch);
             }
+            Console.WriteLine();
 
             var twoShops = dataModel.Shops.GetManyShops(2).ToArray();
-            foreach(var shop in twoShops)
+            Console.ForegroundColor = ConsoleColor.Cyan;
+            Console.WriteLine("Two shops: ");
+            Console.ForegroundColor = ConsoleColor.White;
+            foreach (var shop in twoShops)
             {
-                Console.WriteLine($"Two shops: {shop.Name}\t{shop.Brand}" +
+                Console.WriteLine($"{shop.Name}\t{shop.Brand}" +
                     $"\t{shop.DailyProceeds}\t{shop.SquareInMetrs}\t{shop.Street}");
             }
 
+            Console.ForegroundColor = ConsoleColor.Cyan;
+            Console.WriteLine("Rest shops: ");
             var restShops = dataModel.Shops.GetRestShops(2).ToArray();
+            Console.ForegroundColor = ConsoleColor.White;
             foreach (var shop in restShops)
             {
-                Console.WriteLine($"Rest shops: {shop.Name}\t{shop.Brand}\t" +
+                Console.WriteLine($"{shop.Name}\t{shop.Brand}\t" +
                     $"{shop.DailyProceeds}\t{shop.SquareInMetrs}\t{shop.Street}");
             }
 
             var whileBiggerBill = dataModel.Restaurants
                                     .GetrRestaurantsWhileBiggerBill(500).ToArray();
-            foreach(var restaurant in whileBiggerBill)
+            Console.ForegroundColor = ConsoleColor.Cyan;
+            Console.WriteLine("Restaurans with averange bill bigger 500: ");
+            Console.ForegroundColor = ConsoleColor.White;
+            foreach (var restaurant in whileBiggerBill)
             {
-                Console.WriteLine($"Restaurans with averange bill bigger 500: {restaurant.Name}\t" +
+                Console.WriteLine($"{restaurant.Name}\t" +
                     $"{restaurant.Style}\t{restaurant.Kitchen}\t{restaurant.CapacityVisitors}\t" +
                     $"{restaurant.AverageBill}");
             }
 
-            var newHotels = dataModel.Hotels.GetNewHotels(2000).ToArray();
+            var newHotels = dataModel.Hotels.GetNewHotels(1999).ToArray();
+            Console.ForegroundColor = ConsoleColor.Cyan;
+            Console.WriteLine("Hotels built after 1999: ");
+            Console.ForegroundColor = ConsoleColor.White;
             foreach (var hotel in newHotels)
             {
-                Console.WriteLine($"Hotels built after 2000: {hotel.Name}\t{hotel.NumberRooms}\t" +
+                Console.WriteLine($"{hotel.Name}\t{hotel.NumberRooms}\t" +
                     $"{hotel.YearBuilt}\t{hotel.IsAdultOnle}");
             }
 
             var concatRestaurants = dataModel.Restaurants.GetConcatRestaurants(3).ToArray();
+            Console.ForegroundColor = ConsoleColor.Cyan;
+            Console.WriteLine("Concat restaurants, all and skip(3): ");
+            Console.ForegroundColor = ConsoleColor.White;
             foreach (var restaurant in concatRestaurants)
             {
-                Console.WriteLine($"Concat restaurants, all and skip(3): {restaurant.Name}\t" +
+                Console.WriteLine($"{restaurant.Name}\t" +
                     $"{restaurant.Style}\t{restaurant.Kitchen}\t{restaurant.CapacityVisitors}\t" +
                     $"{restaurant.AverageBill}");
             }
 
             var orderShops = dataModel.Shops.OrderShopsBySquare().ToArray();
+            Console.ForegroundColor = ConsoleColor.Cyan;
+            Console.WriteLine("Shops order by square: ");
+            Console.ForegroundColor = ConsoleColor.White;
             foreach (var shop in orderShops)
             {
-                Console.WriteLine($"Shops order by square: {shop.Name}\t{shop.Brand}\t" +
+                Console.WriteLine($"{shop.Name}\t{shop.Brand}\t" +
                     $"{shop.DailyProceeds}\t{shop.SquareInMetrs}\t{shop.Street}");
             }
 
-            //var groupIdByKitchen = dataModel.Restaurants.GetRestrauntIdsByKitchen().ToArray();
-            //foreach(var grouped in groupIdByKitchen)
-            //{
-            //    Console.WriteLine($"Group restaurants by kitchen: {grouped.Key}\t{grouped.AsQueryable().}");
-            //}
-
+            var groupIdByKitchen = dataModel.Restaurants.GetRestrauntIdsByKitchen().ToArray();
+            foreach (var group in groupIdByKitchen)
+            {
+                Console.ForegroundColor = ConsoleColor.Cyan;
+                Console.Write($"Grouped by {group.Key}, restaurants id: ");
+                Console.ForegroundColor = ConsoleColor.White;
+                foreach (var rest in group)
+                {
+                    Console.Write($"{rest.Name}\t");
+                }
+                Console.WriteLine();
+            }
+            
             var withoutDublicate = dataModel.Restaurants
                                     .GetStylesRestaurantsWithoutDuplicate().ToList();
+            Console.ForegroundColor = ConsoleColor.Cyan;
             Console.WriteLine("The are kind of kitchenes by restaurants: ");
-            foreach(var kitchen in withoutDublicate)
+            Console.ForegroundColor = ConsoleColor.White;
+            foreach (var kitchen in withoutDublicate)
             {
-                Console.Write(kitchen + ", ");
+                Console.Write(kitchen + "\t");
             }
+            Console.WriteLine();
 
             var allNamesHoels = dataModel.Hotels.GetAllNamesHotels(3).ToList();
-            Console.WriteLine("All names of hotels: ");
+            Console.ForegroundColor = ConsoleColor.Cyan;
+            Console.Write("All names of hotels: ");
+            Console.ForegroundColor = ConsoleColor.White;
             foreach (var name in allNamesHoels)
             {
-                Console.Write(name + ", ");
+                Console.Write(name + "\t");
             }
-
-            var nameShopsInterset = dataModel.Shops.GetIntersectOfShopsStreets(1).ToArray();
-            Console.WriteLine("Interset shop street: ");
-            foreach(var shop in nameShopsInterset)
-            {
-                Console.WriteLine(shop + "\t");
-            }
+            Console.WriteLine();
 
             var equalHotels = dataModel.Hotels.SequenceEqualHotels();
-            Console.WriteLine("All hotels to SequenceEqual " + equalHotels);
+            Console.WriteLine("All hotels to SequenceEqual: " + equalHotels);
 
             var profitableShop = dataModel.Shops.GetFirstWithBigDailyProceeds(5000);
             Console.WriteLine($"First shop with daily proceeds more than 5000: {profitableShop.Name}\t" +
@@ -300,7 +333,7 @@ namespace LinqCore
 
             var smallBill = dataModel.Restaurants
                 .GetFirstOrDefaultRestaurantWithSmallAerageBill(400);
-            if(smallBill!=null)
+            if (smallBill != null)
             {
                 Console.WriteLine($"First restaurant with average bill less than 400: {smallBill.Name}\t" +
                     $"{smallBill.Style}\t{smallBill.Kitchen}\t{smallBill.CapacityVisitors}\t" +
@@ -319,10 +352,10 @@ namespace LinqCore
                     $"{lastRestaurant.AverageBill}");
             }
 
-            var singlShop = dataModel.Shops.GetSinglShopWithBrand("ErichKrause");
-            Console.WriteLine($"Shop with ErichKrause brand: {profitableShop.Name}\t" +
-                $"{profitableShop.Brand}\t{profitableShop.DailyProceeds}\t" +
-                 $"{profitableShop.SquareInMetrs}\t{profitableShop.Street}");
+            var singlShop = dataModel.Shops.GetSinglShopWithBrand("Romanson");
+            Console.WriteLine($"Shop with Romanson brand: {singlShop.Name}\t" +
+                $"{singlShop.Brand}\t{singlShop.DailyProceeds}\t" +
+                 $"{singlShop.SquareInMetrs}\t{singlShop.Street}");
 
             var singleHotel = dataModel.Hotels.GetSingHotelWhithNumberRooms(120);
             if (singleHotel != null)
@@ -331,46 +364,28 @@ namespace LinqCore
                                     $"{singleHotel.YearBuilt}\t{singleHotel.IsAdultOnle}");
             }
 
-         
-            //public static Restaurant GetElementAtIndex(IQueryable<Restaurant> restaurants, int index)
-            //{
-            //    return restaurants.ElementAt(index);
-            //}
+            var roomyRestaurant = dataModel.Restaurants.IsRoomyRestaurants(4);
+            Console.WriteLine("Roomy restaurants? " + roomyRestaurant);
 
-            //public static Shop GetShopAtIndex(IQueryable<Shop> shops, int index)
-            //{
-            //    return shops.ElementAtOrDefault(index);
-            //}
+            var concreteRestraunt = dataModel.Restaurants.GetElementAtIndex(1);
+            Console.WriteLine($"4 restaurant is: {concreteRestraunt.Name}\t" +
+                    $"{concreteRestraunt.Style}\t{concreteRestraunt.Kitchen}\t{concreteRestraunt.CapacityVisitors}\t" +
+                    $"{concreteRestraunt.AverageBill}");
 
-            //public static bool HasSequenceAnyElements(IQueryable<Hotel> hotels)
-            //{
-            //    return hotels.Any();
-            //}
+            var anyHotels = dataModel.Hotels.HasSequenceAnyElements();
+            Console.WriteLine("Have any hotels: " + anyHotels);
 
-            //public static bool IsRoomyRestaurants(IQueryable<Restaurant> restaurants, int capacityVisitors)
-            //{
-            //    return restaurants.All(r => r.CapacityVisitors > capacityVisitors);
-            //}
+            var shopOnStreet = dataModel.Shops.HasSequenceStreet("Batero");
+            Console.WriteLine("Have Sop on the street Batero: " + shopOnStreet);
 
-            //public static bool HasSequenceStreet(IQueryable<Shop> shops, string street)
-            //{
-            //    return shops.Select(s => s.Street).Contains(street);
-            //}
+            var floorArea = dataModel.Shops.GetSumShopsSquareInMetrs();
+            Console.WriteLine("The floor area of shops: " + floorArea);
 
-            //public static int GetSumShopsSquareInMetrs(IQueryable<Shop> shops)
-            //{
-            //    return shops.Select(s => s.SquareInMetrs).Sum();
-            //}
+            var youngestHotel = dataModel.Hotels.GetYougestHotel();
+            Console.WriteLine("The youngest hotel was bilt in: " + youngestHotel);
 
-            //public static int GetYougestHotel(IQueryable<Hotel> hotels)
-            //{
-            //    return hotels.Select(h => h.YearBuilt).Min();
-            //}
-
-            //public static double GetAverageDailyProceeds(IQueryable<Shop> shops)
-            //{
-            //    return shops.Select(s => s.DailyProceeds).Average();
-            //}
+            var dailyProceed = dataModel.Shops.GetAverageDailyProceeds();
+            Console.WriteLine("Average daily proceed of all shops: " + dailyProceed);
 
             Console.ReadKey();
         }
