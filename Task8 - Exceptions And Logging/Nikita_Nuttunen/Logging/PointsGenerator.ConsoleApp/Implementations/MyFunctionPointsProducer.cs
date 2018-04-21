@@ -16,6 +16,8 @@ namespace PointsGenerator.ConsoleApp.Implementations
         {
             return loggerService.RunWithExceptionLogging(() =>
             {
+                if (x == 0) throw new ArgumentException("DivideByZeroException in BadProducer");
+                if (x < 0) throw new OverflowException("OverflowException in BadProducer");
                 var point = new Point
                 {
                     X = x, Y = (decimal)Math.Sqrt((double)x) / x

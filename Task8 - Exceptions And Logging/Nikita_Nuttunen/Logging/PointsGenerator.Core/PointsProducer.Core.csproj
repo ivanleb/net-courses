@@ -39,7 +39,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Abstractions\IExceptionIndicator.cs" />
     <Compile Include="Abstractions\ILoggerService.cs" />
     <Compile Include="Abstractions\IPoint.cs" />
     <Compile Include="Abstractions\IPointProducer.cs" />

@@ -10,6 +10,5 @@ namespace PointsGenerator.ConsoleApp.Implementations
     {
         public ILoggerService LoggerService { get; set; }
         public IList<IPointProducer> PointProducers { get; set; }
-        public IExceptionIndicator ExceptionIndicator { get; set; }
     }
 }

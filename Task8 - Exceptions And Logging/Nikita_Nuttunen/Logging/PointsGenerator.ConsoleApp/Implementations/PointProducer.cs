@@ -26,10 +26,10 @@ namespace PointsGenerator.ConsoleApp.Implementations
             IsContinue = true;
             while (IsContinue)
             {
-                decimal x = rnd.Next(-1, 1);
+                decimal x = rnd.Next(-2, 6);
                 var point = BuildPoint(x);
 
-                onPointReceiver(point);
+                if (point != null) onPointReceiver(point);
 
                 System.Threading.Thread.Sleep(1000);
             }

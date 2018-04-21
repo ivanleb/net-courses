@@ -17,6 +17,7 @@ namespace PointsGenerator.ConsoleApp.Implementations
         {
             Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine($"Client: {point}");
+            Console.ForegroundColor = ConsoleColor.White;
         }
     }
 }

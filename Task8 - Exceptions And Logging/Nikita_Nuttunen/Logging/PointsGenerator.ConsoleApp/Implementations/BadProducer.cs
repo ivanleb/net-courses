@@ -8,8 +8,6 @@ namespace PointsGenerator.ConsoleApp.Implementations
 {
     public abstract class BadProducer : IPointProducer
     {
-        public event Action<object, IPoint> OnNegativeXProduced;
-        public event Action<object, IPoint> OnZeroXProduced;
         public event Action<object, IPoint> OnPointProduced;
 
         Random rnd = new Random();
@@ -29,19 +27,15 @@ namespace PointsGenerator.ConsoleApp.Implementations
         {
             IsContinue = true;
             while (IsContinue)
-            {
-                decimal x = rnd.Next(-5, 20);
+            {                                
+                decimal x = rnd.Next(-5, 25);
                 var point = BuildPoint(x);
-
-                if (point.X == 0) OnZeroXProduced?.Invoke(this, point);
-                if (point.X < 0) OnNegativeXProduced?.Invoke(this, point);
-                                
-                onPointReceiver(point);
+                System.Threading.Thread.Sleep(1000);  
+                if (x == 0) continue;
+                if (x < 0) continue;
                 OnPointProduced?.Invoke(this, point);
-
-                System.Threading.Thread.Sleep(1000);                
+                                                              
             }
-
         }
     }
 }

@@ -13,19 +13,13 @@ namespace PointsGenerator.Core
         {
             IList<IPointProducer> pointProducers = registry.PointProducers;
             ILoggerService loggerService = registry.LoggerService;
-            IExceptionIndicator exceptionIndicator = registry.ExceptionIndicator;
-
-            foreach (var producer in pointProducers)
-            {
-                exceptionIndicator.Producers.Add(producer);
-            }
-
 
             foreach (var producer in pointProducers)
             {
                 Task.Factory.StartNew(() =>
                 {
-                    producer.Run(point => loggerService.Info($"{point}"));                    
+                    var functionName = producer.GetType().Name.Substring(0, producer.GetType().Name.IndexOf("PointsProducer"));
+                    producer.Run(point => loggerService.Info($"{functionName}: {point}"));                    
                 });
             }
         }

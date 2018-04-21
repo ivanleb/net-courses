@@ -15,13 +15,13 @@ namespace PointsGenerator.ConsoleApp.Implementations
         public override IPoint BuildPoint(decimal x)
         {
             return loggerService.RunWithExceptionLogging(() =>
-            {                
+            {
                 return new Point
                 {
                     X = x,
                     Y = 1 / x
                 };
-            }, isSilent:true);
+            }, isSilent: true);
         }
     }
 }

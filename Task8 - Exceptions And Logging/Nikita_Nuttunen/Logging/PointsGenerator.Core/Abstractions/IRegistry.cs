@@ -9,6 +9,5 @@ namespace PointsGenerator.Core.Abstractions
     {
         ILoggerService LoggerService { get; set; }
         IList<IPointProducer> PointProducers { get; set; }
-        IExceptionIndicator ExceptionIndicator { get; set; }
     }
 }

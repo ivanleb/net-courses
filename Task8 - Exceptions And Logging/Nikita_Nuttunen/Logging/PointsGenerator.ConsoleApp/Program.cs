@@ -21,31 +21,22 @@ namespace PointsGenerator.ConsoleApp
             var logger = LogManager.GetLogger("SampleTextLogger");
 
             var loggerService = new LoggerService(logger);
-            var exceptionIndicator = new ExceptionIndicator(loggerService);
+            var badFunction = new MyFunctionPointsProducer(loggerService);
             var pointProducers = new List<IPointProducer>()
-            {
-                new MyFunctionPointsProducer(loggerService),
-                new ReciprocalFunctionPointsProducer(loggerService)
+            {                
+                new ReciprocalFunctionPointsProducer(loggerService),
+                badFunction
             };
+            Client client = new Client();
+            client.StartListeningToProducer(badFunction);
 
-            foreach (var producer in pointProducers)
-            {
-                var badProducer = producer as BadProducer;
-                if (badProducer != null)
-                {
-                    badProducer.OnNegativeXProduced += exceptionIndicator.WriteException;
-                    badProducer.OnZeroXProduced += exceptionIndicator.WriteException;
-                }
-                exceptionIndicator.Producers.Add(producer);
-            }
-
-            Console.WriteLine("Press Enter to stop generators...");
+            Console.WriteLine("Points will be producing in 3 seconds" +
+                "\nPress Enter to stop producing...");
             System.Threading.Thread.Sleep(2000);
 
             ProgramLogic.Run(new Registry()
             {
                 LoggerService = loggerService,
-                ExceptionIndicator = exceptionIndicator,
                 PointProducers = pointProducers
             });            
 
