@@ -3,19 +3,20 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ExceptionAndLoggingTask8.Abstractions;
 
 namespace ExceptionAndLoggingTask8
 {
-    class Client
+    class Client: IClient
     {
-        string Name { get; set; }
+        public string Name { get; set; }
 
         public Client(string name)
         {
             Name = name;
         }
 
-        public void StartListenProducer(PointProducer producer)
+        public void StartListenProducer(IPointProducer producer)
         {
             producer.OnPointProduced += PointProducedHandler;
         }

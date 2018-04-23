@@ -45,10 +45,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Client.cs" />
-    <Compile Include="LoggerService.cs" />
-    <Compile Include="Point.cs" />
-    <Compile Include="PointProducers.cs" />
+    <Compile Include="Abstractions\IClient.cs" />
+    <Compile Include="Abstractions\IPoint.cs" />
+    <Compile Include="Abstractions\PointProducers.cs" />
+    <Compile Include="Implementations\Client.cs" />
+    <Compile Include="Abstractions\LoggerService.cs" />
+    <Compile Include="Implementations\Point.cs" />
+    <Compile Include="Implementations\Producers\BadProducer.cs" />
+    <Compile Include="Implementations\Producers\CubicProducer.cs" />
+    <Compile Include="Implementations\Producers\QuadraticProducer.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

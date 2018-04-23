@@ -21,14 +21,13 @@ namespace ExceptionAndLoggingTask8
 
             var quadraticProducer = new QuadraticProducer(loggerService);
             var cubicProducer = new CubicProducer(loggerService);
-            var factorialProducer = new FactorialProducer(loggerService);
-            var strangeProducer = new StrangeProducer(loggerService);
+            var strangeProducer = new BadProducer(loggerService);
 
-            var client1 = new Client("First dude");
+            var client1 = new Client("First client");
 
             client1.StartListenProducer(strangeProducer);
 
-            Console.WriteLine("Starting 3 generators: quadratic, cubic and strange. To stop them press 1,2,3 respectively");
+            Console.WriteLine("Starting 3 generators: quadratic, cubic and bad. To stop them press 1, 2 or 3 respectively");
             Task.Run(() =>
             {
                 quadraticProducer.Run((point) => loggerService.Info($"Quadratic Function {point}"), 0, 1);
@@ -39,7 +38,7 @@ namespace ExceptionAndLoggingTask8
             });
             Task.Run(() =>
             {
-                strangeProducer.Run((point) => loggerService.Info($"Strange function {point}"), 0, 1);
+                strangeProducer.Run((point) => loggerService.Info($"Bad function {point}"), 0, 1);
             });
 
             ConsoleKeyInfo key = new ConsoleKeyInfo();
