@@ -46,8 +46,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Abstracrions\ILoggerService.cs" />
+    <Compile Include="Abstracrions\IClient.cs" />
     <Compile Include="Abstracrions\IPoint.cs" />
     <Compile Include="Abstracrions\IPointProducer.cs" />
+    <Compile Include="Implementation\BadProducer.cs" />
+    <Compile Include="Implementation\Client.cs" />
     <Compile Include="Implementation\FirstProducer.cs" />
     <Compile Include="Implementation\LoggerService.cs" />
     <Compile Include="Implementation\Point.cs" />
