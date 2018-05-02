@@ -25,7 +25,7 @@ namespace EntityFramework
 
                 var loggerService = new LoggerService(logger);
 
-                //CreateShareholdersWithConnectedBalances(bussinesService);
+                CreateShareholdersWithConnectedBalances(bussinesService);
 
                 //var shareholder = bussinesService.GetMostWantedShareholdersById(6);
 
