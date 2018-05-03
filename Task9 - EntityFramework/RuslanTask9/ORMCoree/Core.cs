@@ -6,7 +6,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace ORMCore
 {
-    public enum SharesTypes { FristType = 15, SecondType= 70, ThirdType = 300 }
+    public enum  SharesTypes { FirstType = 15, SecondType= 70, ThirdType = 300 }
     
     public abstract class Tabels
     {
@@ -26,12 +26,6 @@ namespace ORMCore
 
     public class Shareholder : AbstractPerson
     {
-        //public int IdBalance { get; set; }
-
-        //public int IdShares { get; set; }
-
-       // public Balance IdBalance { get; set; }
-
         public ICollection<Trade> IdTrades { get; set; }
     }
 
@@ -108,7 +102,9 @@ namespace ORMCore
             this.dataContext = dataContext;
         }
 
-        public IQueryable<Shareholder> GetMostWantedShareholdersByShareholder(Shareholder shareholder)//(string firstName, string lastName, string phoneNumber)
+        public IDataContext GetDataContext() => this.dataContext;
+
+        public IQueryable<Shareholder> GetMostWantedShareholdersByShareholder(Shareholder shareholder)
         {
             return this.dataContext.Shareholders.Where(w =>
             w.FirstName == shareholder.FirstName
@@ -137,43 +133,31 @@ namespace ORMCore
         }
 
 
-        public IQueryable<Balance> GetMostWantedBalanceById(int memberId)
+        public Balance GetMostWantedBalanceById(int memberId)
         {
-            return this.dataContext.Balances.Where(w => w.Id == memberId);
+            return this.dataContext.Balances.Where(w => w.Id == memberId).FirstOrDefault();
         }
 
         public void RegisterNewShareholder(Shareholder shareholder)
         {
-            //var shareholder = new Shareholder()
-            //{
-            //    FirstName = firstName,
-            //    LastName = lastName,
-            //    PhoneNumber = phoneNumber
-            //};
-            
-
             this.dataContext.Add(shareholder);
 
-            RegisterNewBalance(shareholder.Id, 10, 10, 10, 7000, "middle");
+            RegisterNewBalance(shareholder.Id, 1000, 1000, 1000, 7000, "middle");
 
             this.dataContext.SaveChanges();
         }
 
         public void RegisterNewTrade(Trade trade, Shareholder shareholder, Shareholder buyer)//int inputShareholderId, int InputBuyerId, SharesTypes FST, int value)
         {
-            //var trade = new Trade()
-            //{
-            //    BuyerId = InputBuyerId,
-            //    ShareholderId = inputShareholderId,
-            //    ValueType = Enum.GetName(typeof(SharesTypes), FST),
-            //    Value = value
-            //};
-
             this.dataContext.Add(trade);
 
-            //this.dataContext.SaveChanges();
-            var newShareholderBalance = GetMostWantedBalanceById(shareholder.Id).First();
-            var newBuyerBalance = GetMostWantedBalanceById(buyer.Id).First();
+            var newShareholderBalance = GetMostWantedBalanceById(shareholder.Id);
+
+            var newBuyerBalance = GetMostWantedBalanceById(buyer.Id);
+
+            //var shareTypes = Enum.GetNames(typeof(SharesTypes)); how to do constant value?!
+
+            //var c = nameof(SharesTypes.FirstType);
 
             switch (trade.ValueType)
             {
@@ -182,7 +166,10 @@ namespace ORMCore
 
                         newShareholderBalance.FirstType -= (int)trade.Value;
 
-                        newShareholderBalance.BalanceValue += (int)trade.Value * (int)SharesTypes.FristType;
+                        newShareholderBalance.BalanceValue += trade.Value * (Decimal)SharesTypes.FirstType;
+
+                        if (newShareholderBalance.BalanceValue == 0)
+                            newShareholderBalance.BalanceZone = "WARNING!";
 
                         if (newShareholderBalance.BalanceValue > 0)
                             newShareholderBalance.BalanceZone = "low";
@@ -193,7 +180,7 @@ namespace ORMCore
 
                         newBuyerBalance.FirstType += (int)trade.Value;
 
-                        newBuyerBalance.BalanceValue -= (int)trade.Value * (int)SharesTypes.FristType;
+                        newBuyerBalance.BalanceValue -= trade.Value * (Decimal)SharesTypes.FirstType;
 
                         if (newBuyerBalance.BalanceValue < 5000)
                             newBuyerBalance.BalanceZone = "low";
@@ -204,33 +191,28 @@ namespace ORMCore
                         if (newBuyerBalance.BalanceValue < 0)
                             newBuyerBalance.BalanceZone = "in the dark!";
 
-                        this.dataContext.Update(newBuyerBalance);
+                        UpdateBalancesAndSaveChanges(newBuyerBalance, newShareholderBalance);
 
-                        this.dataContext.Update(newShareholderBalance);
-
-                        this.dataContext.SaveChanges();
-                         
                         break;
                     }
                 case "SecondType":
                     {
-                        //var newShareholderBalance = GetMostWantedBalanceById(shareholder.Id).First();
-
                         newShareholderBalance.SecondType -= (int)trade.Value;
 
-                        newShareholderBalance.BalanceValue += (int)trade.Value * (int)SharesTypes.SecondType;
+                        newShareholderBalance.BalanceValue += trade.Value * (Decimal)SharesTypes.SecondType;
+
+                        if (newShareholderBalance.BalanceValue == 0)
+                            newShareholderBalance.BalanceZone = "WARNING!";
 
                         if (newShareholderBalance.BalanceValue > 0)
                             newShareholderBalance.BalanceZone = "low";
 
                         if (newShareholderBalance.BalanceValue > 5000)
                             newShareholderBalance.BalanceZone = "middle";
-
-                        //var newBuyerBalance = GetMostWantedBalanceById(buyer.Id).First();
 
                         newBuyerBalance.SecondType += (int)trade.Value;
 
-                        newBuyerBalance.BalanceValue -= (int)trade.Value * (int)SharesTypes.SecondType;
+                        newBuyerBalance.BalanceValue -= trade.Value * (Decimal)SharesTypes.SecondType;
 
                         if (newBuyerBalance.BalanceValue < 5000)
                             newBuyerBalance.BalanceZone = "low";
@@ -240,34 +222,29 @@ namespace ORMCore
 
                         if (newBuyerBalance.BalanceValue < 0)
                             newBuyerBalance.BalanceZone = "in the dark!";
-
-                        this.dataContext.Update(newBuyerBalance);
-
-                        this.dataContext.Update(newShareholderBalance);
-
-                        this.dataContext.SaveChanges();
+                        
+                        UpdateBalancesAndSaveChanges(newBuyerBalance, newShareholderBalance);
 
                         break;
                     }
-                case "ThirdType":// Enum.GetName(typeof(SharesTypes), SharesTypes.ThirdType):
+                case "ThirdType":
                     {
-                        //var newShareholderBalance = GetMostWantedBalanceById(shareholder.Id).First();
-
                         newShareholderBalance.ThirdType -= (int)trade.Value;
 
-                        newShareholderBalance.BalanceValue += (int)trade.Value * (int)SharesTypes.ThirdType;
+                        newShareholderBalance.BalanceValue += trade.Value * (Decimal)SharesTypes.ThirdType;
+
+                        if (newShareholderBalance.BalanceValue == 0)
+                            newShareholderBalance.BalanceZone = "WARNING!";
 
                         if (newShareholderBalance.BalanceValue > 0)
                             newShareholderBalance.BalanceZone = "low";
 
                         if (newShareholderBalance.BalanceValue > 5000)
                             newShareholderBalance.BalanceZone = "middle";
-
-                        //var newBuyerBalance = GetMostWantedBalanceById(buyer.Id).First();
-
+                        
                         newBuyerBalance.ThirdType += (int)trade.Value;
 
-                        newBuyerBalance.BalanceValue -= (int)trade.Value * (int)SharesTypes.ThirdType;
+                        newBuyerBalance.BalanceValue -= trade.Value * (Decimal)SharesTypes.ThirdType;
 
                         if (newBuyerBalance.BalanceValue < 5000)
                             newBuyerBalance.BalanceZone = "low";
@@ -277,20 +254,22 @@ namespace ORMCore
 
                         if (newBuyerBalance.BalanceValue < 0)
                             newBuyerBalance.BalanceZone = "in the dark!";
-
-                        this.dataContext.Update(newBuyerBalance);
-
-                        this.dataContext.Update(newShareholderBalance);
-
-                        this.dataContext.SaveChanges();
+                        
+                        UpdateBalancesAndSaveChanges(newBuyerBalance, newShareholderBalance);
 
                         break;
                     }
             }
-            
-            //var shareholderBalance = this.dataContext.Balances.Where(w => w.Id == shareholder.Id).First();
-            //shareholderBalance.
-            //this.dataContext.Update(shareholder);
+
+            void UpdateBalancesAndSaveChanges(Balance buyerBalance, Balance shareholderBalance)
+            {
+                this.dataContext.Update(buyerBalance);
+
+                this.dataContext.Update(shareholderBalance);
+
+                this.dataContext.SaveChanges();
+            }
+
         }
 
         void RegisterNewBalance(
@@ -309,8 +288,6 @@ namespace ORMCore
             };
             
             this.dataContext.Add(balance);
-
-            //this.dataContext.SaveChanges();
         }
     }
 }

@@ -27,26 +27,13 @@ namespace EntityFramework
 
                 CreateShareholdersWithConnectedBalances(bussinesService);
 
-                //var shareholder = bussinesService.GetMostWantedShareholdersById(6);
-
-                //var buyer = bussinesService.GetMostWantedShareholdersById(8);
-
-                //for (int i = 1; i < 4; i++)
-                //    bussinesService.RegisterNewTrade(new Trade
-                //    {
-                //        ShareholderId = shareholder.Id,
-                //        BuyerId = buyer.Id,
-                //        Value = 2,
-                //        ValueType = "ThirdType"
-                //    }, shareholder, buyer);
-
                 var isContinue = true;
                 Task.Run(() =>
                 {
                     while(isContinue)
                     {
                         RunEmitation(bussinesService, loggerService);
-                        Thread.Sleep(10000);
+                        Thread.Sleep(1000);
                     }
                 });
                 Console.ReadKey();
@@ -61,25 +48,22 @@ namespace EntityFramework
         {
             
             var shareholders = bussinesService.GetMostWantedShareholders();
-
-            //var firstTwoShareholders = c.OrderBy(w => w.Id).Take(2);
-
-            //var secondTwoShareholders = c.OrderBy(w=>w.Id).Skip(2).Take(2);
+            
             List<Shareholder> shareholdersList = new List<Shareholder>();
             foreach (var shareholder in shareholders)
                 shareholdersList.Add(shareholder);
 
             Random random = new Random();
 
-            var randomShareholderIndex = random.Next(0, shareholdersList.Count());//random.Next(0, 2);
+            var randomShareholderIndex = random.Next(0, shareholdersList.Count());
 
-            var randomShareholderA = shareholdersList[randomShareholderIndex];//firstTwoShareholders.OrderBy(w=>w.Id).Skip(randomShareholder).First();
+            var randomShareholderA = shareholdersList[randomShareholderIndex];
 
             shareholdersList.RemoveAt(randomShareholderIndex);
 
-            randomShareholderIndex = random.Next(0, shareholdersList.Count()); //random.Next(0, 2);
+            randomShareholderIndex = random.Next(0, shareholdersList.Count()); 
 
-            var randomShareholderB = shareholdersList[randomShareholderIndex];//secondTwoShareholders.OrderBy(w=>w.Id).Skip(randomShareholder).First();
+            var randomShareholderB = shareholdersList[randomShareholderIndex];
 
             var countOfSharesTypes = Enum.GetNames(typeof(SharesTypes)).Count();
 
@@ -91,7 +75,7 @@ namespace EntityFramework
             {
                 ShareholderId = randomShareholderA.Id,
                 BuyerId = randomShareholderB.Id,
-                Value = random.Next(1, 5),
+                Value = random.Next(1, 20),
                 ValueType = randomSharesType
             };
 
@@ -99,20 +83,36 @@ namespace EntityFramework
                 trade,
                 randomShareholderA, 
                 randomShareholderB);
-
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.Write("log info: ");
             loggerService.Info($"->{trade.ToString()}<-");
-
+            Console.ForegroundColor = ConsoleColor.Gray;
             Console.WriteLine(trade);
+            Console.ForegroundColor = ConsoleColor.DarkGray;
+            Console.WriteLine($"Shareholder's " +
+                $"\n\tbalance value: {bussinesService.GetMostWantedBalanceById(randomShareholderA.Id).BalanceValue.ToString()}" +
+                $"\n\tbalance zone: {bussinesService.GetMostWantedBalanceById(randomShareholderA.Id).BalanceZone.ToString()}");
+            Console.WriteLine($"Buyer's " +
+                $"\n\tbalance value: {bussinesService.GetMostWantedBalanceById(randomShareholderB.Id).BalanceValue.ToString()}" +
+                $"\n\tbalance zone: {bussinesService.GetMostWantedBalanceById(randomShareholderB.Id).BalanceZone.ToString()}");
         }
-        
 
         static void CreateShareholdersWithConnectedBalances(BussinesService bussinesService)
         {
-            List<Shareholder> c = new List<Shareholder>()
+            var dataContext = bussinesService.GetDataContext();
+
+            var lastShareholder = dataContext.Shareholders.AsEnumerable().LastOrDefault();
+
+            int lastShareholderId = 0;
+
+            if (lastShareholder != null)
+                lastShareholderId = lastShareholder.Id;
+
+            List<Shareholder> shareholders = new List<Shareholder>()
                 {
                     new Shareholder()
                     {
-                        Id = 1,
+                        Id = lastShareholderId + 1,
                         FirstName = "ppp",
                         LastName = "vvvv",
                         PhoneNumber = "111"
@@ -120,7 +120,7 @@ namespace EntityFramework
 
                     new Shareholder()
                     {
-                        Id = 2,
+                        Id = lastShareholderId + 2,
                         FirstName = "ppp",
                         LastName = "vvvv",
                         PhoneNumber = "222"
@@ -128,7 +128,7 @@ namespace EntityFramework
 
                     new Shareholder()
                     {
-                        Id = 3,
+                        Id = lastShareholderId + 3,
                         FirstName = "ppp",
                         LastName = "vvvv",
                         PhoneNumber = "333"
@@ -136,14 +136,14 @@ namespace EntityFramework
 
                     new Shareholder()
                     {
-                        Id = 4,
+                        Id = lastShareholderId + 4,
                         FirstName = "ppp",
                         LastName = "vvvv",
                         PhoneNumber = "444"
                     }
                 };
 
-            foreach (var shareholder in c)
+            foreach (var shareholder in shareholders)
                 bussinesService.RegisterNewShareholder(shareholder);
         }
         
