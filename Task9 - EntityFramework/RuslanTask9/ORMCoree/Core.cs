@@ -6,8 +6,8 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace ORMCore
 {
-    public enum  SharesTypes { FirstType = 15, SecondType= 70, ThirdType = 300 }
-    
+    public enum  SharesTypes { FirstType = 15, SecondType= 30, ThirdType = 300 }
+
     public abstract class Tabels
     {
         [Key]
@@ -61,7 +61,7 @@ namespace ORMCore
 
         public decimal Value { get; set; }
 
-        public string ValueType { get; set; }
+        public SharesTypes ValueType { get; set; }
 
         public override string ToString()
         {
@@ -132,13 +132,27 @@ namespace ORMCore
             w.ShareholderId == memberId);
         }
 
+        public IQueryable<Balance> GetBalancesWithZeroBalance()
+        {
+            return this.dataContext.Balances.Where(w => w.BalanceValue == 0);
+        }
+        public IQueryable<Shareholder> GetShareholdersWithZeroBalance()
+        {
+            var zeroBalances = GetBalancesWithZeroBalance();
+            var idsOfZeroBalances = zeroBalances.Select(s => s.Id);
+            var shareholdersWithZeroBalance = new List<Shareholder>();
+
+            foreach (var id in idsOfZeroBalances)
+                shareholdersWithZeroBalance.Add(this.dataContext.Shareholders.Where(w => w.Id == id).FirstOrDefault());
+            return shareholdersWithZeroBalance.AsQueryable();
+        }
 
         public Balance GetMostWantedBalanceById(int memberId)
         {
             return this.dataContext.Balances.Where(w => w.Id == memberId).FirstOrDefault();
         }
 
-        public void RegisterNewShareholder(Shareholder shareholder)
+        public void RegisterNewShareholderWithStartingBalance(Shareholder shareholder)
         {
             this.dataContext.Add(shareholder);
 
@@ -147,7 +161,7 @@ namespace ORMCore
             this.dataContext.SaveChanges();
         }
 
-        public void RegisterNewTrade(Trade trade, Shareholder shareholder, Shareholder buyer)//int inputShareholderId, int InputBuyerId, SharesTypes FST, int value)
+        public void RegisterNewTrade(Trade trade, Shareholder shareholder, Shareholder buyer)
         {
             this.dataContext.Add(trade);
 
@@ -155,105 +169,27 @@ namespace ORMCore
 
             var newBuyerBalance = GetMostWantedBalanceById(buyer.Id);
 
-            //var shareTypes = Enum.GetNames(typeof(SharesTypes)); how to do constant value?!
-
-            //var c = nameof(SharesTypes.FirstType);
-
             switch (trade.ValueType)
             {
-                case "FirstType":
+                case SharesTypes.FirstType:
                     {
-
-                        newShareholderBalance.FirstType -= (int)trade.Value;
-
-                        newShareholderBalance.BalanceValue += trade.Value * (Decimal)SharesTypes.FirstType;
-
-                        if (newShareholderBalance.BalanceValue == 0)
-                            newShareholderBalance.BalanceZone = "WARNING!";
-
-                        if (newShareholderBalance.BalanceValue > 0)
-                            newShareholderBalance.BalanceZone = "low";
-
-                        if (newShareholderBalance.BalanceValue > 5000)
-                            newShareholderBalance.BalanceZone = "middle";
-                        
-
-                        newBuyerBalance.FirstType += (int)trade.Value;
-
-                        newBuyerBalance.BalanceValue -= trade.Value * (Decimal)SharesTypes.FirstType;
-
-                        if (newBuyerBalance.BalanceValue < 5000)
-                            newBuyerBalance.BalanceZone = "low";
-
-                        if (newBuyerBalance.BalanceValue == 0)
-                            newBuyerBalance.BalanceZone = "WARNING!";
-
-                        if (newBuyerBalance.BalanceValue < 0)
-                            newBuyerBalance.BalanceZone = "in the dark!";
+                        PreparationsForUpdatingBalances(newShareholderBalance, newBuyerBalance, SharesTypes.FirstType, trade);
 
                         UpdateBalancesAndSaveChanges(newBuyerBalance, newShareholderBalance);
 
                         break;
                     }
-                case "SecondType":
+                case SharesTypes.SecondType:
                     {
-                        newShareholderBalance.SecondType -= (int)trade.Value;
+                        PreparationsForUpdatingBalances(newShareholderBalance, newBuyerBalance, SharesTypes.SecondType, trade);
 
-                        newShareholderBalance.BalanceValue += trade.Value * (Decimal)SharesTypes.SecondType;
-
-                        if (newShareholderBalance.BalanceValue == 0)
-                            newShareholderBalance.BalanceZone = "WARNING!";
-
-                        if (newShareholderBalance.BalanceValue > 0)
-                            newShareholderBalance.BalanceZone = "low";
-
-                        if (newShareholderBalance.BalanceValue > 5000)
-                            newShareholderBalance.BalanceZone = "middle";
-
-                        newBuyerBalance.SecondType += (int)trade.Value;
-
-                        newBuyerBalance.BalanceValue -= trade.Value * (Decimal)SharesTypes.SecondType;
-
-                        if (newBuyerBalance.BalanceValue < 5000)
-                            newBuyerBalance.BalanceZone = "low";
-
-                        if (newBuyerBalance.BalanceValue == 0)
-                            newBuyerBalance.BalanceZone = "WARNING!";
-
-                        if (newBuyerBalance.BalanceValue < 0)
-                            newBuyerBalance.BalanceZone = "in the dark!";
-                        
                         UpdateBalancesAndSaveChanges(newBuyerBalance, newShareholderBalance);
 
                         break;
                     }
-                case "ThirdType":
+                case SharesTypes.ThirdType:
                     {
-                        newShareholderBalance.ThirdType -= (int)trade.Value;
-
-                        newShareholderBalance.BalanceValue += trade.Value * (Decimal)SharesTypes.ThirdType;
-
-                        if (newShareholderBalance.BalanceValue == 0)
-                            newShareholderBalance.BalanceZone = "WARNING!";
-
-                        if (newShareholderBalance.BalanceValue > 0)
-                            newShareholderBalance.BalanceZone = "low";
-
-                        if (newShareholderBalance.BalanceValue > 5000)
-                            newShareholderBalance.BalanceZone = "middle";
-                        
-                        newBuyerBalance.ThirdType += (int)trade.Value;
-
-                        newBuyerBalance.BalanceValue -= trade.Value * (Decimal)SharesTypes.ThirdType;
-
-                        if (newBuyerBalance.BalanceValue < 5000)
-                            newBuyerBalance.BalanceZone = "low";
-
-                        if (newBuyerBalance.BalanceValue == 0)
-                            newBuyerBalance.BalanceZone = "WARNING!";
-
-                        if (newBuyerBalance.BalanceValue < 0)
-                            newBuyerBalance.BalanceZone = "in the dark!";
+                        PreparationsForUpdatingBalances(newShareholderBalance, newBuyerBalance, SharesTypes.ThirdType, trade);
                         
                         UpdateBalancesAndSaveChanges(newBuyerBalance, newShareholderBalance);
 
@@ -268,6 +204,56 @@ namespace ORMCore
                 this.dataContext.Update(shareholderBalance);
 
                 this.dataContext.SaveChanges();
+            }
+
+            void PreparationsForUpdatingBalances(Balance shareholderBalance, Balance buyerBalance, SharesTypes sharesType, Trade inputedTrade)
+            {
+                if (sharesType == SharesTypes.FirstType)
+                    shareholderBalance.FirstType -= (int)inputedTrade.Value;
+
+                if (sharesType == SharesTypes.SecondType)
+                    shareholderBalance.SecondType -= (int)inputedTrade.Value;
+
+                if (sharesType == SharesTypes.ThirdType)
+                    shareholderBalance.ThirdType -= (int)inputedTrade.Value;
+
+
+                shareholderBalance.BalanceValue += inputedTrade.Value * (Decimal)sharesType;//SharesTypes.SecondType;
+
+                if (shareholderBalance.BalanceValue == 0)
+                    shareholderBalance.BalanceZone = "WARNING!";
+
+                if (shareholderBalance.BalanceValue > 0)
+                    shareholderBalance.BalanceZone = "low";
+
+                if (shareholderBalance.BalanceValue > 5000)
+                    shareholderBalance.BalanceZone = "middle";
+
+                if (shareholderBalance.BalanceValue > 10000)
+                    shareholderBalance.BalanceZone = "hihg";
+
+                if (shareholderBalance.BalanceValue > 10000)
+                    shareholderBalance.BalanceZone = "insane";
+
+                if (sharesType == SharesTypes.FirstType)
+                    buyerBalance.FirstType += (int)inputedTrade.Value;
+
+                if (sharesType == SharesTypes.SecondType)
+                        buyerBalance.SecondType += (int)inputedTrade.Value;
+
+                if (sharesType == SharesTypes.ThirdType)
+                    buyerBalance.ThirdType += (int)inputedTrade.Value;
+
+                buyerBalance.BalanceValue -= inputedTrade.Value * (Decimal)sharesType;//SharesTypes.SecondType;
+
+                if (buyerBalance.BalanceValue < 5000)
+                    buyerBalance.BalanceZone = "low";
+
+                if (buyerBalance.BalanceValue == 0)
+                    buyerBalance.BalanceZone = "WARNING!";
+
+                if (buyerBalance.BalanceValue < 0)
+                    buyerBalance.BalanceZone = "in the dark!";
             }
 
         }

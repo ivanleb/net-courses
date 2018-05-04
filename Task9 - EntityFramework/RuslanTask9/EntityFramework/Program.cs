@@ -38,8 +38,18 @@ namespace EntityFramework
                 });
                 Console.ReadKey();
                 isContinue = false;
-            }
 
+                var shareholders = bussinesService.GetShareholdersWithZeroBalance();
+
+                if (shareholders.Count() < 1)
+                    Console.WriteLine("No shareholders with zero balance");
+                else
+                    foreach (var shareholder in shareholders)
+                    {
+                        Console.WriteLine($"id: {shareholder.Id}| balance: 0.00");
+                    }
+            }
+            
             Console.WriteLine("Table Per Type Done");
             Console.ReadLine();
         }
@@ -65,17 +75,18 @@ namespace EntityFramework
 
             var randomShareholderB = shareholdersList[randomShareholderIndex];
 
-            var countOfSharesTypes = Enum.GetNames(typeof(SharesTypes)).Count();
+            //var countOfSharesTypes = Enum.GetNames(typeof(SharesTypes)).Count();
 
-            var randomIndexOfSharesTypes = random.Next(0, countOfSharesTypes);
+            //var randomIndexOfSharesTypes = random.Next(0, countOfSharesTypes);
+            var arrayOfSharesTypes = Enum.GetValues(typeof(SharesTypes));
 
-            var randomSharesType = Enum.GetNames(typeof(SharesTypes))[randomIndexOfSharesTypes];
+            var randomSharesType = (SharesTypes)arrayOfSharesTypes.GetValue(random.Next(arrayOfSharesTypes.Length));//Enum.GetNames(typeof(SharesTypes))[randomIndexOfSharesTypes];
 
             var trade = new Trade
             {
                 ShareholderId = randomShareholderA.Id,
                 BuyerId = randomShareholderB.Id,
-                Value = random.Next(1, 20),
+                Value = random.Next(1, 30),
                 ValueType = randomSharesType
             };
 
@@ -83,15 +94,19 @@ namespace EntityFramework
                 trade,
                 randomShareholderA, 
                 randomShareholderB);
+
             Console.ForegroundColor = ConsoleColor.Green;
             Console.Write("log info: ");
             loggerService.Info($"->{trade.ToString()}<-");
+
             Console.ForegroundColor = ConsoleColor.Gray;
             Console.WriteLine(trade);
             Console.ForegroundColor = ConsoleColor.DarkGray;
+
             Console.WriteLine($"Shareholder's " +
                 $"\n\tbalance value: {bussinesService.GetMostWantedBalanceById(randomShareholderA.Id).BalanceValue.ToString()}" +
                 $"\n\tbalance zone: {bussinesService.GetMostWantedBalanceById(randomShareholderA.Id).BalanceZone.ToString()}");
+
             Console.WriteLine($"Buyer's " +
                 $"\n\tbalance value: {bussinesService.GetMostWantedBalanceById(randomShareholderB.Id).BalanceValue.ToString()}" +
                 $"\n\tbalance zone: {bussinesService.GetMostWantedBalanceById(randomShareholderB.Id).BalanceZone.ToString()}");
@@ -144,7 +159,7 @@ namespace EntityFramework
                 };
 
             foreach (var shareholder in shareholders)
-                bussinesService.RegisterNewShareholder(shareholder);
+                bussinesService.RegisterNewShareholderWithStartingBalance(shareholder);
         }
         
     }
