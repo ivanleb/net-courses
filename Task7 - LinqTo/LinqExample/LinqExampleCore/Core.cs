@@ -62,6 +62,6 @@ namespace LinqExampleCore
 
             Console.ReadLine();
         }
-         
+
     }
 }

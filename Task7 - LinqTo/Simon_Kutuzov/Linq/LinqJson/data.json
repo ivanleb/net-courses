@@ -1,0 +1,111 @@
+﻿{
+    "Guitars": [
+        {
+            "id": 1,
+            "Brand": "Squier",
+            "Name": "Bullet Strat with Tremolo",
+            "PickupConfig": "SSS",
+            "Color": "Black",
+            "Frets": 21,
+            "Strings": 6,
+            "Price": 200,
+            "IncludedAccessories": null
+        },
+        {
+            "id": 2,
+            "Brand": "Squier",
+            "Name": "Classic Vibe Stratocaster '50s",
+            "PickupConfig": "SSS",
+            "Color": "Green Metallic",
+            "Frets": 21,
+            "Strings": 6,
+            "Price": 300,
+            "IncludedAccessories": null
+        },
+        {
+            "id": 3,
+            "Brand": "Fender",
+            "Name": "Standard Stratocaster",
+            "PickupConfig": "HSS",
+            "Color": "Black",
+            "Frets": 21,
+            "Strings": 6,
+            "Price": 1000,
+            "IncludedAccessories": "Pick, Cable"
+        },
+        {
+            "id": 4,
+            "Brand": "Mayones",
+            "Name": "Regius Core",
+            "PickupConfig": "HH",
+            "Color": "3-Tone Blue Burst",
+            "Frets": 24,
+            "Strings": 7,
+            "Price": 2000,
+            "IncludedAccessories": "Case, Strap"
+        },
+        {
+            "id": 5,
+            "Brand": "Gibson",
+            "Name": "Les Paul Studio",
+            "PickupConfig": "HH",
+            "Color": "Ebony",
+            "Frets": 22,
+            "Strings": 6,
+            "Price": 1500,
+            "IncludedAccessories": null
+        }
+    ],
+    "Keyboards": [
+        {
+            "id": 1,
+            "Brand": "Yamaha",
+            "Name": "PSR-F51",
+            "Keys": 61,
+            "Price": 100
+        },
+        {
+            "id": 2,
+            "Brand": "Williams",
+            "Name": "Legato Plus",
+            "Keys": 88,
+            "Price": 200
+        },
+        {
+            "id": 3,
+            "Brand": "Alesis",
+            "Name": "Vmini",
+            "Keys": 25,
+            "Price": 50
+        }
+    ],
+    "Amplifiers": [
+        {
+            "id": 1,
+            "Brand": "Marshall",
+            "Name": "MS-2-E Micro",
+            "Nobs": "Gain, Volume, Tone",
+            "Effects": "Overdrive",
+            "MaxPower": 10,
+            "Price": 40
+        },
+        {
+            "id": 2,
+            "Brand": "Fender",
+            "Name": "Champion",
+            "Nobs": "Gain, Volume, Voice, Treble, Bass, FX Level, FX Select",
+            "Effects": "Overdrive, Reverb, Delay, Chorus, Tremolo",
+            "MaxPower": 20,
+            "Price": 110
+        },
+        {
+            "id": 3,
+            "Brand": "Orange",
+            "Name": "Crush",
+            "Nobs": "Gain, Volume, Voice, Treble, Bass",
+            "Effects": "Overdrive",
+            "MaxPower": 12,
+            "Price": 100
+        }
+    ]
+}

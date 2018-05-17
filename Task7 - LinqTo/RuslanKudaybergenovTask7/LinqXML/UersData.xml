@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<root>
+  <Users>
+    <User>
+      <ID>1</ID>
+      <Name>First</Name>
+      <Password>tsrif</Password>
+      <Type>Admin</Type>
+      <IDLocation>1</IDLocation>
+    </User>
+    <User>
+      <ID>2</ID>
+      <Name>Second</Name>
+      <Password>dnoceS</Password>
+      <Type>Gold</Type>
+      <IDLocation>2</IDLocation>
+    </User>
+    <User>
+      <ID>3</ID>
+      <Name>Third</Name>
+      <Password>drihT</Password>
+      <Type>Normal</Type>
+      <IDLocation>3</IDLocation>
+    </User>
+    <User>
+      <ID>4</ID>
+      <Name>Fourth</Name>
+      <Password>htruoF</Password>
+      <Type>Normal</Type>
+      <IDLocation>1</IDLocation>
+    </User>
+    <User>
+      <ID>5</ID>
+      <Name>Fifth</Name>
+      <Password>htfiF</Password>
+      <Type>Gold</Type>
+      <IDLocation>2</IDLocation>
+    </User>
+  </Users>
+</root>

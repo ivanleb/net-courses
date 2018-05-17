@@ -3,6 +3,6 @@
     
     public interface IProcessUserChoice
     {
-        DrawType SelectedDrawingType();
+        MenuOptions SelectedDrawingType();
     }
 }

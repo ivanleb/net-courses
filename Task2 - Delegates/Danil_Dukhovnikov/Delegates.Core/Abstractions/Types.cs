@@ -1,12 +1,14 @@
 ﻿namespace Delegates.Core.Abstractions
-{    
-    public enum DrawType
+{
+    internal delegate void Draw(IBoard board);
+    
+    public enum MenuOptions
     {
         Point,
         VerticalLine,
         HorizontalLine,
         Clear,
-        Stop,
-        Error
+        Error,
+        Exit
     }
 }

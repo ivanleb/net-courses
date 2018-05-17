@@ -1,0 +1,203 @@
+﻿{
+  "Rooms": [
+    {
+      "Id": 1,
+      "PricePerDay": 2400,
+      "Category": "Room №1"
+    },
+    {
+      "Id": 2,
+      "PricePerDay": 6500,
+      "Category": "Room №2"
+    },
+    {
+      "Id": 3,
+      "PricePerDay": 10000,
+      "Category": "Room №3"
+    },
+    {
+      "Id": 4,
+      "PricePerDay": 1500,
+      "Category": "Room №4"
+    },
+    {
+      "Id": 5,
+      "PricePerDay": 750,
+      "Category": "Room №5"
+    },
+    {
+      "Id": 6,
+      "PricePerDay": 5000,
+      "Category": "Room №6"
+    },
+    {
+      "Id": 7,
+      "PricePerDay": 9999,
+      "Category": "Room №7"
+    },
+    {
+      "Id": 8,
+      "PricePerDay": 2400,
+      "Category": "Room №8"
+    }
+  ],
+  "Guest": [
+    {
+      "Id": 1,
+      "Name": "Mr. Green",
+      "Address": "unknow",
+      "City": "Somethere",
+      "Country": "USA",
+      "Visits": [
+        1,
+        2,
+        9,
+        10
+      ]
+    },
+    {
+      "Id": 2,
+      "Name": "Mr. Red",
+      "Address": "unknow",
+      "City": "Somethere",
+      "Country": "USA",
+      "Visits": [
+        7,
+        8
+      ]
+    },
+    {
+      "Id": 3,
+      "Name": "Mr. Brawn",
+      "Address": "unknow",
+      "City": "Somethere",
+      "Country": "USA",
+      "Visits": [
+        3,
+        4
+      ]
+    },
+    {
+      "Id": 4,
+      "Name": "Mr. Grey",
+      "Address": "unknow",
+      "City": "Somethere",
+      "Country": "USA",
+      "Visits": [
+        5
+      ]
+    },
+    {
+      "Id": 5,
+      "Name": "Mr. White",
+      "Address": "unknow",
+      "City": "Somethere",
+      "Country": "USA",
+      "Visits": [
+        6
+      ]
+    },
+    {
+      "Id": 6,
+      "Name": "Mr. Black",
+      "Address": "unknow",
+      "City": "Somethere",
+      "Country": "USA",
+      "Visits": [
+      
+      ]
+    },
+    {
+      "Id": 7,
+      "Name": "Mr. Blue",
+      "Address": "unknow",
+      "City": "Somethere",
+      "Country": "USA",
+      "Visits": [
+        
+      ]
+    },
+    {
+      "Id": 8,
+      "Name": "Mr. Purple",
+      "Address": "unknow",
+      "City": "Somethere",
+      "Country": "USA",
+      "Visits": [ 
+        
+      ]
+    }
+  ],
+  "Visits": [
+    {
+      "VisitId": 1,
+      "GuestId": 8,
+	  "DaysNumber": 5,
+      "VisitDate": "2018-01-01",
+      "Total": 5000.00
+    },
+    {
+      "VisitId": 2,
+      "GuestId": 1,
+	  "DaysNumber": 1,
+      "VisitDate": "2018-02-02",
+      "Total": 100000.00
+    },
+    {
+      "VisitId": 3,
+      "GuestId": 7,
+	  "DaysNumber": 11,
+      "VisitDate": "2018-03-03",
+      "Total": 21312.00
+    },
+    {
+      "VisitId": 4,
+      "GuestId": 2,
+	  "DaysNumber": 3,
+      "VisitDate": "2018-04-04",
+      "Total": 124124.00
+    },
+    {
+      "VisitId": 5,
+      "GuestId": 6,
+	  "DaysNumber": 8,
+      "VisitDate": "2018-05-05",
+      "Total": 12414.00
+    },
+    {
+      "VisitId": 6,
+      "GuestId": 3,
+	  "DaysNumber": 9,
+      "VisitDate": "2018-11-06",
+      "Total": 12400.00
+    },
+    {
+      "VisitId": 7,
+      "GuestId": 3,
+	  "DaysNumber": 3,
+      "VisitDate": "2018-12-07",
+      "Total": 7665.00
+    },
+    {
+      "VisitId": 8,
+      "GuestId": 5,
+	  "DaysNumber": 21,
+      "VisitDate": "2018-03-08",
+      "Total": 24155.00
+    },
+    {
+      "VisitId": 9,
+      "GuestId": 4,
+	  "DaysNumber": 15,
+      "VisitDate": "2018-02-09",
+      "Total": 2352.00
+    },
+    {
+      "VisitId": 10,
+      "GuestId": 5,
+	  "DaysNumber": 1,
+      "VisitDate": "2018-05-10",
+      "Total": 8975.00
+    }
+  ]
+}

@@ -1,0 +1,185 @@
+﻿{
+  "Devices": [
+    {
+      "Id": 1,
+      "Name": "Sony Xperia Z5",
+      "Price": 20000,
+      "Category": "Smartphones",
+      "IsAvailable": true
+    },
+    {
+      "Id": 2,
+      "Name": "Lenovo Yoga 13",
+      "Price": 30000,
+      "Category": "Laptops",
+      "IsAvailable": false
+    },
+    {
+      "Id": 3,
+      "Name": "Sony Xperia Z3",
+      "Price": 18300,
+      "Category": "Smartphones",
+      "IsAvailable": true
+    },
+    {
+      "Id": 4,
+      "Name": "IPhone X",
+      "Price": 70000,
+      "Category": "Smartphones",
+      "IsAvailable": true
+    },
+    {
+      "Id": 5,
+      "Name": "IPhone 6",
+      "Price": 20000,
+      "Category": "Smartphones",
+      "IsAvailable": false
+    },
+    {
+      "Id": 6,
+      "Name": "Apple MacBookPro 13",
+      "Price": 80000,
+      "Category": "Laptops",
+      "IsAvailable": true
+    },
+    {
+      "Id": 7,
+      "Name": "LG 25UM58",
+      "Price": 9000,
+      "Category": "Monitors",
+      "IsAvailable": true
+    },
+    {
+      "Id": 8,
+      "Name": "Samsung S24D300H",
+      "Price": 7000,
+      "Category": "Monitors",
+      "IsAvailable": false
+    },
+    {
+      "Id": 9,
+      "Name": "LG 25UM58",
+      "Price": 9000,
+      "Category": "Monitors",
+      "IsAvailable": true
+    },
+    {
+      "Id": 10,
+      "Name": "DELL INSPIRON 7577",
+      "Price": 50000,
+      "Category": "Laptops",
+      "IsAvailable": true
+    },
+    {
+      "Id": 11,
+      "Name": "Canon EOS 1300D",
+      "Price": 24000,
+      "Category": "Cameras",
+      "IsAvailable": true
+    },
+    {
+      "Id": 12,
+      "Name": "Canon PowerShot SX620 HS",
+      "Price": 12000,
+      "Category": "Cameras",
+      "IsAvailable": true
+    },
+    {
+      "Id": 13,
+      "Name": "BENQ GW2270H",
+      "Price": 6000,
+      "Category": "Monitors",
+      "IsAvailable": true
+    },
+    {
+      "Id": 14,
+      "Name": "Samsung Galaxy Note 9+",
+      "Price": 69000,
+      "Category": "Smartphones",
+      "IsAvailable": true
+    },
+    {
+      "Id": 15,
+      "Name": "Acer Extensa EX2519",
+      "Price": 15000,
+      "Category": "Cameras",
+      "IsAvailable": false
+    }
+  ],
+  "Customers": [
+    {
+      "Id": 1,
+      "Name": "Ivan Ivanov",
+      "PhoneNumber": "9113415322",
+      "DateOfBirth": "1991-03-21",
+      "Status": "Gold"
+    },
+    {
+      "Id": 2,
+      "Name": "Sergei Kuznetsov",
+      "PhoneNumber": "9212165489",
+      "DateOfBirth": "1983-08-04",
+      "Status": "Silver"
+    },
+    {
+      "Id": 3,
+      "Name": "John Smith",
+      "PhoneNumber": "9993578483",
+      "DateOfBirth": "1978-12-11",
+      "Status": "Bronze"
+    },
+    {
+      "Id": 4,
+      "Name": "Bill Green",
+      "PhoneNumber": "9116675812",
+      "DateOfBirth": "1969-06-29",
+      "Status": "Gold"
+    },
+    {
+      "Id": 5,
+      "Name": "George Brown",
+      "PhoneNumber": "9099862432",
+      "DateOfBirth": "1996-02-21",
+      "Status": "Gold"
+    },
+    {
+      "Id": 6,
+      "Name": "Wayne Jones",
+      "PhoneNumber": "9213291003",
+      "DateOfBirth": "1988-09-30",
+      "Status": "Silver"
+    }
+  ],
+  "Orders": [
+    {
+      "Id": 1,
+      "CustomerId": 6,
+      "Date": "2018-04-15",
+      "Total": 20000
+    },
+    {
+      "Id": 2,
+      "CustomerId": 1,
+      "Date": "2018-04-14",
+      "Total": 100000
+    },
+    {
+      "Id": 3,
+      "CustomerId": 2,
+      "Date": "2018-03-12",
+      "Total": 71000
+    },
+    {
+      "Id": 4,
+      "CustomerId": 3,
+      "Date": "2018-04-15",
+      "Total": 50000
+    },
+    {
+      "Id": 5,
+      "CustomerId": 5,
+      "Date": "2018-04-10",
+      "Total": 6000
+    }
+  ]
+}

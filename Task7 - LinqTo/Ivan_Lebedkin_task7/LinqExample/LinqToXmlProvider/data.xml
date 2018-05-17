@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<root>
+  <Books>
+      <element>
+        <Id>1</Id>
+        <Name>One123</Name>
+        <Price>12</Price>
+        <Genre>Art</Genre>
+        <IsForSale>true</IsForSale>
+        <IsValuable>true</IsValuable>
+      </element>
+      <element>
+        <Id>2</Id>
+        <Name>Two</Name>
+        <Price>123</Price>
+        <Genre>Science</Genre>
+        <IsForSale>true</IsForSale>
+        <IsValuable>true</IsValuable>
+      </element>
+      <element>    <Id>3</Id>
+        <Name>Three</Name>
+        <Price>1234</Price>
+        <Genre>Fantasy</Genre>
+        <IsForSale>false</IsForSale>
+        <IsValuable>false</IsValuable>
+      </element>
+      <element>
+	    <Id>4</Id>
+        <Name>Four</Name>
+        <Price>12345</Price>
+        <Genre>Novel</Genre>
+        <IsForSale>true</IsForSale>
+        <IsValuable>false</IsValuable>
+      </element>
+  </Books>
+  <Dinosaurs>
+	<element>
+		<Name>Tiranisaur</Name>
+		<Weight>110</Weight>
+		<High>20</High>
+		<IsDangerous>true</IsDangerous>
+		<IsFlying>false</IsFlying>
+		<IsFloating>false</IsFloating>
+	</element>
+	<element>
+		<Name>Pisanosaurus</Name>
+		<Weight>10</Weight>
+		<High>10</High>
+		<IsDangerous>true</IsDangerous>
+		<IsFlying>false</IsFlying>
+		<IsFloating>true</IsFloating>
+	</element>
+	<element>
+		<Name>Iguanodon</Name>
+		<Weight>30</Weight>
+		<High>10</High>
+		<IsDangerous>false</IsDangerous>
+		<IsFlying>false</IsFlying>
+		<IsFloating>false</IsFloating>
+	</element>
+	<element>
+		<Name>Stegosaurus</Name>
+		<Weight>20</Weight>
+		<High>40</High>
+		<IsDangerous>true</IsDangerous>
+		<IsFlying>false</IsFlying>
+		<IsFloating>false</IsFloating>
+	</element>      
+  </Dinosaurs>
+  <HistoricalFigures>
+	<element>
+		<Name>Adam</Name>
+		<IsHaveBookAbout>true</IsHaveBookAbout>
+		<BookAbout>bible</BookAbout>
+		<IsDangerous>false</IsDangerous>
+		<ArmCount>2</ArmCount>
+		<IsReptilian>false</IsReptilian>
+	</element>
+	<element>
+		<Name>Cezar</Name>
+		<IsHaveBookAbout>true</IsHaveBookAbout>
+		<BookAbout>History Textbook</BookAbout>
+		<IsDangerous>true</IsDangerous>
+		<ArmCount>2</ArmCount>
+		<IsReptilian>false</IsReptilian>
+	</element>
+	<element>
+		<Name>James Hook</Name>
+		<IsHaveBookAbout>true</IsHaveBookAbout>
+		<BookAbout>Piter Pen</BookAbout>
+		<IsDangerous>true</IsDangerous>
+		<ArmCount>1</ArmCount>
+		<IsReptilian>false</IsReptilian>
+	</element>
+	<element>
+		<Name>Lenin</Name>
+		<IsHaveBookAbout>true</IsHaveBookAbout>
+		<BookAbout>History Textbook</BookAbout>
+		<IsDangerous>true</IsDangerous>
+		<ArmCount>2</ArmCount>
+		<IsReptilian>false</IsReptilian>
+	</element>
+	<element>
+		<Name>Mark Zukenberg</Name>
+		<IsHaveBookAbout>true</IsHaveBookAbout>
+		<BookAbout>Social network</BookAbout>
+		<IsDangerous>true</IsDangerous>
+		<ArmCount>2</ArmCount>
+		<IsReptilian>true</IsReptilian>
+	</element>
+  </HistoricalFigures>
+</root>

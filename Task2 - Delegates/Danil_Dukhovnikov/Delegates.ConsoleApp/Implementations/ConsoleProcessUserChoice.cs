@@ -5,24 +5,24 @@ namespace Delegates.ConsoleApp.Implementations
 {
     public class ConsoleProcessUserChoice : IProcessUserChoice
     {
-        public DrawType SelectedDrawingType()
+        public MenuOptions SelectedDrawingType()
         {
             var userChoice = Console.ReadLine();
 
             switch (userChoice)
             {
                 case "1":
-                    return DrawType.Point;
+                    return MenuOptions.Point;
                 case "2":
-                    return DrawType.HorizontalLine;
+                    return MenuOptions.HorizontalLine;
                 case "3":
-                    return DrawType.VerticalLine;
+                    return MenuOptions.VerticalLine;
                 case "4":
-                    return DrawType.Clear;
+                    return MenuOptions.Clear;
                 case "5":
-                    return DrawType.Stop;
+                    return MenuOptions.Exit;
                 default:
-                    return DrawType.Error;
+                    return MenuOptions.Error;
             }
         }
     }

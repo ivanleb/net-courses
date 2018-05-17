@@ -1,0 +1,112 @@
+﻿{
+  "Books": [
+    {
+      "Id": 1,
+      "Name": "One123",
+      "Price": 12,
+      "Genre": "Art",
+      "IsForSale": true,
+      "IsValuable": true
+    },
+    {
+      "Id": 2,
+      "Name": "Two",
+      "Price": 123,
+      "Genre": "Science",
+      "IsForSale": true,
+      "IsValuable": true
+    },
+    {
+      "Id": 3,
+      "Name": "Three",
+      "Price": 1234,
+      "Genre": "Fantasy",
+      "IsForSale": false,
+      "IsValuable": false
+    },
+    {
+      "Id": 4,
+      "Name": "Four",
+      "Price": 12345,
+      "Genre": "Novel",
+      "IsForSale": true,
+      "IsValuable": false
+    }
+  ],
+  "Dinosaurs": [
+    {
+      "Name": "Tiranisaur",
+      "Weight": 110,
+      "High": 20,
+      "IsDangerous": true,
+      "IsFlying": false,
+      "IsFloating": false
+    },
+    {
+      "Name": "Pisanosaurus",
+      "Weight": 10,
+      "High": 10,
+      "IsDangerous": true,
+      "IsFlying": false,
+      "IsFloating": true
+    },
+    {
+      "Name": "Iguanodon",
+      "Weight": 30,
+      "High": 10,
+      "IsDangerous": false,
+      "IsFlying": false,
+      "IsFloating": false
+    },
+    {
+      "Name" :"Stegosaurus",      
+      "Weight" :20,      
+      "High" : 40,     
+      "IsDangerous" : true,      
+      "IsFlying" : false,     
+      "IsFloating" : false 
+    }
+  ],
+    "HistoricalFigures": [
+      {
+        "Name": "Adam",
+        "IsHaveBookAbout": true,
+        "BookAbout": "bible",
+        "IsDangerous": false,
+        "ArmCount": 2,
+        "IsReptilian": false
+      },
+      {
+        "Name": "Cezar",
+        "IsHaveBookAbout": true,
+        "BookAbout": "History Textbook",
+        "IsDangerous": true,
+        "ArmCount": 2,
+        "IsReptilian": false
+      },
+      {
+        "Name": "James Hook",
+        "IsHaveBookAbout": true,
+        "BookAbout": "Piter Pen",
+        "IsDangerous": true,
+        "ArmCount": 1,
+        "IsReptilian": false
+      },
+      {
+        "Name": "Lenin",
+        "IsHaveBookAbout": true,
+        "BookAbout": "History Textbook",
+        "IsDangerous": true,
+        "ArmCount": 2,
+        "IsReptilian": false
+      },    
+      {
+         "Name" : "Mark Zukenberg",
+         "IsHaveBookAbout" : true,
+         "BookAbout" : "Social network",
+         "IsDangerous" : false,
+         "ArmCount" : 2,
+         "IsReptilian" : true  
+    }
+  ]
+}

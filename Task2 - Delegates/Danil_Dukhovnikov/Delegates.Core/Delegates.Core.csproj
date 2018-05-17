@@ -39,7 +39,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Abstractions\IBoard.cs" />
-    <Compile Include="Abstractions\IPoint.cs" />
+    <Compile Include="Abstractions\IDrawing.cs" />
     <Compile Include="Abstractions\IProcessUserChoice.cs" />
     <Compile Include="Abstractions\IRegistry.cs" />
     <Compile Include="Abstractions\IShowMessageToUser.cs" />

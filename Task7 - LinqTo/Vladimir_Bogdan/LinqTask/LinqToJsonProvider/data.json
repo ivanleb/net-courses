@@ -1,0 +1,95 @@
+﻿{
+  "Players": [
+    {
+      "Id": "1",
+      "Name": "Sidney Crosby",
+      "Citizenship": "Canada",
+      "Salary": "12332112",
+      "BirthdayDate": "7/12/1987",
+      "Shoots": "left"
+    },
+    {
+      "Id": "2",
+      "Name": "Daniel Sedin",
+      "Citizenship": "Sweden",
+      "Salary": "77788899",
+      "BirthdayDate": "26/9/1980",
+      "Shoots": "left"
+    },
+    {
+      "Id": "3",
+      "Name": "Vladimir Bogdan",
+      "Citizenship": "Russia",
+      "Salary": "10000000",
+      "BirthdayDate": "5/12/1990",
+      "Shoots": "rigth"
+    },
+    {
+      "Id": "4",
+      "Name": "Evgeny Kuznetsov",
+      "Citizenship": "Russia",
+      "Salary": "1000000",
+      "BirthdayDate": "19/5/1992",
+      "Shoots": ""
+    },
+    {
+      "Id": "5",
+      "Name": "Mikael Granund",
+      "Citizenship": "Finland",
+      "Salary": "5",
+      "BirthdayDate": "26/2/1992",
+      "Shoots": ""
+    }
+  ],
+  "Teams": [
+    {
+      "Id": "1",
+      "Name": "Traktor",
+      "Country": "Russia",
+      "Coach": "Anvar",
+      "Foundation": "1.1.1947"
+    },
+    {
+      "Id": "2",
+      "Name": "Pitsburg Penguins",
+      "Country": "USA",
+      "Coach": "Mike Sullivan",
+      "Foundation": "1.1.1967"
+    },
+    {
+      "Id": "3",
+      "Name": "Detroit Red Wings",
+      "Country": "USA",
+      "Coach": "Jeff Blashill",
+      "Foundation": "1.1.1926"
+    },
+    {
+      "Id": "4",
+      "Name": "Montreal Canadiens",
+      "Country": "Canada",
+      "Coach": "Claude Julien",
+      "Foundation": "1.1.1909"
+    }
+  ],
+  "Stadiums": [
+    {
+      "Id": "1",
+      "Name": "Arena Traktor",
+      "Capacity": "7500",
+      "City": "Chelyabinsk"
+    },
+    {
+      "Id": "2",
+      "Name": "Unost'",
+      "Capacity": "500",
+      "City": "Chelyabinsk"
+    },
+    {
+      "Id": "3",
+      "Name": "Hartwall Arena",
+      "Capacity": "13506",
+      "City": "Helsinki"
+    }
+  ]
+
+}

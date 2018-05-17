@@ -39,7 +39,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Implementations\ConsoleBoard.cs" />
-    <Compile Include="Implementations\ConsolePoint.cs" />
+    <Compile Include="Implementations\ConsoleDrawing.cs" />
     <Compile Include="Implementations\ConsoleProcessUserChoice.cs" />
     <Compile Include="Implementations\ConsoleShowMessageToUser.cs" />
     <Compile Include="Implementations\Registry.cs" />

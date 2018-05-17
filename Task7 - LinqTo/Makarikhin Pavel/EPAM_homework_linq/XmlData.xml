@@ -1,0 +1,89 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<root>
+  <Songs>
+    <element>
+      <Name>Before I Forget</Name>
+      <Author>Slipknot</Author>
+      <Album>Vol. 3: The Subliminal Verses</Album>
+      <ChartPosition>1</ChartPosition>
+      <Duration>242</Duration>
+    </element>
+    <element>
+      <Name>Wait and Bleed</Name>
+      <Author>Slipknot</Author>
+      <Album>Slipknot</Album>
+      <ChartPosition>17</ChartPosition>
+      <Duration>167</Duration>
+    </element>
+    <element>
+      <Name>Dragostea Din Tei</Name>
+      <Author>Dan Balan</Author>
+      <Album>None</Album>
+      <ChartPosition>7</ChartPosition>
+      <Duration>135</Duration>
+    </element>
+    <element>
+      <Name>Taking Chances</Name>
+      <Author>Chunk! No, Captain Chunk!</Author>
+      <Album>Pardon My French</Album>
+      <ChartPosition>12</ChartPosition>
+      <Duration>192</Duration>
+    </element>
+  </Songs>
+  <Movies>
+    <element>
+      <Name>Dead Silence</Name>
+      <Genre>Horror</Genre>
+      <Rating>7,0</Rating>
+      <Duration>2,5</Duration>
+    </element> 
+    <element>
+      <Name>Titanic</Name>
+      <Genre>Drama</Genre>
+      <Rating>7,8</Rating>
+      <Duration>3,15</Duration>
+    </element>
+    <element>
+      <Name>Hachi: A Dog's Tale</Name>
+      <Genre>Drama</Genre>
+      <Rating>8,3</Rating>
+      <Duration>1,33</Duration>
+    </element>
+    <element>
+      <Name>The Lord of The Rings: Return Of The King</Name>
+      <Genre>Fantasy</Genre>
+      <Rating>8,6</Rating>
+      <Duration>3,21</Duration>
+    </element>
+  </Movies>
+  <Pictures>
+    <element>
+      <Name>Девятый вал</Name>
+      <Author>Айвазовский</Author>
+      <Style>Марина</Style>
+      <Age>20</Age>
+      <Cost>2000000</Cost>
+    </element>
+    <element>
+      <Name>Yellow Scream</Name>
+      <Author>Kim Bon</Author>
+      <Style>Expressionism</Style>
+      <Age>21</Age>
+      <Cost>30000000</Cost>
+    </element>
+    <element>
+      <Name>Утро в сосновом лесу</Name>
+      <Author>Иван Шишкин</Author>
+      <Style>Живопись</Style>
+      <Age>19</Age>
+      <Cost>100340200</Cost>
+    </element>
+    <element>
+      <Name>Постояннство памяти</Name>
+      <Author>Сальвадор Дали</Author>
+      <Style>Сюрреализм</Style>
+      <Age>20</Age>
+      <Cost>124121516</Cost>
+    </element>
+  </Pictures>
+</root>

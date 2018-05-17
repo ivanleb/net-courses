@@ -1,0 +1,233 @@
+{
+  "Games": [
+    {
+      "Id": 1,
+      "Name": "First one",
+      "Genre": "RPG",
+      "Platform": "PC",
+      "CollectorsEdition": true,
+      "Price": 12,
+      "Rating": 9,
+      "Quantity": 30,
+      "MinimumAge": 16,
+	  "DevelopingCompanyId": 1,
+	  "NumberOfTimesBuyed": 5
+    },
+    {
+      "Id": 2,
+      "Name": "Second one",
+      "Genre": "Simulator",
+      "Platform": "PC",
+      "CollectorsEdition": true,
+      "Price": 39.99,
+      "Rating": 7,
+      "Quantity": 3,
+      "MinimumAge": 0,
+	  "DevelopingCompanyId": 1,
+	  "NumberOfTimesBuyed": 3
+    },
+    {
+      "Id": 3,
+      "Name": "Third",
+      "Genre": "Platformer",
+      "Platform": "PC",
+      "CollectorsEdition": false,
+      "Price": 12,
+      "Rating": 5,
+      "Quantity": 30,
+      "MinimumAge": 7,
+	  "DevelopingCompanyId": 2,
+	  "NumberOfTimesBuyed": 2
+    },
+    {
+      "Id": 4,
+      "Name": "Fourth",
+      "Genre": "FPS",
+      "Platform": "PS4",
+      "CollectorsEdition": false,
+      "Price": 12,
+      "Rating": 8.5,
+      "Quantity": 30,
+      "MinimumAge": 18,
+	  "DevelopingCompanyId": 2,
+	  "NumberOfTimesBuyed": 51
+    },
+    {
+      "Id": 5,
+      "Name": "Fifth",
+      "Genre": "RTS",
+      "Platform": "PS4",
+      "CollectorsEdition": true,
+      "Price": 12,
+      "Rating": 9.5,
+      "Quantity": 30,
+      "MinimumAge": 18,
+	  "DevelopingCompanyId": 3,
+	  "NumberOfTimesBuyed": 13
+    },
+    {
+      "Id": 6,
+      "Name": "Sixth",
+      "Genre": "Racing",
+      "Platform": "PS4",
+      "CollectorsEdition": true,
+      "Price": 39.99,
+      "Rating": 5.5,
+      "Quantity": 666,
+      "MinimumAge": 3,
+	  "DevelopingCompanyId": 3,
+	  "NumberOfTimesBuyed": 8
+    },
+    {
+      "Id": 7,
+      "Name": "Seventh",
+      "Genre": "FPS",
+      "Platform": "Nintendo Switch",
+      "CollectorsEdition": false,
+      "Price": 5,
+      "Rating": 7,
+      "Quantity": 30,
+      "MinimumAge": 8,
+	  "DevelopingCompanyId": 2,
+	  "NumberOfTimesBuyed": 6
+    },
+    {
+      "Id": 8,
+      "Name": "Eighth",
+      "Genre": "RPG",
+      "Platform": "XBOX One",
+      "CollectorsEdition": false,
+      "Price": 40,
+      "Rating": 10,
+      "Quantity": 30,
+      "MinimumAge": 12,
+	  "DevelopingCompanyId": 1,
+	  "NumberOfTimesBuyed": 1
+    },
+    {
+      "Id": 9,
+      "Name": "Ninth",
+      "Genre": "Simulator",
+      "Platform": "Microwave",
+      "CollectorsEdition": false,
+      "Price": 66.6,
+      "Rating": 2.5,
+      "Quantity": 30,
+      "MinimumAge": 14,
+	  "DevelopingCompanyId": 2,
+	  "NumberOfTimesBuyed": 100
+    },
+    {
+      "Id": 10,
+      "Name": "Tenth",
+      "Genre": "Simulator",
+      "Platform": "XBOX One",
+      "CollectorsEdition": true,
+      "Price": 39.99,
+      "Rating": 7.5,
+      "Quantity": 666,
+      "MinimumAge": 16,
+	  "DevelopingCompanyId": 1,
+	  "NumberOfTimesBuyed": 41
+    },
+    {
+      "Id": 11,
+      "Name": "Eleventh",
+      "Genre": "FPS",
+      "Platform": "PC",
+      "CollectorsEdition": false,
+      "Price": 0.11,
+      "Rating": 9,
+      "Quantity": 30,
+      "MinimumAge": 16,
+	  "DevelopingCompanyId": 3,
+	  "NumberOfTimesBuyed": 32
+    },
+    {
+      "Id": 12,
+      "Name": "Twelfth",
+      "Genre": "RTS",
+      "Platform": "XBOX 360",
+      "CollectorsEdition": false,
+      "Price": 20.99,
+      "Rating": 8,
+      "Quantity": 30,
+      "MinimumAge": 0,
+	  "DevelopingCompanyId": 2,
+	  "NumberOfTimesBuyed": 10
+    }
+  ],
+  "Players": [
+    {
+      "Id": 1,
+      "RealName": "John Smith",
+      "Nickname": "Boba173",
+      "Country": "USA",
+      "DateOfBirth": "1993-10-02T00:00Z",
+      "Balance": 100.50,
+      "IsActive": true
+    },
+    {
+      "Id": 2,
+      "RealName": "Lily Anderson",
+      "Nickname": "Nightshade",
+      "Country": "USA",
+      "DateOfBirth": "2007-05-09T00:00Z",
+      "Balance": 30.00,
+      "IsActive": true
+    },
+    {
+      "Id": 3,
+      "RealName": "Borislav Svyatogorov",
+      "Nickname": "Bogatir",
+      "Country": "Russia",
+      "DateOfBirth": "1984-01-01T00:00Z",
+      "Balance": 10.70,
+      "IsActive": true
+    },
+    {
+      "Id": 4,
+      "RealName": "Valeriy Nechaev",
+      "Nickname": "Reporter",
+      "Country": "Russia",
+      "DateOfBirth": "1972-10-02T00:00Z",
+      "Balance": 3.50,
+      "IsActive": false
+    },
+    {
+      "Id": 5,
+      "RealName": "Koul Zi Ahet",
+      "Nickname": "Pharaon",
+      "Country": "Egypt",
+      "DateOfBirth": "2004-06-06T00:00Z",
+      "Balance": 5000.00,
+      "IsActive": true
+    },
+    {
+      "Id": 6,
+      "RealName": "Valentia Brownbeard",
+      "Nickname": "Gloria",
+      "Country": "Canada",
+      "DateOfBirth": "2006-03-02T00:00Z",
+      "Balance": 100.50,
+      "IsActive": true
+    }
+  ],
+  "GameCompanies": [
+    {
+      "Id": 1,
+      "Name": "Ubisoft",
+      "YearOfEstablishment": 1986,
+    },
+    {
+      "Id": 2,
+      "Name": "Bethesda",
+      "YearOfEstablishment": 1990,
+    },
+    {
+      "Id": 3,
+      "Name": "EA",
+      "YearOfEstablishment": 1982,
+    }
+  ]
+}
