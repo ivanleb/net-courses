@@ -114,7 +114,7 @@ namespace ORMCore
             w.PhoneNumber == shareholder.PhoneNumber);
         }
 
-        public IQueryable<Shareholder> GetMostWantedShareholders()
+        public IQueryable<Shareholder> GetAllShareholders()
         {
             return this.dataContext.Shareholders;
         }
@@ -136,6 +136,7 @@ namespace ORMCore
         {
             return this.dataContext.Balances.Where(w => w.BalanceValue == 0);
         }
+
         public IQueryable<Shareholder> GetShareholdersWithZeroBalance()
         {
             var zeroBalances = GetBalancesWithZeroBalance();
@@ -156,7 +157,13 @@ namespace ORMCore
         {
             this.dataContext.Add(shareholder);
 
-            RegisterNewBalance(shareholder.Id, 1000, 1000, 1000, 7000, "middle");
+            RegisterNewBalance(
+                shareholderId: shareholder.Id,
+                firstType: 1000,
+                secondType: 1000,
+                thirdType: 1000,
+                balanceValue: 7000,
+                balanceZone: "middle");
 
             this.dataContext.SaveChanges();
         }
@@ -221,7 +228,7 @@ namespace ORMCore
                 shareholderBalance.BalanceValue += inputedTrade.Value * (Decimal)sharesType;//SharesTypes.SecondType;
 
                 if (shareholderBalance.BalanceValue == 0)
-                    shareholderBalance.BalanceZone = "WARNING!";
+                    shareholderBalance.BalanceZone = "Orange Zone!";
 
                 if (shareholderBalance.BalanceValue > 0)
                     shareholderBalance.BalanceZone = "low";
@@ -250,10 +257,10 @@ namespace ORMCore
                     buyerBalance.BalanceZone = "low";
 
                 if (buyerBalance.BalanceValue == 0)
-                    buyerBalance.BalanceZone = "WARNING!";
+                    buyerBalance.BalanceZone = "Orange Zone!";
 
                 if (buyerBalance.BalanceValue < 0)
-                    buyerBalance.BalanceZone = "in the dark!";
+                    buyerBalance.BalanceZone = "Black Zone!";
             }
 
         }
@@ -275,5 +282,7 @@ namespace ORMCore
             
             this.dataContext.Add(balance);
         }
+
+        
     }
 }

@@ -24,9 +24,7 @@ namespace EntityFramework
                 var logger = LogManager.GetLogger("SampleTextLogger");
 
                 var loggerService = new LoggerService(logger);
-
-                CreateShareholdersWithConnectedBalances(bussinesService);
-
+                
                 var isContinue = true;
                 Task.Run(() =>
                 {
@@ -57,7 +55,7 @@ namespace EntityFramework
         static void RunEmitation(BussinesService bussinesService, Interfaces.ILoggable loggerService)
         {
             
-            var shareholders = bussinesService.GetMostWantedShareholders();
+            var shareholders = bussinesService.GetAllShareholders();
             
             List<Shareholder> shareholdersList = new List<Shareholder>();
             foreach (var shareholder in shareholders)
@@ -74,13 +72,10 @@ namespace EntityFramework
             randomShareholderIndex = random.Next(0, shareholdersList.Count()); 
 
             var randomShareholderB = shareholdersList[randomShareholderIndex];
-
-            //var countOfSharesTypes = Enum.GetNames(typeof(SharesTypes)).Count();
-
-            //var randomIndexOfSharesTypes = random.Next(0, countOfSharesTypes);
+            
             var arrayOfSharesTypes = Enum.GetValues(typeof(SharesTypes));
 
-            var randomSharesType = (SharesTypes)arrayOfSharesTypes.GetValue(random.Next(arrayOfSharesTypes.Length));//Enum.GetNames(typeof(SharesTypes))[randomIndexOfSharesTypes];
+            var randomSharesType = (SharesTypes)arrayOfSharesTypes.GetValue(random.Next(arrayOfSharesTypes.Length));
 
             var trade = new Trade
             {
@@ -112,56 +107,56 @@ namespace EntityFramework
                 $"\n\tbalance zone: {bussinesService.GetMostWantedBalanceById(randomShareholderB.Id).BalanceZone.ToString()}");
         }
 
-        static void CreateShareholdersWithConnectedBalances(BussinesService bussinesService)
-        {
-            var dataContext = bussinesService.GetDataContext();
+        //static void CreateShareholdersWithConnectedBalances(BussinesService bussinesService)
+        //{
+        //    var dataContext = bussinesService.GetDataContext();
 
-            var lastShareholder = dataContext.Shareholders.AsEnumerable().LastOrDefault();
+        //    var lastShareholder = dataContext.Shareholders.AsEnumerable().LastOrDefault();
 
-            int lastShareholderId = 0;
+        //    int lastShareholderId = 0;
 
-            if (lastShareholder != null)
-                lastShareholderId = lastShareholder.Id;
+        //    if (lastShareholder != null)
+        //        lastShareholderId = lastShareholder.Id;
 
-            List<Shareholder> shareholders = new List<Shareholder>()
-                {
-                    new Shareholder()
-                    {
-                        Id = lastShareholderId + 1,
-                        FirstName = "ppp",
-                        LastName = "vvvv",
-                        PhoneNumber = "111"
-                    },
+        //    List<Shareholder> shareholders = new List<Shareholder>()
+        //        {
+        //            new Shareholder()
+        //            {
+        //                Id = lastShareholderId + 1,
+        //                FirstName = "ppp",
+        //                LastName = "vvvv",
+        //                PhoneNumber = "111"
+        //            },
 
-                    new Shareholder()
-                    {
-                        Id = lastShareholderId + 2,
-                        FirstName = "ppp",
-                        LastName = "vvvv",
-                        PhoneNumber = "222"
-                    },
+        //            new Shareholder()
+        //            {
+        //                Id = lastShareholderId + 2,
+        //                FirstName = "ppp",
+        //                LastName = "vvvv",
+        //                PhoneNumber = "222"
+        //            },
 
-                    new Shareholder()
-                    {
-                        Id = lastShareholderId + 3,
-                        FirstName = "ppp",
-                        LastName = "vvvv",
-                        PhoneNumber = "333"
-                    },
+        //            new Shareholder()
+        //            {
+        //                Id = lastShareholderId + 3,
+        //                FirstName = "ppp",
+        //                LastName = "vvvv",
+        //                PhoneNumber = "333"
+        //            },
 
-                    new Shareholder()
-                    {
-                        Id = lastShareholderId + 4,
-                        FirstName = "ppp",
-                        LastName = "vvvv",
-                        PhoneNumber = "444"
-                    }
-                };
+        //            new Shareholder()
+        //            {
+        //                Id = lastShareholderId + 4,
+        //                FirstName = "ppp",
+        //                LastName = "vvvv",
+        //                PhoneNumber = "444"
+        //            }
+        //        };
 
-            foreach (var shareholder in shareholders)
-                bussinesService.RegisterNewShareholderWithStartingBalance(shareholder);
-        }
-        
+        //    foreach (var shareholder in shareholders)
+        //        bussinesService.RegisterNewShareholderWithStartingBalance(shareholder);
+        //}
+
     }
     
 }
