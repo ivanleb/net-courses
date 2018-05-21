@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SESimulatorConsoleApp
+namespace SESimulator.Extentions
 {
-    static class IEnumerableExtension
+    public static class EnumerableExtention
     {
         private static Random rnd = new Random();
         public static T GetRandom<T>(this IEnumerable<T> collection)

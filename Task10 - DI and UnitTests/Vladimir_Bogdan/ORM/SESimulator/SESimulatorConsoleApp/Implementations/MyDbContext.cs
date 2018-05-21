@@ -1,4 +1,5 @@
-﻿using System.Data.Entity;
+﻿using SESimulator.Model;
+using System.Data.Entity;
 
 namespace SESimulatorConsoleApp.Implementations
 {
@@ -8,6 +9,13 @@ namespace SESimulatorConsoleApp.Implementations
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
+
+            //modelBuilder.Entity<Deal>().HasRequired(z=>z.Buyer).WithOptional().Map(m =>
+            //{
+            //    m.MapKey("");
+            //});
+            //modelBuilder.Entity<Client>().HasMany(client => client.Stocks).WithRequired(stock => stock.Owner).HasForeignKey(stock => stock.ClientId);
+            ////modelBuilder.Entity<Stock>().HasRequired(stock => stock.Type) ;
         }
     }
 }

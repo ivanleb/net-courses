@@ -1,25 +1,15 @@
 ﻿namespace SESimulator.Model
 {
-    public class Stock
+    public partial class Stock
     {
-        public decimal Cost
-        {
-            get
-            {
-                return this.Type.Cost;
-            }
-        }
-
-        //public string Name
-        //{
-        //    get
-        //    {
-        //        return this.Type.Name;
-        //    }
-        //}
-
         public int Id { get; set; }
 
-        public StockType Type { get; set; }
+        public int TypeId { get; set; }
+        public virtual StockType Type { get; set; }
+
+        public int ClientId { get; set; }
+        public virtual Client Owner { get; set; }
+
+        public bool IsForSale { get; set; }
     }
 }
