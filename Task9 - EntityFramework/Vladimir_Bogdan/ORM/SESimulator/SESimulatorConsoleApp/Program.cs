@@ -8,6 +8,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Data.Entity;
+using SESimulator.Extentions;
 
 namespace SESimulatorConsoleApp
 {
@@ -26,27 +28,10 @@ namespace SESimulatorConsoleApp
             {
                 var bussinesService = new BussinesService(dbContext);
 
+                Database.SetInitializer(new EfInitializer(bussinesService));
+
                 var stockExchange = new SimpleStockExchange(bussinesService);
-                loggerService.Warning("Registering new clients in the StockExchangeDataContext");
-                bussinesService.RegisterNewClient("Ilya", "Muromec", "12345", 1000);
-                bussinesService.RegisterNewClient("Elena", "Prekrasnaya", "111", 800);
-                bussinesService.RegisterNewClient("Ivan", "Durak", "", 200);
-                bussinesService.RegisterNewClient("Vasilisa", "Premudraya", "555", 0);
-                bussinesService.RegisterNewClient("Koshey", "Bessmertniy", "666", 3000);
 
-
-                loggerService.Warning("Registering new stock types in the StockExchangeDataContext");
-                bussinesService.RegisterNewStockType("Lukoil", 200);
-                bussinesService.RegisterNewStockType("Gazprom", 400);
-                bussinesService.RegisterNewStockType("Telegram", 400);
-
-                loggerService.Warning("Registering new stocks in the StockExchangeDataContext");
-                bussinesService.RegisterNewStockToClient("Lukoil", bussinesService.GetAllClients().GetRandom());
-                bussinesService.RegisterNewStockToClient("Lukoil", bussinesService.GetAllClients().GetRandom());
-                bussinesService.RegisterNewStockToClient("Gazprom", bussinesService.GetAllClients().GetRandom());
-                bussinesService.RegisterNewStockToClient("Gazprom", bussinesService.GetAllClients().GetRandom());
-                bussinesService.RegisterNewStockToClient("Telegram", bussinesService.GetAllClients().GetRandom());
-                bussinesService.RegisterNewStockToClient("Telegram", bussinesService.GetAllClients().GetRandom());
                 loggerService.RunWithExceptionLogging(() =>
                 {
                     bussinesService.RegisterNewStockToClient("NoNameCompany", bussinesService.GetAllClients().GetRandom());
@@ -61,11 +46,14 @@ namespace SESimulatorConsoleApp
                     loggerService.Info(client.ToString());
                 }
 
-                input.OnUserInputRecieved += (sender, keyInfo) => { if (keyInfo == ConsoleKey.D1) stockExchange.IsContinue = false; };
+                input.OnUserInputRecieved += (sender, keyInfo) => { if (keyInfo == ConsoleKey.Q) stockExchange.IsContinue = false; };
 
                 loggerService.Warning("Opening the stock exchange.");
                 loggerService.RunWithExceptionLogging(() => {
-                    stockExchange.Run((IDealInfo dealInfo) => { loggerService.Info($"{dealInfo.Seller} have sold {dealInfo.Stock} to  {dealInfo.Buyer} for {dealInfo.Amount}."); });
+                    Task.Run(() =>
+                    {
+                        stockExchange.Run((IDealInfo dealInfo) => { loggerService.Info($"{dealInfo.Seller} have sold {dealInfo.Stock} to  {dealInfo.Buyer} for {dealInfo.Amount}."); });
+                    });
                 }, isSilent: false);
 
                 input.ListenToUser();

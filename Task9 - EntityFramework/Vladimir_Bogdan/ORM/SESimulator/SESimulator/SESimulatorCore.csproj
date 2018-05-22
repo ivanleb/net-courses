@@ -47,13 +47,15 @@
   <ItemGroup>
     <Compile Include="Abstractions\IDealInfo.cs" />
     <Compile Include="Abstractions\IUserInput.cs" />
-    <Compile Include="Model\ICollectionModification.cs" />
-    <Compile Include="Model\IDataContext.cs" />
+    <Compile Include="Abstractions\ICollectionModification.cs" />
+    <Compile Include="Abstractions\IDataContext.cs" />
+    <Compile Include="Extentions\EnumerableExtention.cs" />
     <Compile Include="Logging\ILoggerService.cs" />
     <Compile Include="Abstractions\IStockExchange.cs" />
     <Compile Include="BussinesService.cs" />
     <Compile Include="Model\Client.cs" />
     <Compile Include="Model\Deal.cs" />
+    <Compile Include="Model\Partials\Client.cs" />
     <Compile Include="Model\Stock.cs" />
     <Compile Include="Model\StockType.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
