@@ -6,10 +6,10 @@
 
         public decimal Cost { get; set; }
 
-        public int IdBuyer { get; set; }
+        public int BuyerIdd { get; set; }
         public virtual Client Buyer { get; set; }
 
-        public int IdSeller { get; set; }
+        public int Selleriiiii { get; set; }
         public virtual Client Seller { get; set; }
 
         public int StockId { get; set; }

@@ -54,7 +54,6 @@ namespace SESimulatorConsoleApp
                 }, isSilent: false);
 
                 input.ListenToUser();
-                int u = 0;
             }
         }
     }
