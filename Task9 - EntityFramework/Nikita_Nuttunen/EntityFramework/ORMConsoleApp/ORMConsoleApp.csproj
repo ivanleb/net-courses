@@ -52,15 +52,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Implementations\BusinessService.cs" />
-    <Compile Include="Implementations\Client.cs" />
-    <Compile Include="Implementations\Deal.cs" />
     <Compile Include="Implementations\DealProducer.cs" />
+    <Compile Include="Implementations\EfInitializer.cs" />
     <Compile Include="Implementations\LoggerService.cs" />
-    <Compile Include="Implementations\Stock.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="StockExchangeContext.cs" />
+    <Compile Include="StockExchangeDbContext.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ORMCore\ORMCore.csproj">

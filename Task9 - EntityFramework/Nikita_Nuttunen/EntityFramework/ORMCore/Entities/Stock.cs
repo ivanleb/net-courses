@@ -4,9 +4,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace ORMConsoleApp.Implementations
+namespace ORMCore.Entities
 {
-    public class Stock : IStock
+    public class Stock
     {
         public int Id { get; set; }
         public string Type { get; set; }

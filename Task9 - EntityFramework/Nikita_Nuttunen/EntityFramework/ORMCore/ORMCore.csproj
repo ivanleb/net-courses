@@ -39,16 +39,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Abstractions\IBusinessService.cs" />
-    <Compile Include="Abstractions\IClient.cs" />
-    <Compile Include="Abstractions\IClientsModification.cs" />
+    <Compile Include="Abstractions\ICollectionModification.cs" />
     <Compile Include="Abstractions\IDataContext.cs" />
-    <Compile Include="Abstractions\IDeal.cs" />
-    <Compile Include="Abstractions\IDealMofication.cs" />
     <Compile Include="Abstractions\IDealProducer.cs" />
     <Compile Include="Abstractions\ILoggerService.cs" />
-    <Compile Include="Abstractions\IStock.cs" />
-    <Compile Include="Abstractions\IStockModification.cs" />
+    <Compile Include="BusinessService.cs" />
+    <Compile Include="Entities\Client.cs" />
+    <Compile Include="Entities\Deal.cs" />
+    <Compile Include="Entities\Stock.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

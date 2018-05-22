@@ -1,19 +1,14 @@
-﻿using System;
+﻿using ORMCore.Entities;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
 namespace ORMCore.Abstractions
 {
-    public delegate void BalanceHandler(IClient client);
     public interface IDealProducer
     {
-        event BalanceHandler BalanceChanged;
-
+        bool IsContinue { get; set; }
         void Run();
-
-        IDeal MakeDeal(IClient seller, IClient purchaser, IStock stock);
-
-        void OnBalanceChanged(IClient client);
-    }
+    }    
 }

@@ -5,10 +5,10 @@ using System.Text;
 
 namespace ORMCore.Abstractions
 {
-    public interface IClientsModification<in T> where T : IClient
+    public interface ICollectionModification<T>
     {
-        void Add(T entity);
-        void Remove(T entity);
+        int Add(T entity);
         void Update(T entity);
+        void Remove(T entity);
     }
 }

@@ -1,20 +1,23 @@
-﻿using ORMCore.Abstractions;
-using System;
-using System.Data.Entity;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using ORMCore.Abstractions;
+using ORMCore.Entities;
 
-namespace ORMConsoleApp.Implementations
+namespace ORMCore
 {
-    public class BusinessService // : IBusinessService
+    public class BusinessService
     {
-        private readonly StockExchangeContext dataContext;
-        private readonly LoggerService loggerService;
+        private delegate void BalanceHandler(Client client);
+        private event BalanceHandler BalanceChanged;
+
+        private readonly IDataContext dataContext;
+        private readonly ILoggerService loggerService;
 
         private Random rnd = new Random();
 
-        public BusinessService(StockExchangeContext dataContext, LoggerService loggerService)
+        public BusinessService(IDataContext dataContext, ILoggerService loggerService)
         {
             this.dataContext = dataContext;
             this.loggerService = loggerService;
@@ -58,8 +61,8 @@ namespace ORMConsoleApp.Implementations
         public void RegisterNewClient(Client client)
         {
             loggerService.RunWithExceptionLogging(() =>
-            {
-                dataContext.Clients.Add(client);
+            {                
+                dataContext.Add(client);
                 dataContext.SaveChanges();
                 loggerService.Info($"{client.Name} {client.Surname} was registered");
             }, isSilent: true);
@@ -70,7 +73,7 @@ namespace ORMConsoleApp.Implementations
         {
             loggerService.RunWithExceptionLogging(() =>
             {
-                dataContext.Stocks.Add(stock);
+                dataContext.Add(stock);
                 dataContext.SaveChanges();
                 loggerService.Info($"\"{stock.Type}\" stock was registered");
             }, isSilent: true);
@@ -80,7 +83,7 @@ namespace ORMConsoleApp.Implementations
         {
             loggerService.RunWithExceptionLogging(() =>
             {
-                dataContext.Deals.Add(deal);
+                dataContext.Add(deal);
                 dataContext.SaveChanges();
             }, isSilent: true);
         }
@@ -116,10 +119,33 @@ namespace ORMConsoleApp.Implementations
             }, isSilent: true);            
         }  
         
-        public List<Client> GetClientsList()
+        public IQueryable<Client> GetClients()
         {
-            return dataContext.Clients.Include(c => c.Stocks).ToList();
+            return dataContext.Clients;
         }
 
+        public Deal MakeDeal(Client seller, Client purchaser, Stock stock)
+        {
+            BalanceChanged = OnBalanceChanged;
+
+            purchaser.Stocks.Add(stock);
+            purchaser.Balance -= stock.Cost;
+
+            seller.Stocks.Remove(stock);
+            seller.Balance += stock.Cost;
+
+            BalanceChanged(purchaser);
+            BalanceChanged(seller);
+
+            return new Deal() { Seller = seller, Purchaser = purchaser, SelledStock = stock, Cost = stock.Cost };
+        }
+
+
+        public void OnBalanceChanged(Client client)
+        {
+            if (client.Balance == 0) client.Area = "orange";
+            if (client.Balance < 0) client.Area = "black";
+            if (client.Balance > 0) client.Area = "green";
+        }
     }
 }

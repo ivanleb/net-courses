@@ -1,17 +1,21 @@
-﻿using System;
+﻿using ORMCore.Entities;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
 namespace ORMCore.Abstractions
 {
-    public interface IDataContext : IClientsModification<IClient>, IStockModification<IStock>, IDealMofication<IDeal> 
+    public interface IDataContext : 
+        ICollectionModification<Client>, 
+        ICollectionModification<Deal>, 
+        ICollectionModification<Stock>
     {
-        IQueryable<IClient> Clients { get; }
+        IQueryable<Client> Clients { get; }
 
-        IQueryable<IStock> Stocks { get; }
+        IQueryable<Stock> Stocks { get; }
 
-        IQueryable<IDeal> Deals { get; }
+        IQueryable<Deal> Deals { get; }
 
         void SaveChanges();
     }

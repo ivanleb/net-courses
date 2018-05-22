@@ -4,9 +4,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace ORMConsoleApp.Implementations
+namespace ORMCore.Entities
 {
-    public class Client //: IClient
+    public class Client
     {
         public int Id { get; set; }
 
