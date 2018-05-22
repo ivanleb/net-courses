@@ -46,11 +46,14 @@ namespace SESimulatorConsoleApp
                     loggerService.Info(client.ToString());
                 }
 
-                input.OnUserInputRecieved += (sender, keyInfo) => { if (keyInfo == ConsoleKey.D1) stockExchange.IsContinue = false; };
+                input.OnUserInputRecieved += (sender, keyInfo) => { if (keyInfo == ConsoleKey.Q) stockExchange.IsContinue = false; };
 
                 loggerService.Warning("Opening the stock exchange.");
                 loggerService.RunWithExceptionLogging(() => {
-                    stockExchange.Run((IDealInfo dealInfo) => { loggerService.Info($"{dealInfo.Seller} have sold {dealInfo.Stock} to  {dealInfo.Buyer} for {dealInfo.Amount}."); });
+                    Task.Run(() =>
+                    {
+                        stockExchange.Run((IDealInfo dealInfo) => { loggerService.Info($"{dealInfo.Seller} have sold {dealInfo.Stock} to  {dealInfo.Buyer} for {dealInfo.Amount}."); });
+                    });
                 }, isSilent: false);
 
                 input.ListenToUser();
