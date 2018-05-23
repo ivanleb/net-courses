@@ -10,20 +10,16 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Data.Entity;
 using SESimulator.Extentions;
+using StructureMap;
+using StructureMap.Pipeline;
 
 namespace SESimulatorConsoleApp
 {
-    class Program
+    public class AlphaService
     {
-        static void Main(string[] args)
+
+        public void Run()
         {
-            
-            XmlConfigurator.Configure();
-            var logger = LogManager.GetLogger("SampleTextLogger");
-            var loggerService = new LoggerService(logger);
-
-            IUserInput input = new ConsoleUserInput(ConsoleKey.Escape);
-
             using (var dbContext = new MyDbContext("Data Source=.;Initial Catalog=StockExchangeDB;Integrated Security=True"))
             {
                 var bussinesService = new BussinesService(dbContext);
@@ -31,20 +27,6 @@ namespace SESimulatorConsoleApp
                 Database.SetInitializer(new EfInitializer(bussinesService));
 
                 var stockExchange = new SimpleStockExchange(bussinesService);
-
-                loggerService.RunWithExceptionLogging(() =>
-                {
-                    bussinesService.RegisterNewStockToClient("NoNameCompany", bussinesService.GetAllClients().GetRandom());
-                }, isSilent: true);
-
-                loggerService.Warning("Changing any stock's cost.");
-                bussinesService.ChangeStockCost("Telegram", bussinesService.GetStockCost("Telegram")+100);
-
-                loggerService.Warning("All registered clients:\n");
-                foreach(var client in bussinesService.GetAllClients())
-                {
-                    loggerService.Info(client.ToString());
-                }
 
                 input.OnUserInputRecieved += (sender, keyInfo) => { if (keyInfo == ConsoleKey.Q) stockExchange.IsContinue = false; };
 
@@ -58,6 +40,22 @@ namespace SESimulatorConsoleApp
 
                 input.ListenToUser();
             }
+        }
+    }
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Container container = new Container(_ => {
+                _.For<IUserInput>().Use<ConsoleUserInput>();
+            });
+            XmlConfigurator.Configure();
+            var logger = LogManager.GetLogger("SampleTextLogger");
+            var loggerService = new LoggerService(logger);
+
+            IUserInput input = container.GetInstance<IUserInput>(new ExplicitArguments(new Dictionary<string, object> { ["keyToStopListening"] = ConsoleKey.Escape }));// new ConsoleUserInput(ConsoleKey.Escape);
+
+            
         }
     }
 }

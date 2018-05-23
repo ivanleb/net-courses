@@ -10,7 +10,7 @@ namespace SESimulatorConsoleApp.Implementations
 {
     class LoggerService : ILoggerService
     {
-        private ILog logger;
+        private readonly ILog logger;
 
         public LoggerService(ILog logger)
         {
