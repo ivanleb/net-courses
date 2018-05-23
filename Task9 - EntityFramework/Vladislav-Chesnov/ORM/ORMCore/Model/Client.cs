@@ -25,15 +25,7 @@ namespace ORMCore.Model
 
         public decimal Balance { get; set; }
 
-        public Zone ClientZone
-        {
-            get
-            {
-                if (Balance == 0) return Zone.Orange;
-                if (Balance < 0) return Zone.Black;
-                return Zone.Green;
-            }
-        }
+        public Zone ClientZone { get; set; } = Zone.Green;
 
         public ICollection<Stock> ClientStocks { get; set; } = new List<Stock>();
 

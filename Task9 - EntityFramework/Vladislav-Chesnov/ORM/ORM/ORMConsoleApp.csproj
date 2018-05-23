@@ -53,6 +53,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BaseDbContext.cs" />
+    <Compile Include="Implementations\EfInitializer.cs" />
     <Compile Include="Implementations\RandomExtension.cs" />
     <Compile Include="Implementations\TPTUserDbContext.cs" />
     <Compile Include="Implementations\TradingSimulator.cs" />

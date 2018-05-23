@@ -58,7 +58,7 @@
     <Compile Include="Model\IDataContext.cs" />
     <Compile Include="Model\Stock.cs" />
     <Compile Include="Model\StockType.cs" />
-    <Compile Include="ProgrammLogic.cs" />
+    <Compile Include="BuisnessService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup />

@@ -7,11 +7,11 @@ using ORMCore.Model;
 
 namespace ORMCore
 {
-    public class ProgrammLogic
+    public class BuisnessService
     {
         private IDataContext dataContext;
 
-        public ProgrammLogic(IDataContext dataContext)
+        public BuisnessService(IDataContext dataContext)
         {
             this.dataContext = dataContext;
         }
@@ -64,6 +64,8 @@ namespace ORMCore
             seller.Balance += stock.Type.Cost;
             buyer.ClientStocks.Add(stock);
             buyer.Balance -= stock.Type.Cost;
+            if (buyer.Balance == 0) buyer.ClientZone = Zone.Orange;
+            if (buyer.Balance < 0) buyer.ClientZone = Zone.Black;
             dataContext.SaveChanges();            
         }
 
@@ -73,6 +75,8 @@ namespace ORMCore
             deal.Seller.Balance += deal.Stock.Type.Cost;
             deal.Buyer.ClientStocks.Add(deal.Stock);
             deal.Buyer.Balance -= deal.Stock.Type.Cost;
+            if (deal.Buyer.Balance == 0) deal.Buyer.ClientZone = Zone.Orange;
+            if (deal.Buyer.Balance < 0) deal.Buyer.ClientZone = Zone.Black;
             dataContext.Add(deal);
             dataContext.SaveChanges();
         }

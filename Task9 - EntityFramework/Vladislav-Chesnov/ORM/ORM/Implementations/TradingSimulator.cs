@@ -15,26 +15,59 @@ namespace ORM.Implementations
     {
         private readonly ILoggerService loggerService;
 
+        private readonly string connectionString;
 
-        public TradingSimulator(ILoggerService loggerService)
+        public TradingSimulator(ILoggerService loggerService, string connectionString)
         {
             this.loggerService = loggerService;
-
+            this.connectionString = connectionString;
         }
 
         public bool IsContinue { get; set; }
 
+        public void FillDbWithData()
+        {
+            using (var dbContext = new TPTUserDbContext(connectionString))
+            {
+                var buisnessService = new BuisnessService(dbContext);
+
+                loggerService.Info("registering new clients");
+                buisnessService.AddNewClient("Benzoline", "Cucumbersnatch", "89215135213", 1000);
+                buisnessService.AddNewClient("John", "Smith", "85123163241", 500);
+                buisnessService.AddNewClient("Lucifer", "Betrayer", "86669341246", 1500);
+                buisnessService.AddNewClient("Viktor", "Chestinov", "89712351783", 2000);
+                buisnessService.AddNewClient("Gennadiy", "Ikarov", "86123651231", 1700);
+                buisnessService.AddNewClient("Valentina", "Pristavko", "+71426123612", 1200);
+                buisnessService.AddNewClient("The God-Emperor", "Of Mankind", "+71426123612", 5000);
+                buisnessService.AddNewClient("Patrissia", "Bublegum", "+71426123612", 100);
+
+                loggerService.Info("Registering new stock types");
+                buisnessService.AddNewStockType("Rosal", 100);
+                buisnessService.AddNewStockType("Nestle", 200);
+                buisnessService.AddNewStockType("Tesla", 60);
+                buisnessService.AddNewStockType("Blackguard", 50);
+                buisnessService.AddNewStockType("Epic Games", 70);
+                buisnessService.AddNewStockType("Sven", 53);
+                buisnessService.AddNewStockType("Pioneer", 25);
+
+                loggerService.Info("adding stocks to clients");
+                for (int i = 0; i < 100; i++)
+                {
+                    buisnessService.AddStockToClient(buisnessService.GetStockTypes().GetRandom().Name, buisnessService.GetAllClients().GetRandom());
+                }
+            }
+        }
+
         public void Run()
         {
             IsContinue = true;
-            using (var dbContext = new TPTUserDbContext("Server=tcp:chesnov.database.windows.net,1433;Initial Catalog=Task9Chesnov;Persist Security Info=False;User ID=;Password==;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;"))
+            using (var dbContext = new TPTUserDbContext(connectionString))
             {
-                var programmLogic = new ProgrammLogic(dbContext);
+                var buisnessService = new BuisnessService(dbContext);
 
-                var stockTypes = programmLogic.GetStockTypes().ToList();
-
+                var stockTypes = buisnessService.GetStockTypes().ToList();
                 loggerService.Info("Printing info about all clients");
-                foreach (var client in programmLogic.GetAllClients())
+                foreach (var client in buisnessService.GetAllClients())
                 {
                     loggerService.Info(client.ToString());
                 }
@@ -46,8 +79,8 @@ namespace ORM.Implementations
 
                 while (IsContinue)
                 {
-                    var buyer = programmLogic.GetAllClients().Where(b => b.Balance > 0).GetRandom();
-                    var seller = programmLogic.GetAllClients().Where(c => c.Id != buyer.Id).Where(c=>c.ClientStocksForSale.Count>0).GetRandom();
+                    var buyer = buisnessService.GetAllClients().Where(b => b.Balance > 0).GetRandom();
+                    var seller = buisnessService.GetAllClients().Where(c => c.Id != buyer.Id).Where(c=>c.ClientStocksForSale.Count>0).GetRandom();
                     var stock = seller.ClientStocksForSale.GetRandom();
                     var sum = stock.Type.Cost;
                     Deal newDeal = new Deal
@@ -58,7 +91,7 @@ namespace ORM.Implementations
                         Sum = sum
                     };
                     loggerService.Info($"Deal begins. Buyer is - {buyer.Name} {buyer.Surname}, balance: {buyer.Balance}, seller - {seller.Name} {seller.Surname}, balance: {seller.Balance}\nbuyer buys and seller sells stock of {stock.Type.Name} company for the {stock.Type.Cost}$");
-                    programmLogic.NewDeal(newDeal);
+                    buisnessService.NewDeal(newDeal);
                     if (buyer.ClientZone == Zone.Orange) loggerService.Warn("Attention! Client's balance is 0. Client's ability to buy stocks is suspended");
                     if (buyer.ClientZone == Zone.Black) loggerService.Warn("Attention! Client's balance below 0. Client's ability to buy stocks is suspended");
                     loggerService.Info($"Deal concluded. {buyer.Name}'s(buyer) balance now - {buyer.Balance}, {seller.Name}'s (seller) balance now - {seller.Balance}\n");

@@ -13,12 +13,13 @@ namespace ORM.Implementations
     {
         public TPTUserDbContext(string connectionString): base(connectionString)
         {
-
+            Database.SetInitializer<TPTUserDbContext>(new EfInitializer());
         }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
         }
+
     }
 }
