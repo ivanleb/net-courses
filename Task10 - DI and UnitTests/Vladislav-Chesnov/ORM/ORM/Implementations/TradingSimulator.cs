@@ -36,7 +36,6 @@ namespace ORM.Implementations
                     _.For<IBuisnessService>().Use<BuisnessService>().Ctor<IModelRepository>().Is(dbContext);
                 });
                 var buisnessService = container.GetInstance<BuisnessService>();
-                //var buisnessService = new BuisnessService(dbContext);
 
                 loggerService.Info("registering new clients");
                 buisnessService.AddNewClient("Benzoline", "Cucumbersnatch", "89215135213", 1000);
