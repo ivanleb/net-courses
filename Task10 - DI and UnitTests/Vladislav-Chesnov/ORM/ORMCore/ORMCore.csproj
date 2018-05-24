@@ -55,8 +55,9 @@
     <Compile Include="Abstractions\IBuisnessService.cs" />
     <Compile Include="Model\Client.cs" />
     <Compile Include="Model\Deal.cs" />
-    <Compile Include="Model\ICollectionModification.cs" />
-    <Compile Include="Model\IDataContext.cs" />
+    <Compile Include="Model\IClient.cs" />
+    <Compile Include="Repositories\IDataContextRepository.cs" />
+    <Compile Include="Repositories\ICollectionModification.cs" />
     <Compile Include="Model\Stock.cs" />
     <Compile Include="Model\StockType.cs" />
     <Compile Include="BuisnessService.cs" />

@@ -11,6 +11,9 @@ namespace ORMCore.Abstractions
     public interface ITradingSimulator
     {
         bool IsContinue { get; set; }
-        void Run(Action<Deal> onDealDone);
+
+        void FillDbWithData();
+        void Run();
+        void StopSequence(object sender, CommandEventArgs eventArgs);
     }
 }
