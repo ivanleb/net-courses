@@ -37,7 +37,7 @@ namespace SESimulator.Core
 
         public void RegisterNewStockToClient(string stockType, Client client, bool canBeSold = true)
         {
-            var stockTypeItem = dataContext.StockTypes.Single(_ => _.Name == stockType);
+            var stockTypeItem = dataContext.StockTypes.Single(st => st.Name == stockType);
             var newStock = new Stock()
             {
                 Type = stockTypeItem,
@@ -53,7 +53,10 @@ namespace SESimulator.Core
             {
                 throw new ArgumentException("The stock is not allowed to be selled.", "stock");
             }
-            seller.Stocks.Remove(stock);
+            if (!seller.Stocks.Remove(stock))
+            {
+                throw new ArgumentException("The stock does not belong to the seller.", "stock, seller");
+            }
             buyer.Stocks.Add(stock);
             seller.Balance += cost;
             seller.Zone = GetZone(seller.Balance);

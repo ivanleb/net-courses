@@ -20,27 +20,7 @@ namespace SESimulatorConsoleApp
 
         public void Run()
         {
-            using (var dbContext = new MyDbContext("Data Source=.;Initial Catalog=StockExchangeDB;Integrated Security=True"))
-            {
-                var bussinesService = new BussinesService(dbContext);
-
-                Database.SetInitializer(new EfInitializer(bussinesService));
-
-                var stockExchange = new SimpleStockExchange(bussinesService);
-
-                input.OnUserInputRecieved += (sender, keyInfo) => { if (keyInfo == ConsoleKey.Q) stockExchange.IsContinue = false; };
-
-                loggerService.Warning("Opening the stock exchange.");
-                loggerService.RunWithExceptionLogging(() => {
-                    Task.Run(() =>
-                    {
-                        stockExchange.Run((IDealInfo dealInfo) => { loggerService.Info($"{dealInfo.Seller} have sold {dealInfo.Stock} to  {dealInfo.Buyer} for {dealInfo.Amount}."); });
-                    });
-                }, isSilent: false);
-
-                input.ListenToUser();
-            }
-        }
+            
     }
     class Program
     {
@@ -54,8 +34,28 @@ namespace SESimulatorConsoleApp
             var loggerService = new LoggerService(logger);
 
             IUserInput input = container.GetInstance<IUserInput>(new ExplicitArguments(new Dictionary<string, object> { ["keyToStopListening"] = ConsoleKey.Escape }));// new ConsoleUserInput(ConsoleKey.Escape);
+                using (var dbContext = new MyDbContext("Data Source=.;Initial Catalog=StockExchangeDB;Integrated Security=True"))
+                {
+                    var bussinesService = new BussinesService(dbContext);
 
-            
+                    Database.SetInitializer(new EfInitializer(bussinesService));
+
+                    var stockExchange = new SimpleStockExchange(bussinesService);
+
+                    input.OnUserInputRecieved += (sender, keyInfo) => { if (keyInfo == ConsoleKey.Q) stockExchange.IsContinue = false; };
+
+                    loggerService.Warning("Opening the stock exchange.");
+                    loggerService.RunWithExceptionLogging(() => {
+                        Task.Run(() =>
+                        {
+                            stockExchange.Run((IDealInfo dealInfo) => { loggerService.Info($"{dealInfo.Seller} have sold {dealInfo.Stock} to  {dealInfo.Buyer} for {dealInfo.Amount}."); });
+                        });
+                    }, isSilent: false);
+
+                    input.ListenToUser();
+                }
+            }
+
         }
     }
 }

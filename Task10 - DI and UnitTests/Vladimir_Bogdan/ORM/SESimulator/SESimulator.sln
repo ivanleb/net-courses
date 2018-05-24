@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SESimulatorCore", "SESimula
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SESimulatorConsoleApp", "SESimulatorConsoleApp\SESimulatorConsoleApp.csproj", "{44172EC2-B3DC-4D24-A715-6D08F2B2D625}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SESimulatorCore.Tests", "SESimulatorCore.Tests\SESimulatorCore.Tests.csproj", "{CC76FB2A-CCFE-4C24-A5B3-27A234CDD136}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{44172EC2-B3DC-4D24-A715-6D08F2B2D625}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{44172EC2-B3DC-4D24-A715-6D08F2B2D625}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{44172EC2-B3DC-4D24-A715-6D08F2B2D625}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CC76FB2A-CCFE-4C24-A5B3-27A234CDD136}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CC76FB2A-CCFE-4C24-A5B3-27A234CDD136}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CC76FB2A-CCFE-4C24-A5B3-27A234CDD136}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CC76FB2A-CCFE-4C24-A5B3-27A234CDD136}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
