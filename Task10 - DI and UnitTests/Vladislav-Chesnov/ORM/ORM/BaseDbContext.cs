@@ -10,20 +10,20 @@ using ORMCore.Repositories;
 
 namespace ORM
 {
-    class BaseDbContext: DbContext, IDataContextRepository
+    class BaseDbContext: DbContext, IModelRepository
     {
         public DbSet<Client> Clients { get; set; }
         public DbSet<Stock> Stocks { get; set; }
         public DbSet<StockType> StockTypes { get; set; }
         public DbSet<Deal> Deals { get; set; }
 
-        IQueryable<Client> IDataContextRepository.Clients => Clients.Include(s => s.ClientStocks);
+        IQueryable<Client> IModelRepository.Clients => Clients.Include(s => s.ClientStocks);
 
-        IQueryable<Stock> IDataContextRepository.Stocks => Stocks.Include(st => st.Type);
+        IQueryable<Stock> IModelRepository.Stocks => Stocks.Include(st => st.Type);
 
-        IQueryable<StockType> IDataContextRepository.StockTypes => StockTypes;
+        IQueryable<StockType> IModelRepository.StockTypes => StockTypes;
 
-        IQueryable<Deal> IDataContextRepository.Deals => Deals;
+        IQueryable<Deal> IModelRepository.Deals => Deals;
 
         public void Add(Client entity) => Clients.Add(entity);
 
@@ -72,7 +72,7 @@ namespace ORM
 
         public void Remove(Deal entity) => Deals.Remove(entity);
 
-        void IDataContextRepository.SaveChanges()
+        void IModelRepository.SaveChanges()
         {
             this.SaveChanges();
         }

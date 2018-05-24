@@ -11,9 +11,9 @@ namespace ORMCore
 {
     public class BuisnessService : IBuisnessService
     {
-        private IDataContextRepository dataContext;
+        private IModelRepository dataContext;
 
-        public BuisnessService(IDataContextRepository dataContext)
+        public BuisnessService(IModelRepository dataContext)
         {
             this.dataContext = dataContext;
         }

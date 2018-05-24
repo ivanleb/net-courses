@@ -13,7 +13,7 @@ namespace ORMCore.Model
         Black
     }
 
-    public class Client : IClient
+    public class Client
     {
         public int Id { get; set; }
 

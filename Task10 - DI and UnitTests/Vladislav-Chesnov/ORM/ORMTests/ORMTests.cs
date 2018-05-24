@@ -10,14 +10,14 @@ namespace ORMTests
     [TestClass]
     public class ORMTests
     {
-        IDataContextRepository dataContextRepository;
+        IModelRepository dataContextRepository;
 
         BuisnessService buisnessService;
 
         [TestInitialize]
         public void TestSetup()
         {
-            this.dataContextRepository = Substitute.For<IDataContextRepository>();
+            this.dataContextRepository = Substitute.For<IModelRepository>();
 
             this.buisnessService = new BuisnessService(dataContextRepository);
         }

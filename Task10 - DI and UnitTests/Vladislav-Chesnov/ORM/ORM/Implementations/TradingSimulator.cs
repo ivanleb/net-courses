@@ -33,7 +33,7 @@ namespace ORM.Implementations
             {
                 Container container = new Container(_ =>
                 {
-                    _.For<IBuisnessService>().Use<BuisnessService>().Ctor<IDataContextRepository>().Is(dbContext);
+                    _.For<IBuisnessService>().Use<BuisnessService>().Ctor<IModelRepository>().Is(dbContext);
                 });
                 var buisnessService = container.GetInstance<BuisnessService>();
                 //var buisnessService = new BuisnessService(dbContext);

@@ -7,7 +7,7 @@ using ORMCore.Model;
 
 namespace ORMCore.Repositories
 {
-    public interface IDataContextRepository :
+    public interface IModelRepository :
         ICollectionModification<Client>,
         ICollectionModification<Stock>,
         ICollectionModification<StockType>,
