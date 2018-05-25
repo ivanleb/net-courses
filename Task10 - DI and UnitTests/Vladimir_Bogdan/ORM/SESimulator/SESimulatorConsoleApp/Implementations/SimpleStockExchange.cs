@@ -8,7 +8,7 @@ namespace SESimulatorConsoleApp.Implementations
 {
     class SimpleStockExchange : StockExchange
     {
-        private BussinesService bussinesService;
+        private readonly BussinesService bussinesService;
         public event EventHandler<IDealInfo> OnDealConcluded;
 
         public SimpleStockExchange(BussinesService bussinesService)

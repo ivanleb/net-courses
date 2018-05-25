@@ -90,7 +90,7 @@ namespace SESimulatorCore.Tests
         public void CanRegisterStock()
         {
             Client testClient = new Client() { Stocks = new HashSet<Stock>()};
-            this.bussinesService.RegisterNewStockToClient("NewValidStockType", testClient);
+            this.bussinesService.RegisterNewStockToClient("StockType", testClient);
         }
 
         [TestCleanup]

@@ -15,6 +15,8 @@ namespace SESimulator.Logging
         void Info(string message);
 
         void Error(Exception ex);
+
+        void Warning(string message);
     }
 }
 

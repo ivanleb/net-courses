@@ -12,6 +12,7 @@ using System.Data.Entity;
 using SESimulator.Extentions;
 using StructureMap;
 using StructureMap.Pipeline;
+using SESimulator.Logging;
 
 namespace SESimulatorConsoleApp
 {
@@ -20,40 +21,44 @@ namespace SESimulatorConsoleApp
 
         public void Run()
         {
-            
-    }
-    class Program
-    {
-        static void Main(string[] args)
+
+        }
+        class Program
         {
-            Container container = new Container(_ => {
-                _.For<IUserInput>().Use<ConsoleUserInput>();
-            });
-            XmlConfigurator.Configure();
-            var logger = LogManager.GetLogger("SampleTextLogger");
-            var loggerService = new LoggerService(logger);
+            static void Main(string[] args)
+            {
+                XmlConfigurator.Configure();
 
-            IUserInput input = container.GetInstance<IUserInput>(new ExplicitArguments(new Dictionary<string, object> { ["keyToStopListening"] = ConsoleKey.Escape }));// new ConsoleUserInput(ConsoleKey.Escape);
-                using (var dbContext = new MyDbContext("Data Source=.;Initial Catalog=StockExchangeDB;Integrated Security=True"))
+                Container container = new Container(_ =>
                 {
-                    var bussinesService = new BussinesService(dbContext);
+                    _.For<IUserInput>().Use<ConsoleUserInput>().Ctor<ConsoleKey>().Is(ConsoleKey.Escape);
+                    _.For<ILoggerService>().Use<LoggerService>().Singleton().Ctor<ILog>().Is(LogManager.GetLogger("SampleTextLogger"));
+                    _.For<IStockExchange>().Use<SimpleStockExchange>();
+                    _.For<BussinesService>().Use<BussinesService>();
+                    _.For<IDataContext>().Use<MyDbContext>().Singleton().Ctor<string>().Is("Data Source=.;Initial Catalog=StockExchangeDB;Integrated Security=True");
+                });
 
-                    Database.SetInitializer(new EfInitializer(bussinesService));
+                var loggerService = container.GetInstance<ILoggerService>();
 
-                    var stockExchange = new SimpleStockExchange(bussinesService);
+                IUserInput input = container.GetInstance<IUserInput>();
 
-                    input.OnUserInputRecieved += (sender, keyInfo) => { if (keyInfo == ConsoleKey.Q) stockExchange.IsContinue = false; };
+                var stockExchange = container.GetInstance<IStockExchange>();
 
-                    loggerService.Warning("Opening the stock exchange.");
-                    loggerService.RunWithExceptionLogging(() => {
-                        Task.Run(() =>
-                        {
-                            stockExchange.Run((IDealInfo dealInfo) => { loggerService.Info($"{dealInfo.Seller} have sold {dealInfo.Stock} to  {dealInfo.Buyer} for {dealInfo.Amount}."); });
-                        });
-                    }, isSilent: false);
+                Database.SetInitializer(new EfInitializer(container.GetInstance<BussinesService>()));
 
-                    input.ListenToUser();
-                }
+                input.OnUserInputRecieved += (sender, keyInfo) => { if (keyInfo == ConsoleKey.Q) stockExchange.IsContinue = false; };
+
+                loggerService.Warning("Opening the stock exchange.");
+
+                loggerService.RunWithExceptionLogging(() =>
+                {
+                    Task.Run(() =>
+                    {
+                        stockExchange.Run((IDealInfo dealInfo) => { loggerService.Info($"{dealInfo.Seller} have sold {dealInfo.Stock} to  {dealInfo.Buyer} for {dealInfo.Amount}."); });
+                    });
+                }, isSilent: false);
+
+                input.ListenToUser();
             }
 
         }
