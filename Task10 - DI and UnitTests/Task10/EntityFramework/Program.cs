@@ -17,46 +17,49 @@ namespace EntityFramework
     {
         static void Main(string[] args)
         {
-            using (var dbContext = new TPTContext("Data Source=.;Initial Catalog=TablePerTypeExampleDb2;Integrated Security=True"))
-            {
-                var bussinesService = new BussinesService(dbContext);
 
-                XmlConfigurator.Configure();
+            XmlConfigurator.Configure();
 
-                var logger = LogManager.GetLogger("SampleTextLogger");
-
-                //var loggerService = new LoggerService(logger);
-                Container container = new Container((c) =>
-                {
-                    c.For<EntityFramework.Interfaces.ILoggable>().Use<LoggerService>().Ctor<ILog>().Is(logger);
-                });
-                
-                var isContinue = true;
-                
-                Task.Run(() =>
-                {
-                    var loggerService = container.GetInstance<EntityFramework.Interfaces.ILoggable>();
-
-                    while(isContinue)
-                    {
-                        RunEmitation(bussinesService, loggerService);
-                        Thread.Sleep(1000);
-                    }
-                });
-                Console.ReadKey();
-                isContinue = false;
-
-                var shareholders = bussinesService.GetShareholdersWithZeroBalance();
-
-                if (shareholders.Count() < 1)
-                    Console.WriteLine("No shareholders with zero balance");
-                else
-                    foreach (var shareholder in shareholders)
-                    {
-                        Console.WriteLine($"id: {shareholder.Id}| balance: 0.00");
-                    }
-            }
+            var logger = LogManager.GetLogger("SampleTextLogger");
             
+
+
+
+            //var loggerService = new LoggerService(logger);
+            Container container = new Container((c) =>
+            {
+                c.For<IDataContext>().Use<TPTContext>().Ctor<string>().Is("Data Source=.;Initial Catalog=TablePerTypeExampleDb2;Integrated Security=True");
+                c.For<EntityFramework.Interfaces.ILoggable>().Singleton().Use<LoggerService>().Ctor<ILog>().Is(logger);
+            });
+
+            var bussinesService = new BussinesService(container.GetInstance<TPTContext>());
+
+            var isContinue = true;
+
+            Task.Run(() =>
+            {
+                var loggerService = container.GetInstance<EntityFramework.Interfaces.ILoggable>();
+
+                while (isContinue)
+                {
+                    RunEmitation(bussinesService, loggerService);
+                    Thread.Sleep(1000);
+                }
+            });
+            Console.ReadKey();
+            isContinue = false;
+
+            var shareholders = bussinesService.GetShareholdersWithZeroBalance();
+
+            if (shareholders.Count() < 1)
+                Console.WriteLine("No shareholders with zero balance");
+            else
+                foreach (var shareholder in shareholders)
+                {
+                    Console.WriteLine($"id: {shareholder.Id}| balance: 0.00");
+                }
+
+
             Console.WriteLine("Table Per Type Done");
             Console.ReadLine();
         }

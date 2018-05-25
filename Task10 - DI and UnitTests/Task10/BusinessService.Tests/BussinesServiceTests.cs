@@ -22,7 +22,7 @@ namespace BussinesService.Tests
         }
 
         [TestMethod]
-        public void RegisterNewShareholderWithStartingBalance()
+        public void Should_RegisterNewShareholderWithStartingBalance()
         {
             this.bussinesService.RegisterNewShareholderWithStartingBalance(new Shareholder
             {
@@ -40,7 +40,7 @@ namespace BussinesService.Tests
         }
 
         [TestMethod]
-        public void RegisterNewBalance()
+        public void Should_RegisterNewBalance()
         {
             this.bussinesService.RegisterNewBalance(
                 shareholderId: 1,
@@ -48,7 +48,7 @@ namespace BussinesService.Tests
                 secondType: 1,
                 thirdType: 1,
                 balanceValue: 1,
-                balanceZone: "any");
+                balanceZone: "low");
 
             NSubstitute.Received.InOrder(() =>
             {
@@ -58,7 +58,7 @@ namespace BussinesService.Tests
         }
 
         [TestMethod]
-        public void GetMostWantedShareholdersById()
+        public void Should_GetMostWantedShareholdersById()
         {
             var shareholder = new Shareholder { Id = 1 };
 
@@ -77,7 +77,7 @@ namespace BussinesService.Tests
         }
 
         [TestMethod]
-        public void RegisterNewTrade()
+        public void Should_RegisterNewTradeAndChangeBalancesOfShareholders()
         {
             var shareholder = new Shareholder
             {
@@ -154,7 +154,7 @@ namespace BussinesService.Tests
         }
 
         [TestMethod]
-        public void GetShareholdersWithZeroBalance()
+        public void Should_GetShareholdersWithZeroBalance()
         {
             var shareholders = new List<Shareholder>()
             {
@@ -182,7 +182,7 @@ namespace BussinesService.Tests
         }
 
         [TestMethod]
-        public void PreparationsForUpdatingBalances()
+        public void Should_CompletePreparationChangesBeforeSavingTrading()
         {
             #region shareholders
             var shareholder = new Shareholder
@@ -262,6 +262,7 @@ namespace BussinesService.Tests
                     Value = 1
                 });
             }
+
             //FirstType = 15, SecondType = 30, ThirdType = 300
             //balance start 1000
             //shares 1
@@ -279,20 +280,6 @@ namespace BussinesService.Tests
             Assert.AreEqual(1000 - (int)SharesTypes.FirstType - (int)SharesTypes.SecondType - (int)SharesTypes.ThirdType, buyerBalance.BalanceValue);
 
             //cheking zones
-            //if (buyerBalance.BalanceValue < 20000)
-            //    buyerBalance.BalanceZone = "high";
-
-            //if (buyerBalance.BalanceValue < 10000)
-            //    buyerBalance.BalanceZone = "middle";
-
-            //if (buyerBalance.BalanceValue < 5000)
-            //    buyerBalance.BalanceZone = "low";
-
-            //if (buyerBalance.BalanceValue == 0)
-            //    buyerBalance.BalanceZone = "Orange Zone!";
-
-            //if (buyerBalance.BalanceValue < 0)
-            //    buyerBalance.BalanceZone = "Black Zone!";
             #region fromUpToDawn
             #region high/black
             shareholderBalance.BalanceValue = -30000;
@@ -382,6 +369,443 @@ namespace BussinesService.Tests
 
             #region low/black
             countOfShares = 15;
+
+            this.bussinesService.PreparationsForUpdatingBalances(
+                shareholderBalance,
+                buyerBalance,
+                SharesTypes.ThirdType,
+                new Trade
+                {
+                    Id = 1,
+                    ShareholderId = 2,
+                    BuyerId = 1,
+                    Value = countOfShares,
+                    ValueType = SharesTypes.ThirdType
+                });
+
+            Assert.AreEqual("low", shareholderBalance.BalanceZone);
+            Assert.AreEqual("Black Zone!", buyerBalance.BalanceZone);
+            #endregion
+
+            #region middle/black
+            countOfShares = 15;
+
+            this.bussinesService.PreparationsForUpdatingBalances(
+                shareholderBalance,
+                buyerBalance,
+                SharesTypes.ThirdType,
+                new Trade
+                {
+                    Id = 1,
+                    ShareholderId = 2,
+                    BuyerId = 1,
+                    Value = countOfShares,
+                    ValueType = SharesTypes.ThirdType
+                });
+
+            Assert.AreEqual("middle", shareholderBalance.BalanceZone);
+            Assert.AreEqual("Black Zone!", buyerBalance.BalanceZone);
+            #endregion
+
+            #region high/black
+            countOfShares = 30;
+
+            this.bussinesService.PreparationsForUpdatingBalances(
+                shareholderBalance,
+                buyerBalance,
+                SharesTypes.ThirdType,
+                new Trade
+                {
+                    Id = 1,
+                    ShareholderId = 2,
+                    BuyerId = 1,
+                    Value = countOfShares,
+                    ValueType = SharesTypes.ThirdType
+                });
+
+            Assert.AreEqual("high", shareholderBalance.BalanceZone);
+            Assert.AreEqual("Black Zone!", buyerBalance.BalanceZone);
+            #endregion
+
+            #region insane/black
+            countOfShares = 40;
+
+            this.bussinesService.PreparationsForUpdatingBalances(
+                shareholderBalance,
+                buyerBalance,
+                SharesTypes.ThirdType,
+                new Trade
+                {
+                    Id = 1,
+                    ShareholderId = 2,
+                    BuyerId = 1,
+                    Value = countOfShares,
+                    ValueType = SharesTypes.ThirdType
+                });
+
+            Assert.AreEqual("insane", shareholderBalance.BalanceZone);
+            Assert.AreEqual("Black Zone!", buyerBalance.BalanceZone);
+            #endregion
+
+            #endregion
+        }
+
+        [TestMethod]
+        public void Should_ChangingBalanceValues()
+        {
+            #region shareholders
+            var shareholder = new Shareholder
+            {
+                Id = 1,
+                FirstName = "FirstName",
+                LastName = "LastName",
+                PhoneNumber = "777111777"
+            };
+
+            var buyer = new Shareholder
+            {
+                Id = 2,
+                FirstName = "FirstName",
+                LastName = "LastName",
+                PhoneNumber = "777111777"
+            };
+
+            var shareholders = new List<Shareholder>()
+            {
+                shareholder,
+                buyer,
+            }.AsQueryable();
+
+            this.dataContext.Shareholders.Returns(shareholders);
+            #endregion
+            #region balances
+            var shareholderBalance = new Balance
+            {
+                Id = shareholder.Id,
+                FirstType = 1,
+                SecondType = 1,
+                ThirdType = 1,
+                BalanceValue = 1000
+            };
+
+            var buyerBalance = new Balance
+            {
+                Id = buyer.Id,
+                FirstType = 1,
+                SecondType = 1,
+                ThirdType = 1,
+                BalanceValue = 1000
+            };
+
+            var balances = new List<Balance>()
+            {
+                shareholderBalance,
+                buyerBalance
+            }.AsQueryable();
+
+            this.dataContext.Balances.Returns(balances);
+            #endregion
+            var trade = new Trade
+            {
+                Id = 1,
+                BuyerId = 1,
+                ShareholderId = 2,
+                Value = 1,
+                ValueType = SharesTypes.FirstType
+            };
+
+            var sharesTypes = new List<SharesTypes>()
+            {
+                SharesTypes.FirstType,
+                SharesTypes.SecondType,
+                SharesTypes.ThirdType
+            };
+
+            foreach (var type in sharesTypes)
+            {
+                this.bussinesService.PreparationsForUpdatingBalances(shareholderBalance, buyerBalance, type, new Trade
+                {
+                    ShareholderId = shareholder.Id,
+                    BuyerId = buyer.Id,
+                    ValueType = type,
+                    Value = 1
+                });
+            }
+
+            //FirstType = 15, SecondType = 30, ThirdType = 300
+            //balance start 1000
+            //shares 1
+            //
+            Assert.AreEqual(0, shareholderBalance.FirstType);
+            Assert.AreEqual(0, shareholderBalance.SecondType);
+            Assert.AreEqual(0, shareholderBalance.ThirdType);
+
+            Assert.AreEqual(1000 + (int)SharesTypes.FirstType + (int)SharesTypes.SecondType + (int)SharesTypes.ThirdType, shareholderBalance.BalanceValue);
+
+            Assert.AreEqual(2, buyerBalance.FirstType);
+            Assert.AreEqual(2, buyerBalance.SecondType);
+            Assert.AreEqual(2, buyerBalance.ThirdType);
+
+            Assert.AreEqual(1000 - (int)SharesTypes.FirstType - (int)SharesTypes.SecondType - (int)SharesTypes.ThirdType, buyerBalance.BalanceValue);
+        }
+
+        [TestMethod]
+        public void Should_ChangingZonesOfShareholderBalances_FromUpToDown()
+        {
+            #region shareholders
+            var shareholder = new Shareholder
+            {
+                Id = 1,
+                FirstName = "FirstName",
+                LastName = "LastName",
+                PhoneNumber = "777111777"
+            };
+
+            var buyer = new Shareholder
+            {
+                Id = 2,
+                FirstName = "FirstName",
+                LastName = "LastName",
+                PhoneNumber = "777111777"
+            };
+
+            var shareholders = new List<Shareholder>()
+            {
+                shareholder,
+                buyer,
+            }.AsQueryable();
+
+            this.dataContext.Shareholders.Returns(shareholders);
+            #endregion
+            #region balances
+            var shareholderBalance = new Balance
+            {
+                Id = shareholder.Id,
+                FirstType = 1,
+                SecondType = 1,
+                ThirdType = 1,
+                BalanceValue = 1000
+            };
+
+            var buyerBalance = new Balance
+            {
+                Id = buyer.Id,
+                FirstType = 1,
+                SecondType = 1,
+                ThirdType = 1,
+                BalanceValue = 1000
+            };
+
+            var balances = new List<Balance>()
+            {
+                shareholderBalance,
+                buyerBalance
+            }.AsQueryable();
+
+            this.dataContext.Balances.Returns(balances);
+            #endregion
+            var trade = new Trade
+            {
+                Id = 1,
+                BuyerId = 1,
+                ShareholderId = 2,
+                Value = 1,
+                ValueType = SharesTypes.FirstType
+            };
+
+            var sharesTypes = new List<SharesTypes>()
+            {
+                SharesTypes.FirstType,
+                SharesTypes.SecondType,
+                SharesTypes.ThirdType
+            };
+
+            foreach (var type in sharesTypes)
+            {
+                this.bussinesService.PreparationsForUpdatingBalances(shareholderBalance, buyerBalance, type, new Trade
+                {
+                    ShareholderId = shareholder.Id,
+                    BuyerId = buyer.Id,
+                    ValueType = type,
+                    Value = 1
+                });
+            }
+
+            //cheking zones
+            #region fromUpToDawn
+            #region high/black
+            shareholderBalance.BalanceValue = -30000;
+            buyerBalance.BalanceValue = 30000;
+            var countOfShares = 40;
+
+            this.bussinesService.PreparationsForUpdatingBalances(
+                shareholderBalance,
+                buyerBalance,
+                SharesTypes.ThirdType,
+                new Trade
+                {
+                    Id = 1,
+                    ShareholderId = 2,
+                    BuyerId = 1,
+                    Value = countOfShares,
+                    ValueType = SharesTypes.ThirdType
+                });
+
+            Assert.AreEqual("high", buyerBalance.BalanceZone);
+            Assert.AreEqual("Black Zone!", shareholderBalance.BalanceZone);
+            #endregion
+
+            #region middle/black
+            countOfShares = 30;
+
+            this.bussinesService.PreparationsForUpdatingBalances(
+                shareholderBalance,
+                buyerBalance,
+                SharesTypes.ThirdType,
+                new Trade
+                {
+                    Id = 1,
+                    ShareholderId = 2,
+                    BuyerId = 1,
+                    Value = countOfShares,
+                    ValueType = SharesTypes.ThirdType
+                });
+
+            Assert.AreEqual("middle", buyerBalance.BalanceZone);
+            Assert.AreEqual("Black Zone!", shareholderBalance.BalanceZone);
+            #endregion
+
+            #region low/black
+            countOfShares = 15;
+
+            this.bussinesService.PreparationsForUpdatingBalances(
+                shareholderBalance,
+                buyerBalance,
+                SharesTypes.ThirdType,
+                new Trade
+                {
+                    Id = 1,
+                    ShareholderId = 2,
+                    BuyerId = 1,
+                    Value = countOfShares,
+                    ValueType = SharesTypes.ThirdType
+                });
+
+            Assert.AreEqual("low", buyerBalance.BalanceZone);
+            Assert.AreEqual("Black Zone!", shareholderBalance.BalanceZone);
+            #endregion
+
+            #region orange/orange
+            countOfShares = 15;
+
+            this.bussinesService.PreparationsForUpdatingBalances(
+                shareholderBalance,
+                buyerBalance,
+                SharesTypes.ThirdType,
+                new Trade
+                {
+                    Id = 1,
+                    ShareholderId = 2,
+                    BuyerId = 1,
+                    Value = countOfShares,
+                    ValueType = SharesTypes.ThirdType
+                });
+
+            Assert.AreEqual("Orange Zone!", buyerBalance.BalanceZone);
+            Assert.AreEqual("Orange Zone!", shareholderBalance.BalanceZone);
+            #endregion
+
+            #endregion
+        }
+
+        [TestMethod]
+        public void Should_ChangingZonesOfShareholderBalances_FromDawnToUp()
+        {
+            #region shareholders
+            var shareholder = new Shareholder
+            {
+                Id = 1,
+                FirstName = "FirstName",
+                LastName = "LastName",
+                PhoneNumber = "777111777"
+            };
+
+            var buyer = new Shareholder
+            {
+                Id = 2,
+                FirstName = "FirstName",
+                LastName = "LastName",
+                PhoneNumber = "777111777"
+            };
+
+            var shareholders = new List<Shareholder>()
+            {
+                shareholder,
+                buyer,
+            }.AsQueryable();
+
+            this.dataContext.Shareholders.Returns(shareholders);
+            #endregion
+            #region balances
+            var shareholderBalance = new Balance
+            {
+                Id = shareholder.Id,
+                FirstType = 1,
+                SecondType = 1,
+                ThirdType = 1,
+                BalanceValue = 1000
+            };
+
+            var buyerBalance = new Balance
+            {
+                Id = buyer.Id,
+                FirstType = 1,
+                SecondType = 1,
+                ThirdType = 1,
+                BalanceValue = 1000
+            };
+
+            var balances = new List<Balance>()
+            {
+                shareholderBalance,
+                buyerBalance
+            }.AsQueryable();
+
+            this.dataContext.Balances.Returns(balances);
+            #endregion
+            var trade = new Trade
+            {
+                Id = 1,
+                BuyerId = 1,
+                ShareholderId = 2,
+                Value = 1,
+                ValueType = SharesTypes.FirstType
+            };
+
+            var sharesTypes = new List<SharesTypes>()
+            {
+                SharesTypes.FirstType,
+                SharesTypes.SecondType,
+                SharesTypes.ThirdType
+            };
+
+            foreach (var type in sharesTypes)
+            {
+                this.bussinesService.PreparationsForUpdatingBalances(shareholderBalance, buyerBalance, type, new Trade
+                {
+                    ShareholderId = shareholder.Id,
+                    BuyerId = buyer.Id,
+                    ValueType = type,
+                    Value = 1
+                });
+            }
+
+            //cheking zones
+            #region fromDownToUp
+            shareholderBalance.BalanceValue = 0;
+            buyerBalance.BalanceValue = 0;
+            #region low/black
+            var countOfShares = 15;
 
             this.bussinesService.PreparationsForUpdatingBalances(
                 shareholderBalance,

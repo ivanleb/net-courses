@@ -121,7 +121,7 @@ namespace ORMCore
 
         public Shareholder GetMostWantedShareholdersById(int memberId)
         {
-            return this.dataContext.Shareholders.Where(w=>w.Id==memberId).FirstOrDefault();
+            return this.dataContext.Shareholders.Where(w => w.Id == memberId).FirstOrDefault();
         }
 
         public IQueryable<Trade> GetMostWantedTradesByName(int memberId)
