@@ -93,7 +93,7 @@ namespace ORMCore
     }
 
 
-    public class BussinesService
+    public class BussinesService : IBussinesService
     {
         private readonly IDataContext dataContext;
 

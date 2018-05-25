@@ -28,11 +28,9 @@ namespace EntityFramework
             //var loggerService = new LoggerService(logger);
             Container container = new Container((c) =>
             {
-                //c.For<IDataContext>().Use<TPTContext>().Ctor<string>().Is("Data Source=.;Initial Catalog=TablePerTypeExampleDb2;Integrated Security=True");
-                c.For<BussinesService>().Use<BussinesService>().Ctor<IDataContext>().Is(new TPTContext("Data Source=.;Initial Catalog=TablePerTypeExampleDb2;Integrated Security=True"));
-                //c.For<BussinesService>().Use<BussinesService>();////HOOOOW IS IT WORKING!!?!?!??!?!?!?!?!?! my brain broke down at 00.00/// HOW BUSSINESSService
-                //constructor understands how to use cconstructor of bussinesService with parameter?!
-
+                c.For<IDataContext>().Use<TPTContext>().Ctor<string>().Is("Data Source=.;Initial Catalog=TablePerTypeExampleDb2;Integrated Security=True");
+                //c.For<BussinesService>().Use<BussinesService>().Ctor<IDataContext>().Is(new TPTContext("Data Source=.;Initial Catalog=TablePerTypeExampleDb2;Integrated Security=True"));
+                c.For<IBussinesService>().Use<BussinesService>();
                 c.For<EntityFramework.Interfaces.ILoggable>().Use<LoggerService>().Ctor<ILog>().Is(logger);
             });
             
