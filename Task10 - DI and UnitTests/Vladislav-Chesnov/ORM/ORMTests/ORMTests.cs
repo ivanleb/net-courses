@@ -143,7 +143,7 @@ namespace ORMTests
         }
 
         [TestMethod]
-        public void ShoudReturnClients()
+        public void ShouldReturnClients()
         {
             var clients = new List<Client>()
             {
@@ -159,7 +159,7 @@ namespace ORMTests
         }
 
         [TestMethod]
-        public void ShoudReturnClientsInOrangeZone()
+        public void ShouldReturnClientsInOrangeZone()
         {
             var clients = new List<Client>()
             {
@@ -175,7 +175,7 @@ namespace ORMTests
         }
 
         [TestMethod]
-        public void ShoudReturnClientsInBlackZone()
+        public void ShouldReturnClientsInBlackZone()
         {
             var clients = new List<Client>()
             {
@@ -192,7 +192,7 @@ namespace ORMTests
         }
 
         [TestMethod]
-        public void ShoudGetStockTypes()
+        public void ShouldGetStockTypes()
         {
             var stockTypes = new List<StockType>()
             {
@@ -209,7 +209,7 @@ namespace ORMTests
         }
 
         [TestMethod]
-        public void ShoudGetClientStocksById()
+        public void ShouldGetClientStocksById()
         {
             var clients = new List<Client>()
             {
@@ -228,7 +228,7 @@ namespace ORMTests
         }
 
         [TestMethod]
-        public void ShoudGetDeals()
+        public void ShouldGetDeals()
         {
             var deals = new List<Deal>()
             {
