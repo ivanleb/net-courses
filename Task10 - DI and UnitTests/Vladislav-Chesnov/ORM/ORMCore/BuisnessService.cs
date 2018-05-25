@@ -89,9 +89,9 @@ namespace ORMCore
             return dataContext.StockTypes;
         }
 
-        public IQueryable<ICollection<Stock>> GetSecondClientStocks()
+        public ICollection<Stock> GetClientStocksById(int id)
         {
-            return dataContext.Clients.Where(s=>s.Id == 2).Select(s => s.ClientStocks);
+            return dataContext.Clients.Where(s=>s.Id == id).Select(s => s.ClientStocks).FirstOrDefault();
         }
 
         public IQueryable<Deal> GetDeals()

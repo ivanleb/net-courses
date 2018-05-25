@@ -14,7 +14,7 @@ namespace ORMCore
         IQueryable<Client> GetClientsInBlackZone();
         IQueryable<Client> GetClientsInOrangeZone();
         IQueryable<Deal> GetDeals();
-        IQueryable<ICollection<Stock>> GetSecondClientStocks();
+        ICollection<Stock> GetClientStocksById(int id);
         IQueryable<StockType> GetStockTypes();
         void NewDeal(Deal deal);
     }

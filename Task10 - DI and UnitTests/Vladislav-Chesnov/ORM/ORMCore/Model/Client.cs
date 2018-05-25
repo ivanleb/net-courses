@@ -40,7 +40,7 @@ namespace ORMCore.Model
                 clientStocks += $"{ClientStocks.Count(s => s.Type == stockType)} stocks of {stockType.Name} company\n";
             }
 
-            return $"{Name} {Surname}, phone number: {PhoneNumber}, \nclient stocks:\n{clientStocks}";
+            return $"{Name} {Surname}, phone number: {PhoneNumber}, balance: {Balance} \nclient stocks:\n{clientStocks}";
         }
     }
 }
