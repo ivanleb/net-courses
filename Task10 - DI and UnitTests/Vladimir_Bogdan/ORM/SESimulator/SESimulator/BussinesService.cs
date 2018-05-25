@@ -37,7 +37,8 @@ namespace SESimulator.Core
 
         public void RegisterNewStockToClient(string stockType, Client client, bool canBeSold = true)
         {
-            var stockTypeItem = dataContext.StockTypes.Single(st => st.Name == stockType);
+            var stockTypeItem = dataContext.StockTypes.FirstOrDefault(st => st.Name == stockType);
+            if (stockTypeItem == null) throw new ArgumentException("The specified type does not exist", "stockType");
             var newStock = new Stock()
             {
                 Type = stockTypeItem,

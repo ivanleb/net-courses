@@ -90,7 +90,17 @@ namespace SESimulatorCore.Tests
         public void CanRegisterStock()
         {
             Client testClient = new Client() { Stocks = new HashSet<Stock>()};
-            this.bussinesService.RegisterNewStockToClient("StockType", testClient);
+            this.dataContext.StockTypes.Returns(new List<StockType>() { new StockType() { Name = "ValidStockType" } }.AsQueryable());
+            this.bussinesService.RegisterNewStockToClient("ValidStockType", testClient);
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentException))]
+        public void ExpectedExceptionWhileRegisteringStockWithInvalidType()
+        {
+            Client testClient = new Client() { Stocks = new HashSet<Stock>() };
+            this.dataContext.StockTypes.Returns(new List<StockType>() { new StockType() { Name = "ValidStockType" } }.AsQueryable());
+            this.bussinesService.RegisterNewStockToClient("InValidStockType", testClient);
         }
 
         [TestCleanup]
