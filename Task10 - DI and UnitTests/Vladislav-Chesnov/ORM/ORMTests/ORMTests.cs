@@ -67,7 +67,6 @@ namespace ORMTests
             Client buyer = new Client() { Name = "Dummy1", Balance = 100 };
             Client seller = new Client() { Name = "Dummy2", Balance = 0 };
             seller.ClientStocks.Add(stock);
-
             Deal deal = new Deal() { Seller = seller, Buyer = buyer, Stock = stock, Sum = stock.Type.Cost };
 
             buisnessService.NewDeal(deal);
@@ -83,7 +82,6 @@ namespace ORMTests
             Client buyer = new Client() { Name = "Dummy1", Balance = 100 };
             Client seller = new Client() { Name = "Dummy2", Balance = 0 };
             seller.ClientStocks.Add(stock);
-
             Deal deal = new Deal() { Seller = seller, Buyer = buyer, Stock = stock, Sum = stock.Type.Cost };
 
             buisnessService.NewDeal(deal);
@@ -99,7 +97,6 @@ namespace ORMTests
             Client buyer = new Client() { Name = "Dummy1", Balance = 100 };
             Client seller = new Client() { Name = "Dummy2", Balance = 0 };
             seller.ClientStocks.Add(stock);
-
             Deal deal = new Deal() { Seller = seller, Buyer = buyer, Stock = stock, Sum = stock.Type.Cost };
 
             buisnessService.NewDeal(deal);
@@ -117,7 +114,6 @@ namespace ORMTests
             Stock stock = new Stock() { Type = stockType };
             Client buyer = new Client() { Name = "Dummy1", Balance = 100 };
             Client seller = new Client() { Name = "Dummy2", Balance = 0 };
-
             Deal deal = new Deal() { Seller = seller, Buyer = buyer, Stock = stock, Sum = stock.Type.Cost };
 
             buisnessService.NewDeal(deal);
@@ -131,7 +127,6 @@ namespace ORMTests
             Client buyer = new Client() { Name = "Dummy1", Balance = 100 };
             Client seller = new Client() { Name = "Dummy2", Balance = 0 };
             seller.ClientStocks.Add(stock);
-
             Deal deal = new Deal() { Seller = seller, Buyer = buyer, Stock = stock, Sum = stock.Type.Cost };
 
             buisnessService.NewDeal(deal);
