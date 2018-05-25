@@ -55,6 +55,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DIContainer.cs" />
     <Compile Include="Implementations\DealProducer.cs" />
     <Compile Include="Implementations\EfInitializer.cs" />
     <Compile Include="Implementations\LoggerService.cs" />

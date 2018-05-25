@@ -8,7 +8,7 @@ using System.Text;
 
 namespace ORMConsoleApp.Implementations
 {
-    public class EfInitializer : DropCreateDatabaseIfModelChanges<StockExchangeDbContext>
+    public class EfInitializer : DropCreateDatabaseAlways<StockExchangeDbContext>
     {
         private readonly BusinessService businessService;
 

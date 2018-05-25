@@ -16,7 +16,7 @@ namespace ORMConsoleApp
 
         public StockExchangeDbContext()
             : base("name=StockExchangeContext")
-        {
+        {            
         }
         
         IQueryable<Client> IDataContext.Clients => Clients.Include(c => c.Stocks); 

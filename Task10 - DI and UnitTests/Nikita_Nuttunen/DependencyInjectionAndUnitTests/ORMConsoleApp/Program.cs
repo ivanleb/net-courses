@@ -20,27 +20,22 @@ namespace ORMConsoleApp
             using (var dbContext = new StockExchangeDbContext())
             {
                 XmlConfigurator.Configure();
-                var logger = LogManager.GetLogger("StockExchangeLogger");
-
-                Container container = new Container(_ =>
-                {
-                    _.For<ILoggerService>().Use<LoggerService>().Ctor<ILog>().Is(logger);
-                    _.For<IDealProducer>().Use<DealProducer>();
-                });
-
+                var container = new Container(new DIContainer());
 
                 var loggerService = container.GetInstance<ILoggerService>();
-
+                var businessService = container.GetInstance<BusinessService>();
                 var dealProducer = container.GetInstance<IDealProducer>();
+
+                Database.SetInitializer(new EfInitializer(businessService));
 
                 Task.Factory.StartNew(() =>
                 {
-                    loggerService.RunWithExceptionLogging(() => dealProducer.Run(), isSilent: true);
+                    loggerService.RunWithExceptionLogging(() => dealProducer.Run());
                 });
 
                 Console.ReadLine();
                 dealProducer.IsContinue = false;
-                               
+
                 Console.ReadLine();
             }
         }

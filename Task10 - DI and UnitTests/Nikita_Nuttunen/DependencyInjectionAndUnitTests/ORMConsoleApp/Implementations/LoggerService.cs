@@ -26,7 +26,7 @@ namespace ORMConsoleApp.Implementations
             logger.Info(message);
         }
 
-        public void RunWithExceptionLogging(Action actionToRun, bool isSilent = false)
+        public void RunWithExceptionLogging(Action actionToRun, bool isSilent = true)
         {
             try
             {
@@ -42,7 +42,7 @@ namespace ORMConsoleApp.Implementations
             }
         }
 
-        public T RunWithExceptionLogging<T>(Func<T> functionToRun, bool isSilent = false)
+        public T RunWithExceptionLogging<T>(Func<T> functionToRun, bool isSilent = true)
         {
             try
             {

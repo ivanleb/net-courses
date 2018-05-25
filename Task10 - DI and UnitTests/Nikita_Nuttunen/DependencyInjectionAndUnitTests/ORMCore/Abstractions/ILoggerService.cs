@@ -7,9 +7,9 @@ namespace ORMCore.Abstractions
 {
     public interface ILoggerService
     {
-        void RunWithExceptionLogging(Action actionToRun, bool isSilent = false);
+        void RunWithExceptionLogging(Action actionToRun, bool isSilent = true);
 
-        T RunWithExceptionLogging<T>(Func<T> functionToRun, bool isSilent = false);
+        T RunWithExceptionLogging<T>(Func<T> functionToRun, bool isSilent = true);
 
         void Info(string message);
 
