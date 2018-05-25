@@ -8,7 +8,7 @@ using log4net.Config;
 using System.Threading.Tasks;
 using System.Threading;
 using StructureMap;
-
+using System.Data.Entity;
 
 namespace EntityFramework
 {
@@ -28,18 +28,22 @@ namespace EntityFramework
             //var loggerService = new LoggerService(logger);
             Container container = new Container((c) =>
             {
-                c.For<IDataContext>().Use<TPTContext>().Ctor<string>().Is("Data Source=.;Initial Catalog=TablePerTypeExampleDb2;Integrated Security=True");
-                c.For<EntityFramework.Interfaces.ILoggable>().Singleton().Use<LoggerService>().Ctor<ILog>().Is(logger);
-            });
+                //c.For<IDataContext>().Use<TPTContext>().Ctor<string>().Is("Data Source=.;Initial Catalog=TablePerTypeExampleDb2;Integrated Security=True");
+                c.For<BussinesService>().Use<BussinesService>().Ctor<IDataContext>().Is(new TPTContext("Data Source=.;Initial Catalog=TablePerTypeExampleDb2;Integrated Security=True"));
+                //c.For<BussinesService>().Use<BussinesService>();////HOOOOW IS IT WORKING!!?!?!??!?!?!?!?!?! my brain broke down at 00.00/// HOW BUSSINESSService
+                //constructor understands how to use cconstructor of bussinesService with parameter?!
 
-            var bussinesService = new BussinesService(container.GetInstance<TPTContext>());
+                c.For<EntityFramework.Interfaces.ILoggable>().Use<LoggerService>().Ctor<ILog>().Is(logger);
+            });
+            
+            var loggerService = container.GetInstance<EntityFramework.Interfaces.ILoggable>();
+
+            var bussinesService = container.GetInstance<BussinesService>();
 
             var isContinue = true;
 
             Task.Run(() =>
             {
-                var loggerService = container.GetInstance<EntityFramework.Interfaces.ILoggable>();
-
                 while (isContinue)
                 {
                     RunEmitation(bussinesService, loggerService);
