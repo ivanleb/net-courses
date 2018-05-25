@@ -18,5 +18,15 @@ namespace ORM.Core.Model
         {
             return $"{FirstName} {SecondName}";
         }
+
+        public void AssignZone()
+        {
+            if (Balance > 0)
+                Zone = Zone.Green;
+            else if (Balance == 0)
+                Zone = Zone.Orange;
+            else if (Balance < 0)
+                Zone = Zone.Black;
+        }
     }
 }

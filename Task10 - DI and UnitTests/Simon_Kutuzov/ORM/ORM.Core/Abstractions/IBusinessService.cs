@@ -7,7 +7,7 @@ namespace ORM.Core.Abstractions
     {
         IQueryable<Trader> Traders { get; }
         IQueryable<Trader> GetTraidersInOrangeZone();
-        void AddTraider(string firstName, string secondName, string phoneNumber, decimal balance);
+        void AddTrader(string firstName, string secondName, string phoneNumber, decimal balance);
         void AddListing(string name, decimal price);
         void AddShare(Listing listing, Trader owner);
         void MakeDeal(Trader buyer, Trader seller, Share share);

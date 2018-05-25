@@ -8,7 +8,7 @@ namespace ORM.ConsoleApp.Implementations
     {
         protected override void Seed(Repository context)
         {
-            var defaultTraiders = new List<Trader>
+            var defaultTraders = new List<Trader>
             {
                 new Trader
                 {
@@ -82,12 +82,12 @@ namespace ORM.ConsoleApp.Implementations
                 var share = new Share
                 {
                     Listing = defaultListings.RandomElement(),
-                    Owner = defaultTraiders.RandomElement(),
+                    Owner = defaultTraders.RandomElement(),
                 };
                 defaultShares.Add(share);
             }
 
-            context.Traders.AddRange(defaultTraiders);
+            context.Traders.AddRange(defaultTraders);
             context.Listings.AddRange(defaultListings);
             context.Shares.AddRange(defaultShares);
             base.Seed(context);

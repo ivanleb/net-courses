@@ -18,7 +18,7 @@ namespace ORM.Core
             this.loggerService = loggerService;
         }
 
-        public void AddTraider(string firstName, string secondName,
+        public void AddTrader(string firstName, string secondName,
                                string phoneNumber, decimal balance)
         {
             var newTraider = new Trader
@@ -69,7 +69,7 @@ namespace ORM.Core
             });
         }
 
-        private void AddDeal(Trader buyer, Trader seller, Share share)
+        public void AddDeal(Trader buyer, Trader seller, Share share)
         {
             var newDeal = new Deal
             {
@@ -94,7 +94,7 @@ namespace ORM.Core
                 loggerService.Error(new ArgumentException("Attempted to sell to self"));
                 return;
             }
-            if (buyer.Balance < 0)
+            if (buyer.Balance <= 0)
             {
                 loggerService.Error(new ArgumentException("Attempted to purchase a share with negative balance"));
                 return;
@@ -111,10 +111,8 @@ namespace ORM.Core
             buyer.Balance -= share.Listing.Price;
             share.Owner = buyer;
 
-            if (buyer.Balance == 0)
-                buyer.Zone = Zone.Orange;
-            if (buyer.Balance < 0)
-                buyer.Zone = Zone.Black;
+            buyer.AssignZone();
+            seller.AssignZone();
 
             AddDeal(buyer, seller, share);
         }
