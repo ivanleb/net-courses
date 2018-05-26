@@ -17,7 +17,6 @@ namespace EntityConsoleApp.Implementations
         {
             Trade trade = bussinesService.GetNewTrade(seller, buyer, stockForSale);
             bussinesService.RegisterNewTrade(trade);
-            //OnBalanceChanged?.Invoke(this, trade);
         }
     }
 }

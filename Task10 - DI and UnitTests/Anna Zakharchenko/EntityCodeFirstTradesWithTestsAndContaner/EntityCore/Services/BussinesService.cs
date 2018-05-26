@@ -110,18 +110,5 @@ namespace EntityCore
 
             loggerService.Info($"Trade was made: {trade}");
         }
-
-    //public void NewBalanceForSeller(Trade trade)
-    //    {
-    //        loggerService.Info($"Changed balance: {trade.Seller}\n{trade.Buyer}");
-    //        if(trade.Buyer.Zone != ClientZoneOfBalance.Green)
-    //            loggerService.Info($"Zone from {trade.Buyer} was changed, now it is {trade.Buyer.Zone} zone.");
-
-    //    }
-    //    public void NewTradeMade(Trade trade)
-    //    {
-    //        loggerService.Info($"Trade was made: {trade}");
-    //    }
-
     }
 }

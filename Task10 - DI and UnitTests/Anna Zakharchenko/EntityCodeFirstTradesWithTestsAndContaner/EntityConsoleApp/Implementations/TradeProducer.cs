@@ -13,9 +13,7 @@ namespace EntityConsoleApp.Implementations
     {
         public bool IsContinue  {get; set; }
         protected readonly BussinesService bussinesService;
-
-        //public event EventHandler<Trade> OnBalanceChanged;
-
+        
         protected TradeProducer(BussinesService bussinesService) => this.bussinesService = bussinesService;
 
         public abstract void MakeTrade(Client seller, Client buyer, Stock stock);

@@ -86,15 +86,8 @@ namespace EntityConsoleApp
                 var loggerService = container.GetInstance<ILoggerService>();
                 var bussinesService = container.GetInstance<BussinesService>();
                 var producer = container.GetInstance<IProducer>();
-                //LoggerService loggerService = new LoggerService(logger);
-
-                //BussinesService bussinesService = new BussinesService(dbContext, loggerService);
 
                 CreateDB(bussinesService, loggerService);
-
-                //GoodTradeProducer producer = new GoodTradeProducer(loggerService, bussinesService);
-                //producer.OnBalanceChanged += bussinesService.NewTradeMade;
-                //producer.OnBalanceChanged += bussinesService.NewBalanceForSeller;
 
                 Task.Run(()=>
                 {
