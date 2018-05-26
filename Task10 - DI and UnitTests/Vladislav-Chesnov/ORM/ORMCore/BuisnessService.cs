@@ -5,14 +5,15 @@ using System.Text;
 using System.Threading.Tasks;
 using ORMCore.Model;
 using ORMCore.Abstractions;
+using ORMCore.Repositories;
 
 namespace ORMCore
 {
     public class BuisnessService : IBuisnessService
     {
-        private IDataContext dataContext;
+        private IModelRepository dataContext;
 
-        public BuisnessService(IDataContext dataContext)
+        public BuisnessService(IModelRepository dataContext)
         {
             this.dataContext = dataContext;
         }
@@ -55,23 +56,9 @@ namespace ORMCore
             dataContext.SaveChanges();
         }
 
-        public void NewDeal(Client buyer, Client seller, decimal sum, Stock stock)
-        {
-            if (!seller.ClientStocksForSale.Contains(stock))
-            {
-                throw new ArgumentException("This stock cant be selled");
-            }
-            seller.ClientStocks.Remove(stock);
-            seller.Balance += stock.Type.Cost;
-            buyer.ClientStocks.Add(stock);
-            buyer.Balance -= stock.Type.Cost;
-            if (buyer.Balance == 0) buyer.ClientZone = Zone.Orange;
-            if (buyer.Balance < 0) buyer.ClientZone = Zone.Black;
-            dataContext.SaveChanges();            
-        }
-
         public void NewDeal(Deal deal)
         {
+            if (!deal.Seller.ClientStocksForSale.Contains(deal.Stock)) throw new ArgumentException("Stock cant be selled!");
             deal.Seller.ClientStocks.Remove(deal.Stock);
             deal.Seller.Balance += deal.Stock.Type.Cost;
             deal.Buyer.ClientStocks.Add(deal.Stock);
@@ -102,9 +89,9 @@ namespace ORMCore
             return dataContext.StockTypes;
         }
 
-        public IQueryable<ICollection<Stock>> GetSecondClientStocks()
+        public ICollection<Stock> GetClientStocksById(int id)
         {
-            return dataContext.Clients.Where(s=>s.Id == 2).Select(s => s.ClientStocks);
+            return dataContext.Clients.Where(s=>s.Id == id).Select(s => s.ClientStocks).FirstOrDefault();
         }
 
         public IQueryable<Deal> GetDeals()

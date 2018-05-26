@@ -7,7 +7,9 @@ using ORM.Logging;
 using ORMCore;
 using ORMCore.Model;
 using ORMCore.Abstractions;
+using ORMCore.Repositories;
 using System.Threading;
+using StructureMap;
 
 namespace ORM.Implementations
 {
@@ -29,7 +31,11 @@ namespace ORM.Implementations
         {
             using (var dbContext = new TPTUserDbContext(connectionString))
             {
-                var buisnessService = new BuisnessService(dbContext);
+                Container container = new Container(_ =>
+                {
+                    _.For<IBuisnessService>().Use<BuisnessService>().Ctor<IModelRepository>().Is(dbContext);
+                });
+                var buisnessService = container.GetInstance<BuisnessService>();
 
                 loggerService.Info("registering new clients");
                 buisnessService.AddNewClient("Benzoline", "Cucumbersnatch", "89215135213", 1000);
@@ -82,13 +88,12 @@ namespace ORM.Implementations
                     var buyer = buisnessService.GetAllClients().Where(b => b.Balance > 0).GetRandom();
                     var seller = buisnessService.GetAllClients().Where(c => c.Id != buyer.Id).Where(c=>c.ClientStocksForSale.Count>0).GetRandom();
                     var stock = seller.ClientStocksForSale.GetRandom();
-                    var sum = stock.Type.Cost;
                     Deal newDeal = new Deal
                     {
                         Buyer = buyer,
                         Seller = seller,
                         Stock = stock,
-                        Sum = sum
+                        Sum = stock.Type.Cost
                     };
                     loggerService.Info($"Deal begins. Buyer is - {buyer.Name} {buyer.Surname}, balance: {buyer.Balance}, seller - {seller.Name} {seller.Surname}, balance: {seller.Balance}\nbuyer buys and seller sells stock of {stock.Type.Name} company for the {stock.Type.Cost}$");
                     buisnessService.NewDeal(newDeal);
