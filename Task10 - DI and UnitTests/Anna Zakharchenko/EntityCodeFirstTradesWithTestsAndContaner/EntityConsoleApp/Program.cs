@@ -7,6 +7,8 @@ using EntityConsoleApp.Implementations;
 using EntityCore;
 using log4net.Config;
 using log4net;
+using StructureMap;
+using EntityCore.Abstractions;
 
 namespace EntityConsoleApp
 {
@@ -27,7 +29,7 @@ namespace EntityConsoleApp
             {"KAMAZ", 320 }
         };
 
-        static void CreateDB(BussinesService bussinesService, LoggerService loggerService)
+        static void CreateDB(BussinesService bussinesService, ILoggerService loggerService)
         {
             loggerService.Info("Create a database...");
             
@@ -73,15 +75,26 @@ namespace EntityConsoleApp
             {
                 XmlConfigurator.Configure();
                 ILog logger = LogManager.GetLogger("TextLogger");
-                LoggerService loggerService = new LoggerService(logger);
 
-                BussinesService bussinesService = new BussinesService(dbContext, loggerService);
+                Container container = new Container(_=>
+                {
+                    _.For<ILoggerService>().Use<LoggerService>().Ctor<ILog>().Is(logger);
+                    _.For<BussinesService>().Use<BussinesService>().Ctor<IDataContextRepository>().Is(dbContext);
+                    _.For<IProducer>().Use<GoodTradeProducer>();
+                });
+
+                var loggerService = container.GetInstance<ILoggerService>();
+                var bussinesService = container.GetInstance<BussinesService>();
+                var producer = container.GetInstance<IProducer>();
+                //LoggerService loggerService = new LoggerService(logger);
+
+                //BussinesService bussinesService = new BussinesService(dbContext, loggerService);
 
                 CreateDB(bussinesService, loggerService);
 
-                GoodTradeProducer producer = new GoodTradeProducer(loggerService, bussinesService);
-                producer.OnBalanceChanged += bussinesService.NewTradeMade;
-                producer.OnBalanceChanged += bussinesService.NewBalanceForSeller;
+                //GoodTradeProducer producer = new GoodTradeProducer(loggerService, bussinesService);
+                //producer.OnBalanceChanged += bussinesService.NewTradeMade;
+                //producer.OnBalanceChanged += bussinesService.NewBalanceForSeller;
 
                 Task.Run(()=>
                 {
@@ -94,5 +107,6 @@ namespace EntityConsoleApp
                 Console.ReadKey();
             }
         }
+
     }
 }

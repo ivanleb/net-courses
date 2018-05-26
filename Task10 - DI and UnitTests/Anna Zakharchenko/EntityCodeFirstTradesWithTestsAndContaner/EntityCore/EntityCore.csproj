@@ -50,12 +50,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Abstractions\ILoggerService.cs" />
+    <Compile Include="Services\ILoggerService.cs" />
     <Compile Include="Abstractions\IProducer.cs" />
-    <Compile Include="BussinesService.cs" />
+    <Compile Include="Services\BussinesService.cs" />
     <Compile Include="Model\Client.cs" />
     <Compile Include="Abstractions\ICollectionsModification.cs" />
-    <Compile Include="Abstractions\IDataContext.cs" />
+    <Compile Include="Repositories\IDataContextRepository.cs" />
     <Compile Include="Model\Stock.cs" />
     <Compile Include="Model\Trade.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

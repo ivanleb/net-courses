@@ -12,14 +12,11 @@ namespace EntityConsoleApp.Implementations
     abstract class TradeProducer : IProducer
     {
         public bool IsContinue  {get; set; }
-        protected readonly LoggerService loggerService;
         protected readonly BussinesService bussinesService;
 
-        protected TradeProducer(LoggerService loggerService, BussinesService bussinesService)
-        {
-            this.loggerService = loggerService;
-            this.bussinesService = bussinesService;
-        }
+        //public event EventHandler<Trade> OnBalanceChanged;
+
+        protected TradeProducer(BussinesService bussinesService) => this.bussinesService = bussinesService;
 
         public abstract void MakeTrade(Client seller, Client buyer, Stock stock);
         public void Run(int number)
@@ -34,6 +31,7 @@ namespace EntityConsoleApp.Implementations
                 if (stockForSale != null)
                 {
                     MakeTrade(seller, buyer, stockForSale);
+
                 }
 
                 System.Threading.Thread.Sleep(10000);

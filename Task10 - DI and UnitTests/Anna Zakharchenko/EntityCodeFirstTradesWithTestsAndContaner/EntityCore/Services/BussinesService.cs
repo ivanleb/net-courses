@@ -10,9 +10,9 @@ namespace EntityCore
 {
     public class BussinesService
     {
-        private readonly IDataContext dataContext;
+        private readonly IDataContextRepository dataContext;
         private readonly ILoggerService loggerService;
-        public BussinesService(IDataContext dataContext, ILoggerService loggerService)
+        public BussinesService(IDataContextRepository dataContext, ILoggerService loggerService)
         {
             this.dataContext = dataContext;
             this.loggerService = loggerService;
@@ -103,18 +103,25 @@ namespace EntityCore
                 dataContext.Update(trade.Buyer);
                 dataContext.SaveChanges();
             }, isSilent: true);
-        }
 
-    public void NewBalanceForSeller(object srnder, Trade trade)
-        {
             loggerService.Info($"Changed balance: {trade.Seller}\n{trade.Buyer}");
-            if(trade.Buyer.Zone != ClientZoneOfBalance.Green)
+            if (trade.Buyer.Zone != ClientZoneOfBalance.Green)
                 loggerService.Info($"Zone from {trade.Buyer} was changed, now it is {trade.Buyer.Zone} zone.");
-        }
-        public void NewTradeMade(object sender, Trade trade)
-        {
+
             loggerService.Info($"Trade was made: {trade}");
         }
+
+    //public void NewBalanceForSeller(Trade trade)
+    //    {
+    //        loggerService.Info($"Changed balance: {trade.Seller}\n{trade.Buyer}");
+    //        if(trade.Buyer.Zone != ClientZoneOfBalance.Green)
+    //            loggerService.Info($"Zone from {trade.Buyer} was changed, now it is {trade.Buyer.Zone} zone.");
+
+    //    }
+    //    public void NewTradeMade(Trade trade)
+    //    {
+    //        loggerService.Info($"Trade was made: {trade}");
+    //    }
 
     }
 }

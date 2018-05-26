@@ -2,10 +2,11 @@
 using EntityCore.Abstractions;
 using EntityCore.Model;
 using System.Data.Entity;
+using EntityCore;
 
 namespace EntityConsoleApp
 {
-    public abstract class BaseDbContext : DbContext, IDataContext
+    public abstract class BaseDbContext : DbContext, IDataContextRepository
     {
         protected BaseDbContext(string connectionString) : base(connectionString)
         {
@@ -14,11 +15,11 @@ namespace EntityConsoleApp
         public DbSet<Client> Clients { get; set; }
         public DbSet<Stock> Stocks { get; set; }
         public DbSet<Trade> Trades { get; set; }
-        IQueryable<Client> IDataContext.Clients => this.Clients;
+        IQueryable<Client> IDataContextRepository.Clients => this.Clients;
 
-        IQueryable<Stock> IDataContext.Stocks => this.Stocks;
+        IQueryable<Stock> IDataContextRepository.Stocks => this.Stocks;
 
-        IQueryable<Trade> IDataContext.Trades => this.Trades;
+        IQueryable<Trade> IDataContextRepository.Trades => this.Trades;
 
         public void Add(Client entity) => Clients.Add(entity);
         public void Remove(Client entity) => Clients.Remove(entity);
@@ -49,6 +50,6 @@ namespace EntityConsoleApp
             modified.StockFromSeller = entity.StockFromSeller;
         }
 
-        void IDataContext.SaveChanges() => SaveChanges();
+        void IDataContextRepository.SaveChanges() => SaveChanges();
     }
 }

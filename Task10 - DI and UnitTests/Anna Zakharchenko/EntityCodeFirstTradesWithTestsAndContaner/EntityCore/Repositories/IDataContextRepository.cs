@@ -1,9 +1,10 @@
 ﻿using System.Linq;
 using EntityCore.Model;
+using EntityCore.Abstractions;
 
-namespace EntityCore.Abstractions
+namespace EntityCore
 {
-    public interface IDataContext :
+    public interface IDataContextRepository :
         ICollectionsModification<Client>,
         ICollectionsModification<Stock>,
         ICollectionsModification<Trade>
