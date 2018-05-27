@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DIAndUnitTests.Core", "DIAndUnitTests.Core\DIAndUnitTests.Core.csproj", "{450ED844-07C3-4761-9C2D-55A4D3564999}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DIAndUnitTests.ConsoleApp", "DIAndUnitTests.ConsoleApp\DIAndUnitTests.ConsoleApp.csproj", "{70B1F132-5E94-4579-B2B9-59B6AABB63CB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DIAndUnitTests.Tests", "DIAndUnitTests.Tests\DIAndUnitTests.Tests.csproj", "{619E7C37-4D34-4C58-8043-29B933F721FF}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{450ED844-07C3-4761-9C2D-55A4D3564999}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{450ED844-07C3-4761-9C2D-55A4D3564999}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{450ED844-07C3-4761-9C2D-55A4D3564999}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{450ED844-07C3-4761-9C2D-55A4D3564999}.Release|Any CPU.Build.0 = Release|Any CPU
+		{70B1F132-5E94-4579-B2B9-59B6AABB63CB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{70B1F132-5E94-4579-B2B9-59B6AABB63CB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{70B1F132-5E94-4579-B2B9-59B6AABB63CB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{70B1F132-5E94-4579-B2B9-59B6AABB63CB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{619E7C37-4D34-4C58-8043-29B933F721FF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{619E7C37-4D34-4C58-8043-29B933F721FF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{619E7C37-4D34-4C58-8043-29B933F721FF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{619E7C37-4D34-4C58-8043-29B933F721FF}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
