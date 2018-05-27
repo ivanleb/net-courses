@@ -28,27 +28,35 @@ namespace EntityConsoleApp.Tests
         {
             Stock stock = new Stock()
             {
-                NameTypeOfStock = "Pollyanna",
+                //TypeOfStock=new KeyValuePair<string, decimal>( "DIXY Group", 320 ),
+                NameTypeOfStock = "DIXY Group",
                 Cost = 1300
             };
             Client seller = new Client()
             {
                 FirstName = "Moon",
                 LastName = "Pilot",
-                Balance = 1000
+                Balance = 1000,
+                PhoneNumber = "765899",
+                Zone = ClientZoneOfBalance.Green,
+                Stocks = new List<Stock>() { stock}
             };
             Client buyer = new Client
             {
                 FirstName = "Mary",
                 LastName = "Poppins",
-                Balance = 300
+                Balance = 300,
+                PhoneNumber = "765899",
+                Zone = ClientZoneOfBalance.Green,
+                Stocks = new List<Stock>()
             };
-            seller.Stocks.Add(stock);
 
             Trade trade = bussinesService.GetNewTrade(seller, buyer, stock);
 
             Assert.AreEqual(2300, seller.Balance);
             Assert.AreEqual(-1000, buyer.Balance);
+            Assert.AreEqual(ClientZoneOfBalance.Black, buyer.Zone);
+            Assert.AreEqual(ClientZoneOfBalance.Green, seller.Zone);
         }
 
         [TestMethod]
@@ -63,7 +71,10 @@ namespace EntityConsoleApp.Tests
             {
                 FirstName = "Moon",
                 LastName = "Pilot",
-                Balance = -1000
+                Balance = -1000,
+                PhoneNumber = "765899",
+                Zone = ClientZoneOfBalance.Black,
+                Stocks = new List<Stock>()
             };
             Client buyer = new Client
             {
@@ -71,8 +82,12 @@ namespace EntityConsoleApp.Tests
                 LastName = "Poppins",
                 Balance = 1300
             };
+            //////dataContextRepository.Add(seller);
+            //////dataContextRepository.Add(buyer);
             seller.Stocks.Add(stock);
-            Trade trade = bussinesService.GetNewTrade(seller, buyer, stock);
+            //////dataContextRepository.SaveChanges();
+
+            Trade trade = new Trade() { Seller=seller,Buyer=buyer,StockFromSeller=stock};
 
             bussinesService.RegisterNewTrade(trade);
 
@@ -84,24 +99,6 @@ namespace EntityConsoleApp.Tests
         }
 
         [TestMethod]
-        public void ShouldChangeZoneForClient()
-        {
-            Client seller = new Client()
-            {
-                FirstName = "Moon",
-                LastName = "Pilot",
-                Balance = -1000
-            };
-            Assert.AreEqual(ClientZoneOfBalance.Black, seller.Zone);
-
-            seller.Balance = 0;
-            Assert.AreEqual(ClientZoneOfBalance.Orange, seller.Zone);
-
-            seller.Balance = 29393;
-            Assert.AreEqual(ClientZoneOfBalance.Green, seller.Zone);
-        }
-
-        [TestMethod]
         public void ShouldRegisterStock()
         {
             Client client = new Client()
@@ -109,29 +106,27 @@ namespace EntityConsoleApp.Tests
                 FirstName = "Moon",
                 LastName = "Pilot",
                 Balance = 1000,
-                PhoneNumber = "765899"
+                PhoneNumber = "765899",
+                Zone=ClientZoneOfBalance.Green,
+                Stocks = new List<Stock>()
             };
-            KeyValuePair<string, decimal> typeStock = new KeyValuePair<string, decimal>( "Yandex", 21918 );
-
-            bussinesService.RegisterNewStock(client, typeStock);
-
-            Received.InOrder(() =>
+            Dictionary<string, decimal> allStocksType = new Dictionary<string, decimal>
             {
-                dataContextRepository.Received(1).Add(Arg.Any<Stock>());
-                dataContextRepository.Received(1).SaveChanges();
-            });
+            {"Bul", 3800},
+            {"Bosch", 2000}
+            };
+
+            foreach (var stock in allStocksType)
+            {
+                bussinesService.RegisterNewStock(client, stock);
+            }
+
+            Assert.AreEqual(2, client.Stocks.Count());           
         }
 
         [TestMethod]
         public void ShouldRegisterClient()
         {
-            Client client = new Client()
-            {
-                FirstName = "Moon",
-                LastName = "Pilot",
-                Balance = 1000,
-                PhoneNumber = "765899"
-            };
             bussinesService.RegisterNewClient("Moon", "Pilot", "86409876", 56567);
 
             Received.InOrder(() =>
@@ -146,9 +141,9 @@ namespace EntityConsoleApp.Tests
         {
             IQueryable clients = new List<Client>()
             {
-                new Client(){FirstName="Abu",LastName="Daby", Balance=0,PhoneNumber="743843" },
-                new Client(){FirstName="Nujy",LastName="fros",Balance=7474,PhoneNumber="7373833"},
-                new Client(){FirstName="Huba",LastName="Buba", Balance=0,PhoneNumber="78899"}
+                new Client(){FirstName="Abu",LastName="Daby", Balance=0,PhoneNumber="743843",Zone=ClientZoneOfBalance.Orange },
+                new Client(){FirstName="Nujy",LastName="fros",Balance=7474,PhoneNumber="7373833",Zone=ClientZoneOfBalance.Green},
+                new Client(){FirstName="Huba",LastName="Buba", Balance=0,PhoneNumber="78899",Zone=ClientZoneOfBalance.Orange}
             }.AsQueryable();
             dataContextRepository.Clients.Returns(clients);
             IQueryable<Client> recivedClients = bussinesService.GetClientsFromOrangeZone();
@@ -164,7 +159,8 @@ namespace EntityConsoleApp.Tests
                 FirstName = "Moon",
                 LastName = "Pilot",
                 Balance = 1000,
-                PhoneNumber = "765899"
+                PhoneNumber = "765899",
+                Stocks = new List<Stock>()
             };
             Stock stock = bussinesService.GetSellerStock(client);
 
@@ -174,41 +170,23 @@ namespace EntityConsoleApp.Tests
         [TestMethod]
         public void ShouldGetRandomSellerStock()
         {
-            Client client = new Client()
-            {
-                FirstName = "Moon",
-                LastName = "Pilot",
-                Balance = 1000,
-                PhoneNumber = "765899"
-            };
             Stock stock = new Stock()
             {
                 NameTypeOfStock = "Pollyanna",
                 Cost = 1300
             };
-            client.Stocks.Add(stock);
-            Stock stock1 = new Stock()
+           
+            Client client = new Client()
             {
-                NameTypeOfStock = "Lazurit",
-                Cost = 1460
-            };
-            client.Stocks.Add(stock1);
-            Stock stock2 = new Stock()
-            {
-                NameTypeOfStock = "Lerom",
-                Cost = 393
-            };
-            client.Stocks.Add(stock2);
-            Stock stock3 = new Stock()
-            {
-                NameTypeOfStock = "WoodHoff",
-                Cost = 7549
-            };
-            client.Stocks.Add(stock3);
+                FirstName = "Moon",
+                LastName = "Pilot",
+                Balance = 1000,
+                PhoneNumber = "765899",
+                Stocks = new List<Stock>() { stock }
+            }; 
 
             Stock stockFromMethod = bussinesService.GetSellerStock(client);
-
-            Received.InOrder(() => dataContextRepository.Received(1).Add(Arg.Any<Stock>()));
+            Assert.AreEqual("Pollyanna", stockFromMethod.NameTypeOfStock);
         }
 
         [TestMethod]

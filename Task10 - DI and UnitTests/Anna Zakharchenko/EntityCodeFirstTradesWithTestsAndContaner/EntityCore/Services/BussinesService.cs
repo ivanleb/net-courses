@@ -81,8 +81,10 @@ namespace EntityCore
         {
             seller.Balance += stock.Cost;
             seller.Zone = ChangeClientsZone(seller);
+
             buyer.Balance -= stock.Cost;
             buyer.Zone=ChangeClientsZone(buyer);
+
             seller.Stocks.Remove(stock);
             buyer.Stocks.Add(stock);
 
