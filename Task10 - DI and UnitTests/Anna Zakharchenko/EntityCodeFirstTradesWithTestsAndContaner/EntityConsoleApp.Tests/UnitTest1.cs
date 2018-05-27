@@ -28,7 +28,6 @@ namespace EntityConsoleApp.Tests
         {
             Stock stock = new Stock()
             {
-                //TypeOfStock=new KeyValuePair<string, decimal>( "DIXY Group", 320 ),
                 NameTypeOfStock = "DIXY Group",
                 Cost = 1300
             };
