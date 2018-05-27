@@ -1,0 +1,86 @@
+﻿{
+  "categories": [
+    {
+      "categoryId": "QQjaaVTAgk4i4AviK3DoZ73ceCoCmgaO/X5VBjPIe84=",
+      "categoryName": "My Category 1",
+      "transactions": [
+        {
+          "comment": "No comment",
+          "instant": "2018-05-15T21:27:40.8641274+03:00",
+          "transactionId": "L4QKSAQwx0O3XICcjeXSVPxVzhOoPNQtNeh+ehMF2xE=",
+          "amount": 485.0
+        },
+        {
+          "comment": "book",
+          "instant": "2018-05-16T00:00:00",
+          "transactionId": "jFw+c0XFPaYH7ffjuFolqMg6JWVlFL0CIc3W0BIUpC0=",
+          "amount": 185.0
+        }
+      ]
+    },
+    {
+      "categoryId": "S9VMrXAMqKAynlVgOslDWOf6/WW5htnp7ICRKk1QjTI=",
+      "categoryName": "My Category 2",
+      "transactions": [
+        {
+          "comment": "No comment",
+          "instant": "2018-05-15T21:27:40.8641274+03:00",
+          "transactionId": "L4QKSAQwx0O3XICcjeXSVPxVzhOoPNQtNeh+ehMF2xE=",
+          "amount": 485.0
+        }
+      ]
+    },
+    {
+      "categoryId": "EP5Fb5/VFZNDZwrU9GMjaYvNYX34x7dZqja8YmBGkHg=",
+      "categoryName": "My Category 3",
+      "transactions": [
+        {
+          "comment": "No comment",
+          "instant": "2018-05-15T21:27:40.8641274+03:00",
+          "transactionId": "L4QKSAQwx0O3XICcjeXSVPxVzhOoPNQtNeh+ehMF2xE=",
+          "amount": 485.0
+        },
+        {
+          "comment": "sales",
+          "instant": "2018-05-16T00:00:00",
+          "transactionId": "8FSaKw7yuMMCjsjDYqLGLA3xx3NJuQ7JpV0XayoIIgA=",
+          "amount": 355.0
+        }
+      ]
+    },
+    {
+      "categoryId": "woKhhK3PgMi1t29HpOSlDmz690of9H1UGECfGDtjpko=",
+      "categoryName": "My Category 4",
+      "transactions": [
+        {
+          "comment": "No comment",
+          "instant": "2018-05-15T21:27:40.8641274+03:00",
+          "transactionId": "L4QKSAQwx0O3XICcjeXSVPxVzhOoPNQtNeh+ehMF2xE=",
+          "amount": 485.0
+        },
+        {
+          "comment": "pizza",
+          "instant": "2018-05-16T00:00:00",
+          "transactionId": "/sNXKCJ6E9a3alrthRrXO5L6UAPvhBzkAxRW4F0tPbk=",
+          "amount": 585.0
+        }
+      ]
+    },
+    {
+      "categoryId": "+uYbwmzMx/p7ITO+GaKO0o+xH7hMvJX5udepH0H1NVc=",
+      "categoryName": "My category 5",
+      "transactions": [
+        {
+          "comment": "pizza",
+          "instant": "2018-05-16T00:00:00",
+          "transactionId": "Hgyr+NzwSJ6dWKe+hSmVSpoVtAujRk7vD24v2hmGTVY=",
+          "amount": 128.0
+        }
+      ]
+    }
+  ],
+  "projectBalance": 18000.0,
+  "projectBudget": 25000.0,
+  "projectId": "9v2r5v8mCp4NK5spDlzm6+Ai2tKct3i/xRbs9ZeYb80=",
+  "projectName": "My Project 1"
+}

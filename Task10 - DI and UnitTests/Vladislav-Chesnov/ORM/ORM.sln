@@ -1,0 +1,37 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27428.2037
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ORMConsoleApp", "ORM\ORMConsoleApp.csproj", "{3A06B1DC-0245-4A44-B9A4-3DCBEE8398E8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ORMCore", "ORMCore\ORMCore.csproj", "{7A2FB459-84BF-4D37-AB75-6477E73BDC92}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ORMTests", "ORMTests\ORMTests.csproj", "{40B7FD0C-7262-4314-9EFA-7A9623354482}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{3A06B1DC-0245-4A44-B9A4-3DCBEE8398E8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3A06B1DC-0245-4A44-B9A4-3DCBEE8398E8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3A06B1DC-0245-4A44-B9A4-3DCBEE8398E8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3A06B1DC-0245-4A44-B9A4-3DCBEE8398E8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7A2FB459-84BF-4D37-AB75-6477E73BDC92}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7A2FB459-84BF-4D37-AB75-6477E73BDC92}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7A2FB459-84BF-4D37-AB75-6477E73BDC92}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7A2FB459-84BF-4D37-AB75-6477E73BDC92}.Release|Any CPU.Build.0 = Release|Any CPU
+		{40B7FD0C-7262-4314-9EFA-7A9623354482}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{40B7FD0C-7262-4314-9EFA-7A9623354482}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{40B7FD0C-7262-4314-9EFA-7A9623354482}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{40B7FD0C-7262-4314-9EFA-7A9623354482}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {0779BC73-95C8-4643-9F7A-6B593766A74F}
+	EndGlobalSection
+EndGlobal
