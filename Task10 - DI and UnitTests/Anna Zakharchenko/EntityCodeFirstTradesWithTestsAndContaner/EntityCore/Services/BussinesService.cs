@@ -107,6 +107,7 @@ namespace EntityCore
             }, isSilent: true);
 
             loggerService.Info($"Changed balance: {trade.Seller}\n{trade.Buyer}");
+
             if (trade.Buyer.Zone != ClientZoneOfBalance.Green)
                 loggerService.Info($"Zone from {trade.Buyer} was changed, now it is {trade.Buyer.Zone} zone.");
 

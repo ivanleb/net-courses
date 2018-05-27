@@ -50,7 +50,7 @@ namespace EntityConsoleApp.Tests
                 Zone = ClientZoneOfBalance.Green,
                 Stocks = new List<Stock>()
             };
-
+            
             Trade trade = bussinesService.GetNewTrade(seller, buyer, stock);
 
             Assert.AreEqual(2300, seller.Balance);
@@ -74,18 +74,16 @@ namespace EntityConsoleApp.Tests
                 Balance = -1000,
                 PhoneNumber = "765899",
                 Zone = ClientZoneOfBalance.Black,
-                Stocks = new List<Stock>()
+                Stocks = new List<Stock>() { stock}
             };
             Client buyer = new Client
             {
                 FirstName = "Mary",
                 LastName = "Poppins",
-                Balance = 1300
+                Balance = 1300,
+                Zone = ClientZoneOfBalance.Green,
+                Stocks = new List<Stock>() { stock }
             };
-            //////dataContextRepository.Add(seller);
-            //////dataContextRepository.Add(buyer);
-            seller.Stocks.Add(stock);
-            //////dataContextRepository.SaveChanges();
 
             Trade trade = new Trade() { Seller=seller,Buyer=buyer,StockFromSeller=stock};
 
@@ -94,6 +92,7 @@ namespace EntityConsoleApp.Tests
             Received.InOrder(() =>
             {
                 dataContextRepository.Received(1).Add(Arg.Any<Trade>());
+                dataContextRepository.Received(2).Update(Arg.Any<Client>());
                 dataContextRepository.Received(1).SaveChanges();
             });
         }
