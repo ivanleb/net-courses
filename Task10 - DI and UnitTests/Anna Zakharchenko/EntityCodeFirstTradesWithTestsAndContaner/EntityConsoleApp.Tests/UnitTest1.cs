@@ -59,7 +59,7 @@ namespace EntityConsoleApp.Tests
         }
 
         [TestMethod]
-        public void ShouilRegisterNewTrade()
+        public void ShouldRegisterNewTrade()
         {
             Stock stock = new Stock()
             {
@@ -188,7 +188,7 @@ namespace EntityConsoleApp.Tests
         }
 
         [TestMethod]
-        public void SouldReturnClient()
+        public void ShouldReturnClient()
         {
             IQueryable clients = new List<Client>()
             {
