@@ -1,0 +1,40 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LinqTo.Core", "LinqTo.Core\LinqTo.Core.csproj", "{88BCA827-AF07-4033-BE75-5EA9CE3473D2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LinqToMongodbProvider", "LinqToMongodbProvider\LinqToMongodbProvider.csproj", "{352F517D-779A-47AA-81AD-C53E71E04D9B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LinqToJsonProvider", "LinqToJsonProvider\LinqToJsonProvider.csproj", "{47AFAC3D-A660-49B2-A1D8-D0812E636C5A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LinqToMongodbEf", "LinqToMongodbEf\LinqToMongodbEf.csproj", "{9884E2EA-AC57-4BD1-82F8-7A545DDD36CE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LinqToXmlProvider", "LinqToXmlProvider\LinqToXmlProvider.csproj", "{D41D6FE4-43A1-4389-8DE6-50910387B07C}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{88BCA827-AF07-4033-BE75-5EA9CE3473D2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{88BCA827-AF07-4033-BE75-5EA9CE3473D2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{88BCA827-AF07-4033-BE75-5EA9CE3473D2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{88BCA827-AF07-4033-BE75-5EA9CE3473D2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{352F517D-779A-47AA-81AD-C53E71E04D9B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{352F517D-779A-47AA-81AD-C53E71E04D9B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{352F517D-779A-47AA-81AD-C53E71E04D9B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{352F517D-779A-47AA-81AD-C53E71E04D9B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{47AFAC3D-A660-49B2-A1D8-D0812E636C5A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{47AFAC3D-A660-49B2-A1D8-D0812E636C5A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{47AFAC3D-A660-49B2-A1D8-D0812E636C5A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{47AFAC3D-A660-49B2-A1D8-D0812E636C5A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9884E2EA-AC57-4BD1-82F8-7A545DDD36CE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9884E2EA-AC57-4BD1-82F8-7A545DDD36CE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9884E2EA-AC57-4BD1-82F8-7A545DDD36CE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9884E2EA-AC57-4BD1-82F8-7A545DDD36CE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D41D6FE4-43A1-4389-8DE6-50910387B07C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D41D6FE4-43A1-4389-8DE6-50910387B07C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D41D6FE4-43A1-4389-8DE6-50910387B07C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D41D6FE4-43A1-4389-8DE6-50910387B07C}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
