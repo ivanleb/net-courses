@@ -12,26 +12,22 @@ namespace ORMCore.Tests
     public class ORMTests
     {
         IDataContext dataContext;
-        ILoggerService loggerService;
-
         BusinessService businessService;
-
+        Stock stock;
+        Client client;
 
         [TestInitialize]
         public void TestSetup()
         {
-            dataContext = Substitute.For<IDataContext>();
-            loggerService = Substitute.For<ILoggerService>();
-            loggerService.When(l => l.RunWithExceptionLogging(Arg.Any<Action>())).Do(info => info.Arg<Action>().Invoke());
-            loggerService.When(l => l.RunWithExceptionLogging(Arg.Any<Func<Client>>())).Do(info => info.Arg<Func<Client>>().Invoke());            
-            businessService = new BusinessService(dataContext, loggerService);            
+            dataContext = Substitute.For<IDataContext>();        
+            businessService = new BusinessService(dataContext);
+            stock = new Stock() { Id = 1, Type = "Gazprom" };
+            client = new Client();            
         }
 
         [TestMethod]
         public void CanChangeStockType()
-        {
-            var stock = new Stock() { Id = 1, Type = "Gazprom" };
-
+        {            
             businessService.ChangeStockType(stock, "Tesla");
 
             Assert.AreEqual(stock.Type, "Tesla");
@@ -40,15 +36,14 @@ namespace ORMCore.Tests
         [TestMethod]
         public void CanGetStockById()
         {
-            var stock1 = new Stock() { Id = 1, Type = "Gazprom" };
             var stock2 = new Stock() { Id = 2, Type = "Tesla" };
-            var stocks = new List<Stock>() { stock1, stock2 }.AsQueryable();
+            var stocks = new List<Stock>() { stock, stock2 }.AsQueryable();
 
             dataContext.Stocks.Returns(stocks);
 
             var recievedStock = businessService.GetStockById(1);
 
-            Assert.AreEqual(stock1, recievedStock);
+            Assert.AreEqual(stock, recievedStock);
             
         }
 
@@ -56,11 +51,9 @@ namespace ORMCore.Tests
         public void CanGetClientById()
         {
             var client1 = new Client() { Id = 1 };
-            var client2 = new Client() { Id = 2 };
-            var clients = new List<Client>() { client1, client2 }.AsQueryable();
+            var clients = new List<Client>() { client1, client }.AsQueryable();
 
             dataContext.Clients.Returns(clients);
-
             var recievedClient = businessService.GetClientById(1);
 
             Assert.AreEqual(client1, recievedClient);
@@ -94,8 +87,6 @@ namespace ORMCore.Tests
         [TestMethod]
         public void CanRegisterNewClient()
         {
-            var client = new Client { Name = "Bill", Surname = "Black" };
-
             businessService.RegisterNewClient(client);
 
             Received.InOrder(() =>
@@ -108,8 +99,6 @@ namespace ORMCore.Tests
         [TestMethod]
         public void CanRegisterNewStock()
         {
-            var stock = new Stock();
-
             businessService.RegisterNewStock(stock);
 
             Received.InOrder(() =>
@@ -136,9 +125,7 @@ namespace ORMCore.Tests
         [TestMethod]
         public void CanGetClients()
         {
-            var client = new Client();
             var clients = new List<Client> { client, new Client() }.AsQueryable();
-
             dataContext.Clients.Returns(clients);
 
             Assert.AreEqual(2, dataContext.Clients.Count());
@@ -149,15 +136,13 @@ namespace ORMCore.Tests
         public void CanMakeDeals()
         {
             var stock = new Stock() { Type = "Gazprom" }; // costs 1000
-            var seller = new Client()
-            {
-                Balance = 0, Stocks = new List<Stock>() { stock }
-            };
+            client.Balance = 0;
+            client.Stocks = new List<Stock>() { stock };
             var purchaser = new Client() { Balance = 1000, Stocks = new List<Stock>() };
 
-            businessService.MakeDeal(seller, purchaser, stock);
+            businessService.MakeDeal(client, purchaser, stock);
 
-            Assert.AreEqual(1000, seller.Balance);
+            Assert.AreEqual(1000, client.Balance);
             Assert.AreEqual(0, purchaser.Balance);
             Assert.AreEqual(stock, purchaser.Stocks.First());
         }

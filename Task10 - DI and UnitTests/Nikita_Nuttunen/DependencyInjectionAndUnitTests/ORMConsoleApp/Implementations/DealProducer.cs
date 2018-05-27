@@ -58,21 +58,25 @@ namespace ORMConsoleApp.Implementations
                     purchaser = businessService.GetRandomClient();
                 }
 
-                Console.WriteLine($"\n{seller.Name} {seller.Surname} is trying to sell a stock to {purchaser.Name} {purchaser.Surname}...");
+                loggerService.Info($"\n{seller.Name} {seller.Surname} is trying to sell a stock to {purchaser.Name} {purchaser.Surname}...");
                 System.Threading.Thread.Sleep(1000);
 
-                var stock = businessService.GetRandomSellerStock(seller);
-                if (stock != null)
+                if (seller.Stocks.Count == 0)
                 {
-                    var producedDeal = businessService.MakeDeal(seller, purchaser, stock);
-                    businessService.RegisterNewDeal(producedDeal);
-                    loggerService.Info($"{seller.Name} {seller.Surname} selled stock \"{stock.Type}\"" +
-                        $" №{stock.Id} to {purchaser.Name} {purchaser.Surname} for {stock.Cost}");
+                    loggerService.Error(new ArgumentNullException($"{seller.Name} {seller.Surname} doesn't have stocks"));
+                    System.Threading.Thread.Sleep(10000);
+                    continue;
                 }
+                var stock = businessService.GetRandomSellerStock(seller);
+
+                var producedDeal = businessService.MakeDeal(seller, purchaser, stock);
+                businessService.RegisterNewDeal(producedDeal);
+                loggerService.Info($"\n{seller.Name} {seller.Surname} selled stock \"{stock.Type}\"" +
+                    $" №{stock.Id} to {purchaser.Name} {purchaser.Surname} for {stock.Cost}");
                 System.Threading.Thread.Sleep(10000);
             }
 
-            Console.WriteLine("\nDeals producing stopped. Updated clients table:");
+            Console.WriteLine("\nUpdated clients table:");
             foreach (var client in clients)
             {
                 businessService.ShowClient(client);

@@ -35,6 +35,7 @@ namespace ORMConsoleApp
 
                 Console.ReadLine();
                 dealProducer.IsContinue = false;
+                Console.WriteLine("Deals producing stopped...");
 
                 Console.ReadLine();
             }

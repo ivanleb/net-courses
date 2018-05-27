@@ -13,41 +13,29 @@ namespace ORMCore
         private event BalanceHandler BalanceChanged;
 
         private readonly IDataContext dataContext;
-        private readonly ILoggerService loggerService;
-                
+
         private Random rnd = new Random();
 
-        public BusinessService(IDataContext dataContext, ILoggerService loggerService)
+        public BusinessService(IDataContext dataContext)
         {
             this.dataContext = dataContext;
-            this.loggerService = loggerService;
         }
-                        
+
         public void ChangeStockType(Stock stock, string newType)
-        {            
-            loggerService.RunWithExceptionLogging(() =>
-            {
-                var oldType = stock.Type;
-                stock.Type = newType;
-                dataContext.SaveChanges();
-                loggerService.Info($"Stock №{stock.Id} changed type from \"{oldType}\" to \"{newType}\"");
-            });
+        {
+            var oldType = stock.Type;
+            stock.Type = newType;
+            dataContext.SaveChanges();
         }
 
         public Stock GetStockById(int id)
         {
-           // return loggerService.RunWithExceptionLogging(() =>
-           // {
-                return dataContext.Stocks.First(s => s.Id == id);
-           // });
+            return dataContext.Stocks.First(s => s.Id == id);
         }
 
         public Client GetClientById(int id)
         {
-           // return loggerService.RunWithExceptionLogging(() =>
-           // {
-                return dataContext.Clients.First(c => c.Id == id);
-           // });
+            return dataContext.Clients.First(c => c.Id == id);
         }
 
         public Client GetRandomClient()
@@ -58,40 +46,29 @@ namespace ORMCore
         public int GetClientsAmount()
         {
             return dataContext.Clients.Count();
-        }               
-        
+        }
+
         public IQueryable<Client> GetClientsFromOrangeArea()
         {
             return dataContext.Clients.Where(c => c.Area == "orange");
         }
-              
+
         public void RegisterNewClient(Client client)
         {
-            loggerService.RunWithExceptionLogging(() =>
-            {
-                dataContext.Add(client);
-                dataContext.SaveChanges();
-                loggerService.Info($"{client.Name} {client.Surname} was registered");
-            });
+            dataContext.Add(client);
+            dataContext.SaveChanges();
         }
 
         public void RegisterNewStock(Stock stock)
         {
-            loggerService.RunWithExceptionLogging(() =>
-            {
-                dataContext.Add(stock);
-                dataContext.SaveChanges();
-                loggerService.Info($"\"{stock.Type}\" stock was registered");
-            });
+            dataContext.Add(stock);
+            dataContext.SaveChanges();
         }
 
         public void RegisterNewDeal(Deal deal)
         {
-            loggerService.RunWithExceptionLogging(() =>
-            {
-                dataContext.Add(deal);
-                dataContext.SaveChanges();
-            });
+            dataContext.Add(deal);
+            dataContext.SaveChanges();
         }
 
         public void ShowClient(Client client)
@@ -115,16 +92,13 @@ namespace ORMCore
 
         public Stock GetRandomSellerStock(Client seller)
         {
-            return loggerService.RunWithExceptionLogging(() =>
-            {
-                if (seller.Stocks.Count == 0) throw new ArgumentNullException($"{seller.Name} {seller.Surname} doesn't have stocks");
-                if (seller.Stocks.Count == 1) return seller.Stocks.First();
-                Random rnd = new Random();
-                var stockIndex = rnd.Next(0, seller.Stocks.Count - 1);
-                return seller.Stocks.ElementAt(stockIndex);
-            });
-        }  
-        
+            if (seller.Stocks.Count == 0) throw new ArgumentNullException($"{seller.Name} {seller.Surname} doesn't have stocks");
+            if (seller.Stocks.Count == 1) return seller.Stocks.First();
+            Random rnd = new Random();
+            var stockIndex = rnd.Next(0, seller.Stocks.Count - 1);
+            return seller.Stocks.ElementAt(stockIndex);
+        }
+
         public IQueryable<Client> GetClients()
         {
             return dataContext.Clients;
