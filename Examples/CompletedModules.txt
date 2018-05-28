@@ -1,0 +1,24 @@
+1 Introduction to the C# Language and the .NET Framework
+2 Basic Coding in C#
+3 Types
+4 Methods in details
+5 Encapsulation. Inheritance. Polymorphism
+6 Exception Handling. Logging. Log4net
+7 Delegates. Lambdas and Events. Action, Func, Closure
+8 Introduction to Language Integrated Query (LINQ)
+9 IEnumerable vs IQueryable 
+10 XML Technologies, Text Template files(*.tt), Code Generation
+11 Serialization, Deserialization: Xml, Json, Binary. Using IQueryable with Xml, Json
+12 Patterns of enterprise application architecture
+13 Task Parallelism and Data Parallelism
+14 Task Parallel Library, Tasks, TaskFactory, ContinueWith
+15 Sync structures understanding (OS, Process, Hybrid). Talk about Monitor and lock
+16 Asynchronous Functions in C#, async, await.
+17 IQueryProvider, Transforming LINQ to Different Query Languages
+18 ORM systems overview, ADO.NET EF intro
+19 ADO.NET EF Object Relations Mapping
+20 Intro to DI, DI containers, code refactoring
+21 C# Unit Tests, code refactoring and requirements for unit testing
+22 Test Driven Development, Code Coverage, Stubs, NSubstitute
+23 Continuous Integration Systems intro and overview. 
+24 Intro to Version Control systems. Git Basics (commit, branch, pullrequest)
