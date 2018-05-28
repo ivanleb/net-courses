@@ -1,0 +1,86 @@
+﻿{
+  "Clients": [
+    {
+      "Id": 1,
+      "FirstName": "FirstName1",
+      "SurName": "SurName1",
+      "TelephonNumber": "+ 7 999 9999998",
+      "Balance": 1005000,
+      "Zone": 0,
+      "Stock": 5,
+      "ClientStocksQuantity": 10000
+    },
+    {
+      "Id": 2,
+      "FirstName": "FirstName2",
+      "SurName": "SurName2",
+      "TelephonNumber": "+ 7 999 9999999",
+      "Balance": 100500,
+      "Zone": 0,
+      "Stock": 4,
+      "ClientStocksQuantity": 1000000
+    },
+    {
+      "Id": 3,
+      "FirstName": "FirstName3",
+      "SurName": "SurName3",
+      "TelephonNumber": "+ 7 999 9999997",
+      "Balance": 100500000,
+      "Zone": 0,
+      "Stock": 3,
+      "ClientStocksQuantity": 100000
+    },
+    {
+      "Id": 4,
+      "FirstName": "FirstName4",
+      "SurName": "SurName4",
+      "TelephonNumber": "+ 7 999 9999996",
+      "Balance": 100500,
+      "Zone": 0,
+      "Stock": 2,
+      "ClientStocksQuantity": 100000
+    },
+    {
+      "Id": 5,
+      "FirstName": "FirstName5",
+      "SurName": "SurName5",
+      "TelephonNumber": "+ 7 999 9999995",
+      "Balance": 100500000,
+      "Zone": 0,
+      "Stock": 1,
+      "ClientStocksQuantity": 1000000
+    }
+  ],
+  "Stocks": [
+    {
+      "Id": 1,
+      "Name": " GoogleStock ",
+      "Price": "50000",
+      "Type": 0
+    },
+    {
+      "Id": 2,
+      "Name": " VeryLuckyStock ",
+      "Price": "10000",
+      "Type": 1
+    },
+    {
+      "Id": 3,
+      "Name": " VeryBadStock ",
+      "Price": "100000",
+      "Type": 2
+    },
+    {
+      "Id": 4,
+      "Name": " ProfitableStock ",
+      "Price": "25000",
+      "Type": 0
+    },
+    {
+      "Id": 5,
+      "Name": " AppleStock ",
+      "Price": "110000",
+      "Type": 0
+    }
+  ]
+}
