@@ -1,6 +1,7 @@
 ﻿using EPAM_homework_EF_Core;
 using log4net;
 using log4net.Config;
+using StructureMap;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -17,14 +18,13 @@ namespace EPAM_homework_EF
         {
             XmlConfigurator.Configure();
 
-            var logger = LogManager.GetLogger("TextLogger");
+            var container = new Container(new DIContainer());
 
-            var loggerService = new LoggerService(logger);
+            var loggerService = container.GetInstance<ILoggerService>();
 
-            using (var dbContext = new TablePerConcreteClass(
-              @"Data Source=.;Initial Catalog=SharesCompany;Integrated Security=True"))
+            using (var dbContext = container.GetInstance<IDataContext>())
             {
-                var bussinesService = new BussinesService(dbContext, loggerService);
+                var bussinesService = container.With(dbContext).With(loggerService).GetInstance<BussinesService>();
 
                 Database.SetInitializer(new DbInitializer(bussinesService));
 
@@ -33,7 +33,7 @@ namespace EPAM_homework_EF
                 char c;
                 while (!cts.IsCancellationRequested)
                 {
-                    Task process = new Task(() => new ProcessSimulation(dbContext).Run(bussinesService), cts.Token);
+                    Task process = new Task(() => container.GetInstance<IProcess>().Run(bussinesService), cts.Token);
 
                     switch (c = Console.ReadKey().KeyChar)
                     {

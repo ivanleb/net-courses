@@ -79,7 +79,7 @@ namespace EPAM_homework_EF_Core
         void Update(T entity);
     }
 
-    public interface IDataContext :
+    public interface IDataContext : IDisposable,
         ICollectionModification<WhiteZoneClient>,
         ICollectionModification<OrangeZoneClient>,
         ICollectionModification<BlackZoneClient>,
